@@ -1,15 +1,18 @@
 #!/usr/bin/env python3
 from pathlib import Path
-from typing import List
-
-import jq
+from typing import List, Dict
 import getopt
 import sys
 import os
 import asyncio
 import json
-from utlis.pid_resolver import get_registration_agency_prefixes
+from utlis.pid_analyzer import analyze_dois, analyze_doi_record_crossref, analyze_doi_record_datacite
+from utlis.pid_resolver import get_registration_agency_prefixes, resolve_registration_agency_prefixes, \
+    filter_prefixes_by_registration_agency, filter_dois_by_prefixes, fetch_records
+
+
 BASE_PATH = os.environ['BASE_PATH']
+path = Path(BASE_PATH)
 
 
 ''''
@@ -55,11 +58,28 @@ async def main():
     with open(Path(BASE_PATH) / dois_file) as f:
         dois = json.load(f)
 
-    print(len(dois))
-
     doi_prefixes: List[str] = get_registration_agency_prefixes(dois)
 
-    print(doi_prefixes, len(doi_prefixes))
-    print('doniiii')
+    resolved_ras_for_doi_prefixes: List[Dict[str, str]] = await resolve_registration_agency_prefixes(doi_prefixes)
+
+    # Crossref
+
+    crossref_doi_prefixes = filter_prefixes_by_registration_agency(resolved_ras_for_doi_prefixes, 'Crossref')
+
+    crossref_dois = filter_dois_by_prefixes(dois, crossref_doi_prefixes)
+
+    await fetch_records(crossref_dois, path / 'crossref_dois', 'https://doi.org/', 'application/rdf+xml')
+
+    resolved_dois_crossref = analyze_dois(path, path / 'crossref_dois', analyze_doi_record_crossref)
+
+    # DataCite
+
+    datacite_doi_prefixes = filter_prefixes_by_registration_agency(resolved_ras_for_doi_prefixes, 'DataCite')
+
+    datacite_dois = filter_dois_by_prefixes(dois, datacite_doi_prefixes)
+
+    await fetch_records(datacite_dois, path / 'datacite_dois', 'https://doi.org/', 'application/ld+json', 120)
+
+    resolved_dois_datacite = analyze_dois(path, path /'datacite_dois', analyze_doi_record_datacite)
 
 asyncio.run(main())

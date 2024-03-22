@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from pathlib import Path
 
 from lxml import etree  # type: ignore
 from typing import List, Optional, Dict, Any, NamedTuple, cast, Callable, Union
@@ -6,7 +7,6 @@ import sys
 from urllib.parse import unquote, quote
 import os
 import json
-from rdflib import Graph, RDF, URIRef
 
 
 class AuthorInfo(NamedTuple):
@@ -138,7 +138,7 @@ def analyze_doi_record_crossref(cache_dir: str, path: str) -> Optional[Publicati
         return None
 
 
-def analyze_dois(cache_dir: str, analyzer: Callable[[str, str], Optional[PublicationInfo]]) -> Dict[
+def analyze_dois(base_path: Path, cache_dir: Path, analyzer: Callable[[str, str], Optional[PublicationInfo]]) -> Dict[
     str, PublicationInfo]:
     """
     Reads resolved DOIs from the cache and returns a dict indexed by DOI (without base URL).
@@ -147,7 +147,7 @@ def analyze_dois(cache_dir: str, analyzer: Callable[[str, str], Optional[Publica
     @param analyzer: Function that parses the metadata resolved for a DOI and transforms it to a PublicationInfo.
     """
 
-    records_cache_file = 'resolved_dois.json'
+    records_cache_file = base_path / 'resolved_dois.json'
 
     # check if cache_file exists
     if os.path.isfile(records_cache_file):

@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+from pathlib import Path
 
 import jq  # type: ignore
 import sys
@@ -138,7 +139,7 @@ async def fetch_doi_batch(dois: List[str], base_url: str, accept_header) -> List
         return cast(List[ResolvedRecord], list(filter(lambda res: res is not None, results)))
 
 
-async def fetch_records(records: List[str], cache_dir: str, base_url: str, accept_header: str, sleep_per_batch: int = 0) -> None:
+async def fetch_records(records: List[str], cache_dir: Path, base_url: str, accept_header: str, sleep_per_batch: int = 0) -> None:
     """
     Fetches a list of records (DOIs, ORCIDs) and writes them to the cache directory.
     Performs fetching in batches of size 500 requests each.
