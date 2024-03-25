@@ -3,6 +3,12 @@ from .pid_resolver import get_registration_agency_prefixes, resolve_registration
     filter_prefixes_by_registration_agency, filter_dois_by_prefixes
 from functools import reduce
 
+RA_MIME = {
+    'DataCite': 'application/ld+json',
+    'Crossref': 'application/rdf+xml',
+    'mEDRA': ' application/rdf+xml'
+}
+
 
 async def group_dois_by_ra(dois: List[str]) -> Dict[str, List[str]]:
     """
@@ -31,4 +37,4 @@ async def group_dois_by_ra(dois: List[str]) -> Dict[str, List[str]]:
     return reduce(lambda a, b: {**a, **b}, ra_list)
 
 
-__all__ = ['group_dois_by_ra']
+__all__ = ['RA_MIME', 'group_dois_by_ra']
