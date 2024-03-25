@@ -1,6 +1,4 @@
-#!/usr/bin/env python3
 from pathlib import Path
-
 from lxml import etree  # type: ignore
 from typing import List, Optional, Dict, Any, NamedTuple, cast, Callable, Union
 import sys
@@ -297,3 +295,6 @@ def analyze_orcids(cache_dir: str) -> Dict:
     }
 
     return graph
+
+
+__all__ = ['PublicationInfo', 'analyze_orcids']

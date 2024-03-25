@@ -191,4 +191,5 @@ async def fetch_records(records: List[str], cache_dir: Path, base_url: str, acce
 
         offset = offset + batch_size
 
+
 __all__ = ['get_registration_agency_prefixes', 'filter_prefixes_by_registration_agency', 'filter_dois_by_prefixes', 'resolve_registration_agency_prefixes', 'fetch_records']
