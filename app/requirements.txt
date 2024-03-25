@@ -1,3 +1,0 @@
-jq
-aiohttp
-lxml

@@ -1,0 +1,23 @@
+[project]
+name = "pid_resolver_lib"
+version = "0.0.1"
+dependencies = [
+    'jq',
+    'aiohttp',
+    'lxml'
+]
+authors = [
+  { name="Tobias Schweizer", email="tobias.schweizer@switch.ch" },
+]
+description = "A Python package for resolving and analysing PIDs like DOIs, ORCIDs, RORs."
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://gitlab.switch.ch/connectome/pid_resolver"
+Issues = "https://gitlab.switch.ch/connectome/pid_resolver/-/issues"

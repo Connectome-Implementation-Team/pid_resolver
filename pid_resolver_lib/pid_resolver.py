@@ -1,6 +1,4 @@
-#!/usr/bin/env python
 from pathlib import Path
-
 import jq  # type: ignore
 import sys
 from typing import List, Union, Dict, NamedTuple, Optional, cast
@@ -10,7 +8,7 @@ import asyncio
 import urllib.parse
 import os
 
-contact = 'tobias.schweizer@switch.ch'
+contact = ''
 
 class ResolvedRecord(NamedTuple):
     """
@@ -21,6 +19,7 @@ class ResolvedRecord(NamedTuple):
     """
     rec_id: str # 0
     content: str # 1
+
 
 def get_registration_agency_prefixes(dois: List[str]) -> List[str]:
     """
@@ -57,7 +56,7 @@ def filter_dois_by_prefixes(dois: List[str], prefixes: List[str]) -> List[str]:
     return list(set(filtered_dois))
 
 
-async def make_registration_agency_prefix_request(session: ClientSession, doi_prefix: str) -> Union[Dict, None]:
+async def _make_registration_agency_prefix_request(session: ClientSession, doi_prefix: str) -> Union[Dict, None]:
     """
     Given a DOI prefix, fetches information about the RA.
 
@@ -88,7 +87,7 @@ async def resolve_registration_agency_prefixes(doi_prefixes: List[str]) -> List[
     time_out = ClientTimeout(total=60 * 60 * 24)
     async with aiohttp.ClientSession(connector=conn, raise_for_status=True, timeout=time_out) as session:
 
-        requests = [make_registration_agency_prefix_request(session, doi_prefix) for doi_prefix in doi_prefixes]
+        requests = [_make_registration_agency_prefix_request(session, doi_prefix) for doi_prefix in doi_prefixes]
 
         results = await asyncio.gather(*requests)
 
@@ -97,7 +96,7 @@ async def resolve_registration_agency_prefixes(doi_prefixes: List[str]) -> List[
         return [item for sublist in cast(List[List[Dict]], results) for item in sublist]
 
 
-async def make_doi_request(session: ClientSession, doi: str, base_url: str, accept_header: str) -> Optional[ResolvedRecord]:
+async def _make_doi_request(session: ClientSession, doi: str, base_url: str, accept_header: str) -> Optional[ResolvedRecord]:
     """
     Given a DOI, resolves it using content negotiation.
 
@@ -119,7 +118,7 @@ async def make_doi_request(session: ClientSession, doi: str, base_url: str, acce
         return None
 
 
-async def fetch_doi_batch(dois: List[str], base_url: str, accept_header) -> List[ResolvedRecord]:
+async def _fetch_doi_batch(dois: List[str], base_url: str, accept_header) -> List[ResolvedRecord]:
     """
     Given a batch of DOIs, fetches them.
 
@@ -131,7 +130,7 @@ async def fetch_doi_batch(dois: List[str], base_url: str, accept_header) -> List
     time_out = ClientTimeout(total=60 * 60 * 24)
     async with aiohttp.ClientSession(connector=conn, raise_for_status=True, timeout=time_out) as session:
 
-        requests = [make_doi_request(session, doi, base_url, accept_header) for doi in dois]
+        requests = [_make_doi_request(session, doi, base_url, accept_header) for doi in dois]
 
         results = await asyncio.gather(*requests)
 
@@ -146,7 +145,7 @@ async def fetch_records(records: List[str], cache_dir: Path, base_url: str, acce
 
     @param records: Records to be fetched.
     @param cache_dir: Directory the results are written to
-    @param base_url: Bas URL of the items to be fetched, e.g., https://doi.org.
+    @param base_url: Base URL of the items to be fetched, e.g., https://doi.org.
     @param accept_header: HTTP accept header for content negotiation.
     @param sleep_per_batch: Sleep in seconds after each batch to respect rate limits, if any. See https://support.datacite.org/docs/is-there-a-rate-limit-for-making-requests-against-the-datacite-apis.
     """
@@ -174,7 +173,7 @@ async def fetch_records(records: List[str], cache_dir: Path, base_url: str, acce
 
         print('fetching batch: ',  offset, limit)
 
-        results = await fetch_doi_batch(dois_not_cached[offset:limit], base_url, accept_header)
+        results = await _fetch_doi_batch(dois_not_cached[offset:limit], base_url, accept_header)
 
         # store DOIs as files
         for res in results:
@@ -191,3 +190,5 @@ async def fetch_records(records: List[str], cache_dir: Path, base_url: str, acce
         print('working')
 
         offset = offset + batch_size
+
+__all__ = ['get_registration_agency_prefixes', 'filter_prefixes_by_registration_agency', 'filter_dois_by_prefixes', 'resolve_registration_agency_prefixes', 'fetch_records']
