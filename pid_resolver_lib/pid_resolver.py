@@ -1,7 +1,7 @@
 from pathlib import Path
 import jq  # type: ignore
 import sys
-from typing import List, Union, Dict, NamedTuple, Optional, cast
+from typing import List, Union, Dict, NamedTuple, Optional, cast, Tuple
 import aiohttp
 from aiohttp import ClientSession, TCPConnector, ClientTimeout
 import asyncio
@@ -138,6 +138,11 @@ async def _fetch_doi_batch(dois: List[str], base_url: str, accept_header) -> Lis
         return cast(List[ResolvedRecord], list(filter(lambda res: res is not None, results)))
 
 
+def _doi_to_path(doi: str) -> Tuple[Path, Path]:
+    prefix, suffix = doi.split('/')
+    return Path(prefix), Path(suffix)
+
+
 async def fetch_records(records: List[str], cache_dir: Path, base_url: str, accept_header: str, sleep_per_batch: int = 0) -> None:
     """
     Fetches a list of records (DOIs, ORCIDs) and writes them to the cache directory.
@@ -154,7 +159,7 @@ async def fetch_records(records: List[str], cache_dir: Path, base_url: str, acce
 
     # check if a DOI is already in the cache
     dois_not_cached = list(
-        filter(lambda doi: not os.path.isfile(f'{cache_dir}/{urllib.parse.quote(doi, safe="")}'),
+        filter(lambda doi: not os.path.isfile(f'{cache_dir / Path(*_doi_to_path(doi))}'), # https://stackoverflow.com/questions/14826888/python-os-path-join-on-a-list
                dois_deduplicated))
 
     print('fetching number of records: ', len(dois_not_cached))
@@ -178,7 +183,10 @@ async def fetch_records(records: List[str], cache_dir: Path, base_url: str, acce
         # store DOIs as files
         for res in results:
             try:
-                with open(f'{cache_dir}/{urllib.parse.quote(res.rec_id, safe="")}', 'w') as f:
+                prefix, suffix = _doi_to_path(res.rec_id)
+                if not os.path.isdir(cache_dir / prefix):
+                    os.makedirs(cache_dir / Path(prefix))
+                with open(f'{cache_dir / prefix / suffix }', 'w') as f:
                     f.write(res.content)
             except Exception as e:
                 print(f'An error occurred when writing record {res}: {e}')

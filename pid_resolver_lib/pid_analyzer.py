@@ -50,7 +50,7 @@ def analyze_author_info_datacite(author_info: Dict) -> AuthorInfo:
     return AuthorInfo(given_name=given_name, family_name=family_name, orcid=orcid)
 
 
-def analyze_doi_record_datacite(cache_dir: str, path: str) -> Optional[PublicationInfo]:
+def analyze_doi_record_datacite(cache_dir: Path, path: Path) -> Optional[PublicationInfo]:
     """
     Reads a DOI record (JSON-LD/schema.org) and transforms it to an item containing author information about a publication.
 
@@ -59,7 +59,7 @@ def analyze_doi_record_datacite(cache_dir: str, path: str) -> Optional[Publicati
     """
 
     try:
-        with open(f'{cache_dir}/{path}') as f:
+        with open(path) as f:
             record = json.load(f)
 
         title: Optional[str] = record['name']
@@ -67,10 +67,10 @@ def analyze_doi_record_datacite(cache_dir: str, path: str) -> Optional[Publicati
 
         if isinstance(author_info, List):
             authors_list: List[AuthorInfo] = list(map(analyze_author_info_datacite, author_info))
-            return PublicationInfo(doi=unquote(path), title=title, authors=authors_list)
+            return PublicationInfo(doi=str(Path(*path.parts[-2:])), title=title, authors=authors_list)
         else:
             author_single: List[AuthorInfo] = [analyze_author_info_datacite(author_info)]
-            return PublicationInfo(doi=unquote(path), title=title, authors=author_single)
+            return PublicationInfo(doi=str(Path(*path.parts[-2:])), title=title, authors=author_single)
 
     except Exception as e:
         print(f'An error occurred in {path}: {e}', file=sys.stderr)
@@ -103,7 +103,7 @@ def analyze_author_info_crossref(creator: etree.Element, namespace_map: Any) -> 
     return None
 
 
-def analyze_doi_record_crossref(cache_dir: str, path: str) -> Optional[PublicationInfo]:
+def analyze_doi_record_crossref(cache_dir: Path, path: Path) -> Optional[PublicationInfo]:
     """
     Reads a DOI record (RDF/XML) and transforms it to an item containing author information about a publication.
 
@@ -112,7 +112,7 @@ def analyze_doi_record_crossref(cache_dir: str, path: str) -> Optional[Publicati
     """
 
     try:
-        tree = etree.parse(f'{cache_dir}/{path}')
+        tree = etree.parse(path)
         root = tree.getroot()
 
         title_ele: Optional[etree.Element] = root.find('.//rdf:Description/j.0:title', namespaces=root.nsmap)
@@ -130,13 +130,13 @@ def analyze_doi_record_crossref(cache_dir: str, path: str) -> Optional[Publicati
         authors_filtered = list(filter(lambda auth: auth is not None, authors))
 
         # https://stackoverflow.com/questions/67274469/mypy-types-and-optional-filtering
-        return PublicationInfo(doi=unquote(path), title=title, authors=cast(List[AuthorInfo], authors_filtered))
+        return PublicationInfo(doi=str(Path(*path.parts[-2:])), title=title, authors=cast(List[AuthorInfo], authors_filtered))
     except Exception as e:
         print(f'An error occurred in {path}: {e}', file=sys.stderr)
         return None
 
 
-def analyze_dois(base_path: Path, cache_dir: Path, analyzer: Callable[[str, str], Optional[PublicationInfo]]) -> Dict[
+def analyze_dois(cache_dir: Path, analyzer: Callable[[Path, Path], Optional[PublicationInfo]]) -> Dict[
     str, PublicationInfo]:
     """
     Reads resolved DOIs from the cache and returns a dict indexed by DOI (without base URL).
@@ -145,7 +145,7 @@ def analyze_dois(base_path: Path, cache_dir: Path, analyzer: Callable[[str, str]
     @param analyzer: Function that parses the metadata resolved for a DOI and transforms it to a PublicationInfo.
     """
 
-    records_cache_file = base_path / 'resolved_dois.json'
+    records_cache_file = 'resolved_dois.json'
 
     # check if cache_file exists
     if os.path.isfile(records_cache_file):
@@ -155,12 +155,12 @@ def analyze_dois(base_path: Path, cache_dir: Path, analyzer: Callable[[str, str]
     else:
         cached_records = {}
 
-    files: List[str] = os.listdir(cache_dir)
-    sorted_files: List[str] = sorted(files)  # quoted DOI paths
+    files: List[Path] = list(Path(cache_dir).rglob('*/*'))
+    sorted_files: List[Path] = sorted(files)
 
     # only analyze those DOIs from cache dir that were not contained in cache file
     # quote cached DOIs since paths are quoted
-    dois_to_analyze = set(sorted_files) - set(map(lambda doi: quote(doi, safe=''), cached_records.keys()))
+    dois_to_analyze = set(sorted_files) - set(map(lambda doi: cache_dir / Path(doi), cached_records.keys()))
 
     print('dois to analyze ', len(dois_to_analyze))
 
@@ -184,7 +184,7 @@ def analyze_dois(base_path: Path, cache_dir: Path, analyzer: Callable[[str, str]
     return combined_records
 
 
-def parse_resolved_dois_from_json(resolved_dois_json: str) -> Dict[str, PublicationInfo]:
+def parse_resolved_dois_from_json(resolved_dois_json: Path) -> Dict[str, PublicationInfo]:
     """
     Transform a JSON representation to a Dict of PublicationInfo.
 
@@ -297,4 +297,4 @@ def analyze_orcids(cache_dir: str) -> Dict:
     return graph
 
 
-__all__ = ['PublicationInfo', 'analyze_orcids']
+__all__ = ['PublicationInfo', 'analyze_dois', 'analyze_doi_record_crossref', 'analyze_doi_record_datacite', 'analyze_orcids']
