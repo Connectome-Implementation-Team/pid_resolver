@@ -67,10 +67,10 @@ def analyze_doi_record_datacite(cache_dir: Path, path: Path) -> Optional[Publica
 
         if isinstance(author_info, List):
             authors_list: List[AuthorInfo] = list(map(analyze_author_info_datacite, author_info))
-            return PublicationInfo(doi=str(Path(*path.parts[-2:])), title=title, authors=authors_list)
+            return PublicationInfo(doi=unquote(str(Path(*path.parts[-2:]))), title=title, authors=authors_list)
         else:
             author_single: List[AuthorInfo] = [analyze_author_info_datacite(author_info)]
-            return PublicationInfo(doi=str(Path(*path.parts[-2:])), title=title, authors=author_single)
+            return PublicationInfo(doi=unquote(str(Path(*path.parts[-2:]))), title=title, authors=author_single)
 
     except Exception as e:
         print(f'An error occurred in {path}: {e}', file=sys.stderr)
@@ -130,7 +130,7 @@ def analyze_doi_record_crossref(cache_dir: Path, path: Path) -> Optional[Publica
         authors_filtered = list(filter(lambda auth: auth is not None, authors))
 
         # https://stackoverflow.com/questions/67274469/mypy-types-and-optional-filtering
-        return PublicationInfo(doi=str(Path(*path.parts[-2:])), title=title, authors=cast(List[AuthorInfo], authors_filtered))
+        return PublicationInfo(doi=unquote(str(Path(*path.parts[-2:]))), title=title, authors=cast(List[AuthorInfo], authors_filtered))
     except Exception as e:
         print(f'An error occurred in {path}: {e}', file=sys.stderr)
         return None
@@ -275,7 +275,7 @@ def analyze_orcid_record(orcid: str) -> Optional[Dict]:
         return None
 
 
-def analyze_orcids(cache_dir: str) -> Dict:
+def analyze_orcids(cache_dir: Path) -> Dict:
     """
     Analyze resolved ORCIDs.
 
@@ -297,4 +297,4 @@ def analyze_orcids(cache_dir: str) -> Dict:
     return graph
 
 
-__all__ = ['PublicationInfo', 'analyze_dois', 'analyze_doi_record_crossref', 'analyze_doi_record_datacite', 'analyze_orcids']
+__all__ = ['PublicationInfo', 'analyze_dois', 'analyze_doi_record_crossref', 'analyze_doi_record_datacite', 'get_orcids_from_resolved_dois', 'analyze_orcids']
