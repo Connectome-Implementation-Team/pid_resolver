@@ -145,7 +145,7 @@ def analyze_dois(cache_dir: Path, analyzer: Callable[[Path, Path], Optional[Publ
     @param analyzer: Function that parses the metadata resolved for a DOI and transforms it to a PublicationInfo.
     """
 
-    records_cache_file = 'resolved_dois.json'
+    records_cache_file = Path('resolved_dois.json')
 
     # check if cache_file exists
     if os.path.isfile(records_cache_file):
