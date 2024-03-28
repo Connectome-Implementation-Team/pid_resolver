@@ -102,7 +102,7 @@ async def group_dois_by_ra(dois: List[str]) -> Dict[str, List[str]]:
     resolved_ras_for_doi_prefixes: List[Dict[str, str]] = await resolve_registration_agency_prefixes(doi_prefixes)
 
     # Make a list of available RAs
-    ras = set(map(lambda ra: ra['RA'], resolved_ras_for_doi_prefixes))
+    ras = set(map(lambda ra: ra['RA'], filter(lambda doi_info: 'RA' in doi_info, resolved_ras_for_doi_prefixes)))
 
     # For each RA, get the associated prefixes and filter the DOIs by them
     # For each RA, a dict with a list of associated DOIs is created

@@ -29,6 +29,10 @@ class PublicationInfo(NamedTuple):
     authors: List[AuthorInfo]  # 2
 
 
+def _get_orcid_id_from_url(orcid_url: str) -> str:
+    return orcid_url.replace('http://orcid.org/http', 'http').replace('http://',
+                                                      'https://').strip()[len('https://orcid.org/'):]  # fix invalid ORCIDs, use https scheme for ORCID
+
 def analyze_author_info_datacite(author_info: Dict) -> AuthorInfo:
     """
     Transforms a JSON-LD item representing author information.
@@ -42,8 +46,7 @@ def analyze_author_info_datacite(author_info: Dict) -> AuthorInfo:
     # check for valid ORCID
     if '@id' in author_info and (
             'http://orcid.org/' in author_info['@id'] or 'https://orcid.org/' in author_info['@id']):
-        orcid = author_info['@id'].replace('http://orcid.org/http', 'http').replace('http://',
-                                                                                    'https://').strip()  # fix invalid ORCIDs, use https scheme for ORCID
+        orcid = _get_orcid_id_from_url(author_info['@id'])
     else:
         orcid = None
 
@@ -93,8 +96,7 @@ def analyze_author_info_crossref(creator: etree.Element, namespace_map: Any) -> 
         given_name = given_name_ele.text
         family_name = family_name_ele.text
         if orcid_ele is not None:
-            orcid = orcid_ele.attrib.get('{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource').replace('http://',
-                                                                                                          'https://')  # use https scheme for ORCID
+            orcid = _get_orcid_id_from_url(orcid_ele.attrib.get('{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource'))
             return AuthorInfo(given_name=given_name, family_name=family_name, orcid=orcid)
         else:
             return AuthorInfo(given_name=given_name, family_name=family_name, orcid=None)
