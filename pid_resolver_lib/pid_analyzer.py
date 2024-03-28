@@ -271,7 +271,7 @@ def analyze_orcid_record(orcid: str) -> Optional[Dict]:
             'sameAs': {'@id': rec['@id'].replace('http://', 'https://')},  # normalize URL
         }
     except Exception as e:
-        print(f'An error occurred in {orcid}: {e}', file=sys.stderr)
+        print(f'An error occurred in ORCID {orcid}: {e}', file=sys.stderr)
         return None
 
 

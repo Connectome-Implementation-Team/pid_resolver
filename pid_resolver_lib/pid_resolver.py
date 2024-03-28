@@ -20,12 +20,12 @@ class ResolvedRecord(NamedTuple):
     content: str # 1
 
 
-async def _make_doi_request(session: ClientSession, doi: str, base_url: str, accept_header: str) -> Optional[ResolvedRecord]:
+async def _make_record_request(session: ClientSession, record_id: str, base_url: str, accept_header: str) -> Optional[ResolvedRecord]:
     """
-    Given a DOI, resolves it using content negotiation.
+    Given a record id, resolves it using content negotiation.
 
     @param session:  The aiohttp session to be used.
-    @param doi: The DOI to be resolved.
+    @param record_id: The id of the record to be resolved.
     """
 
     headers = {
@@ -33,19 +33,19 @@ async def _make_doi_request(session: ClientSession, doi: str, base_url: str, acc
     }
 
     try:
-        async with session.get(f'{base_url}/{doi}', headers=headers) as request:
-            return ResolvedRecord(doi, await request.text())
+        async with session.get(f'{base_url}/{record_id}', headers=headers) as request:
+            return ResolvedRecord(record_id, await request.text())
 
     except Exception as e:
-        print('DOI Error ' + str(e), file=sys.stderr)
+        print(f'Error when resolving record {e}', file=sys.stderr)
         return None
 
 
-async def _fetch_doi_batch(dois: List[str], base_url: str, accept_header) -> List[ResolvedRecord]:
+async def _fetch_record_batch(record_ids: List[str], base_url: str, accept_header) -> List[ResolvedRecord]:
     """
-    Given a batch of DOIs, fetches them.
+    Given a batch of record ids, fetches them.
 
-    @param dois: List of DOIs.
+    @param record_ids: List of record ids.
     """
 
     conn = TCPConnector(limit=5)
@@ -53,7 +53,7 @@ async def _fetch_doi_batch(dois: List[str], base_url: str, accept_header) -> Lis
     time_out = ClientTimeout(total=60 * 60 * 24)
     async with aiohttp.ClientSession(connector=conn, raise_for_status=True, timeout=time_out) as session:
 
-        requests = [_make_doi_request(session, doi, base_url, accept_header) for doi in dois]
+        requests = [_make_record_request(session, rec_id, base_url, accept_header) for rec_id in record_ids]
 
         results = await asyncio.gather(*requests)
 
@@ -73,26 +73,26 @@ def _quote_path(record_path: Tuple[Path, Path]):
     return record_path[0] / quote(str(record_path[1]), safe="")
 
 
-async def fetch_records(records: List[str], cache_dir: Path, base_url: str, accept_header: str, sleep_per_batch: int = 0) -> None:
+async def fetch_records(record_ids: List[str], cache_dir: Path, base_url: str, accept_header: str, sleep_per_batch: int = 0) -> None:
     """
     Fetches a list of records (DOIs, ORCIDs) and writes them to the cache directory.
     Performs fetching in batches of size 500 requests each.
 
-    @param records: Records to be fetched.
+    @param record_ids: Records to be fetched.
     @param cache_dir: Directory the results are written to
     @param base_url: Base URL of the items to be fetched, e.g., https://doi.org.
     @param accept_header: HTTP accept header for content negotiation.
     @param sleep_per_batch: Sleep in seconds after each batch to respect rate limits, if any. See https://support.datacite.org/docs/is-there-a-rate-limit-for-making-requests-against-the-datacite-apis.
     """
 
-    dois_deduplicated = list(set(records))
+    record_ids_deduplicated = list(set(record_ids))
 
-    # check if a DOI is already in the cache
-    dois_not_cached = list(
-        filter(lambda doi: not os.path.isfile(f'{cache_dir / _quote_path(_record_to_path(doi))}'),  # https://stackoverflow.com/questions/14826888/python-os-path-join-on-a-list
-               dois_deduplicated))
+    # check if a record is already in the cache
+    records_not_cached = list(
+        filter(lambda rec_id: not os.path.isfile(f'{cache_dir / _quote_path(_record_to_path(rec_id))}'),  # https://stackoverflow.com/questions/14826888/python-os-path-join-on-a-list
+               record_ids_deduplicated))
 
-    print('fetching number of records: ', len(dois_not_cached))
+    print('fetching number of records: ', len(records_not_cached))
 
     offset = 0
     batch_size = 500
@@ -102,13 +102,13 @@ async def fetch_records(records: List[str], cache_dir: Path, base_url: str, acce
 
         limit = offset + batch_size
 
-        if limit > len(dois_not_cached):
-            limit = len(dois_not_cached)
+        if limit > len(records_not_cached):
+            limit = len(records_not_cached)
             last_run = True
 
         print('fetching batch: ',  offset, limit)
 
-        results = await _fetch_doi_batch(dois_not_cached[offset:limit], base_url, accept_header)
+        results = await _fetch_record_batch(records_not_cached[offset:limit], base_url, accept_header)
 
         # store records as files
         for res in results:
