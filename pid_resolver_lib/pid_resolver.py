@@ -92,7 +92,7 @@ async def fetch_records(record_ids: List[str], cache_dir: Path, base_url: str, a
         filter(lambda rec_id: not os.path.isfile(f'{cache_dir / _quote_path(_record_to_path(rec_id))}'),  # https://stackoverflow.com/questions/14826888/python-os-path-join-on-a-list
                record_ids_deduplicated))
 
-    print('fetching number of records: ', len(records_not_cached))
+    print(f'fetching number of records for {cache_dir}: ', len(records_not_cached))
 
     offset = 0
     batch_size = 500
