@@ -5,7 +5,7 @@ import sys
 from urllib.parse import unquote, quote
 import os
 import json
-
+import jq
 
 class AuthorInfo(NamedTuple):
     """
@@ -253,6 +253,21 @@ def get_orcids_from_resolved_dois(dois: Dict[str, PublicationInfo]) -> List[str]
     return cast(List[str], list(set(filter(lambda auth: auth is not None, orcids))))
 
 
+def find_orcids_for_doi(cache_dir: Path, doi: str) -> List[str]:
+    files: List[Path] = list(cache_dir.rglob('*'))
+
+    orcid_profiles: List[Dict] = list(map(lambda file: json.load(file.open()), files))
+
+    new_dois = jq.compile(
+        '. | map({"id": ."@id", "dois": [[."@reverse".creator] | flatten[] | select(."@type" == "CreativeWork")] | [[map(.identifier)] | flatten[] | [select(.propertyID == "doi")] | map(.value)] | flatten})').input_value(
+        orcid_profiles).first()
+
+
+    return new_dois
+
+    #return list(filter(lambda file: len(jq.compile(f'[."@reverse".creator] | flatten | .[] | select(."@type" == "CreativeWork" ) | [.identifier] | flatten | .[] | select(.value == "{doi}")').input_value(json.load(file.open())).all()) > 0, files))
+
+
 def analyze_orcid_record(orcid: str) -> Optional[Dict]:
     """
     Transform a resolved ORCID into a dict.
@@ -299,4 +314,4 @@ def analyze_orcids(cache_dir: Path) -> Dict:
     return graph
 
 
-__all__ = ['PublicationInfo', 'analyze_dois', 'analyze_doi_record_crossref', 'analyze_doi_record_datacite', 'get_orcids_from_resolved_dois', 'analyze_orcids']
+__all__ = ['PublicationInfo', 'analyze_dois', 'analyze_doi_record_crossref', 'analyze_doi_record_datacite', 'get_orcids_from_resolved_dois', 'analyze_orcids', 'find_orcids_for_doi']
