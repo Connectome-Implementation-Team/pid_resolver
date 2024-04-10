@@ -266,10 +266,18 @@ def get_dois_for_orcid(cache_dir: Path) -> List[Dict]:
 
     # structure [{id, dois}]
     dois_per_orcid: List[Dict] = jq.compile(
-        '. | map({"id": ."@id", "dois": [[."@reverse".creator] | flatten[] | select(."@type" == "CreativeWork")] | [[map(.identifier)] | flatten[] | [select(.propertyID == "doi")] | map(.value)] | flatten})').input_value(
+        '. | map({"id": ."@id", "givenName": .givenName, "familyName": .familyName, "dois": [[."@reverse".creator] | flatten[] | select(."@type" == "CreativeWork")] | [[map(.identifier)] | flatten[] | [select(.propertyID == "doi")] | map(.value)] | flatten})').input_value(
         orcid_profiles).first()
 
     return dois_per_orcid
+
+def _make_entry(ele: Dict):
+    # TODO: error handling for missing info (None)
+    return {
+        'id': ele['id'],
+        'givenName': ele['givenName'],
+        'familyName': ele['familyName']
+    }
 
 
 def group_orcids_per_doi(dois_for_orcid: List[Dict]) -> Dict:
@@ -284,9 +292,9 @@ def group_orcids_per_doi(dois_for_orcid: List[Dict]) -> Dict:
     for ele in dois_for_orcid:
         for doi in ele['dois']:
             if doi not in orcids_by_doi:
-                orcids_by_doi[doi] = [ele['id']]
+                orcids_by_doi[doi] = [_make_entry(ele)]
             else:
-                orcids_by_doi[doi].append(ele['id'])
+                orcids_by_doi[doi].append(_make_entry(ele))
 
     return orcids_by_doi
 
