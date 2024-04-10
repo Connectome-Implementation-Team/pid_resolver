@@ -253,19 +253,43 @@ def get_orcids_from_resolved_dois(dois: Dict[str, PublicationInfo]) -> List[str]
     return cast(List[str], list(set(filter(lambda auth: auth is not None, orcids))))
 
 
-def find_orcids_for_doi(cache_dir: Path, doi: str) -> List[str]:
+def get_dois_for_orcid(cache_dir: Path) -> List[Dict]:
+    """
+    Collects cached ORCID profiles and organizes them as a list of objects with id and DOIs.
+
+    @param cache_dir: The ORCID cache directory.
+    """
+
     files: List[Path] = list(cache_dir.rglob('*'))
 
     orcid_profiles: List[Dict] = list(map(lambda file: json.load(file.open()), files))
 
-    new_dois = jq.compile(
+    # structure [{id, dois}]
+    dois_per_orcid: List[Dict] = jq.compile(
         '. | map({"id": ."@id", "dois": [[."@reverse".creator] | flatten[] | select(."@type" == "CreativeWork")] | [[map(.identifier)] | flatten[] | [select(.propertyID == "doi")] | map(.value)] | flatten})').input_value(
         orcid_profiles).first()
 
+    return dois_per_orcid
 
-    return new_dois
 
-    #return list(filter(lambda file: len(jq.compile(f'[."@reverse".creator] | flatten | .[] | select(."@type" == "CreativeWork" ) | [.identifier] | flatten | .[] | select(.value == "{doi}")').input_value(json.load(file.open())).all()) > 0, files))
+def group_orcids_per_doi(dois_for_orcid: List[Dict]) -> Dict:
+    """
+    Groups ORCID profile contents by DOI (key) and associates the ORCIDs with them (values).
+
+    @param dois_for_orcid: A list of ORCIDs with their associated DOIs.
+    """
+
+    orcids_by_doi = {}
+
+    for ele in dois_for_orcid:
+        for doi in ele['dois']:
+            if doi not in orcids_by_doi:
+                orcids_by_doi[doi] = [ele['id']]
+            else:
+                orcids_by_doi[doi].append(ele['id'])
+
+    return orcids_by_doi
+
 
 
 def analyze_orcid_record(orcid: str) -> Optional[Dict]:
@@ -314,4 +338,5 @@ def analyze_orcids(cache_dir: Path) -> Dict:
     return graph
 
 
-__all__ = ['PublicationInfo', 'analyze_dois', 'analyze_doi_record_crossref', 'analyze_doi_record_datacite', 'get_orcids_from_resolved_dois', 'analyze_orcids', 'find_orcids_for_doi']
+__all__ = ['PublicationInfo', 'analyze_dois', 'analyze_doi_record_crossref', 'analyze_doi_record_datacite', 'get_orcids_from_resolved_dois', 'analyze_orcids',
+           'get_dois_for_orcid', 'group_orcids_per_doi']
