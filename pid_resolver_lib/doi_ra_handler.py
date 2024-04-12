@@ -1,7 +1,7 @@
 from typing import List, Dict, Union, cast
 from functools import reduce
 import asyncio
-from aiohttp import ClientSession, TCPConnector, ClientTimeout
+from aiohttp import ClientSession, TCPConnector, ClientTimeout # type: ignore
 import sys
 import jq # type: ignore
 

@@ -1,11 +1,12 @@
 from pathlib import Path
 from lxml import etree  # type: ignore
-from typing import List, Optional, Dict, Any, NamedTuple, cast, Callable, Union
+from typing import List, Optional, Dict, Any, NamedTuple, cast, Callable, Union, Tuple
 import sys
 from urllib.parse import unquote, quote
 import os
 import json
-import jq
+import jq # type: ignore
+
 
 class AuthorInfo(NamedTuple):
     """
@@ -15,6 +16,7 @@ class AuthorInfo(NamedTuple):
     given_name: str  # 0
     family_name: str  # 1
     orcid: Optional[str]  # 2
+    origin_orcid: Optional[str]
 
 
 class PublicationInfo(NamedTuple):
@@ -33,7 +35,30 @@ def _get_orcid_id_from_url(orcid_url: str) -> str:
     return orcid_url.replace('http://orcid.org/http', 'http').replace('http://',
                                                       'https://').strip()[len('https://orcid.org/'):]  # fix invalid ORCIDs, use https scheme for ORCID
 
-def analyze_author_info_datacite(author_info: Dict) -> AuthorInfo:
+
+def _match_name_with_orcid_profile(orcid_info: List[Dict], given_name: str, family_name: str) -> Tuple[Optional[str], Optional[str]]:
+    """
+    Given a list of ORCID profiles for a DOI, filters them by name.
+
+    @param orcid_info: Information extracted from the ORCID profiles.
+    @param given_name: The author's first name.
+    @param family_name: The author's last name.
+    """
+    author_orcid = list(
+        filter(lambda orcid: orcid['familyName'] == family_name and orcid['givenName'] == given_name, orcid_info))
+
+    if len(author_orcid) == 1:
+        # get ORCID ID from URL
+        orcid = author_orcid[0]['id'].rsplit('/', 1)[-1]
+        origin_orcid = 'orcid'
+    else:
+        orcid = None
+        origin_orcid = None
+
+    return orcid, origin_orcid
+
+
+def analyze_author_info_datacite(author_info: Dict, orcid_info: List[Dict]) -> AuthorInfo:
     """
     Transforms a JSON-LD item representing author information.
 
@@ -43,17 +68,20 @@ def analyze_author_info_datacite(author_info: Dict) -> AuthorInfo:
     given_name = author_info['givenName']
     family_name = author_info['familyName']
 
+    orcid: Optional[str]
+    origin_orcid: Optional[str]
     # check for valid ORCID
     if '@id' in author_info and (
             'http://orcid.org/' in author_info['@id'] or 'https://orcid.org/' in author_info['@id']):
         orcid = _get_orcid_id_from_url(author_info['@id'])
+        origin_orcid = 'doi'
     else:
-        orcid = None
+        orcid, origin_orcid = _match_name_with_orcid_profile(orcid_info, given_name, family_name)
 
-    return AuthorInfo(given_name=given_name, family_name=family_name, orcid=orcid)
+    return AuthorInfo(given_name=given_name, family_name=family_name, orcid=orcid, origin_orcid=origin_orcid)
 
 
-def analyze_doi_record_datacite(cache_dir: Path, path: Path) -> Optional[PublicationInfo]:
+def analyze_doi_record_datacite(cache_dir: Path, path: Path, orcid_info: Dict) -> Optional[PublicationInfo]:
     """
     Reads a DOI record (JSON-LD/schema.org) and transforms it to an item containing author information about a publication.
 
@@ -62,25 +90,32 @@ def analyze_doi_record_datacite(cache_dir: Path, path: Path) -> Optional[Publica
     """
 
     try:
+        doi = unquote(str(Path(*path.parts[-2:])))
+
         with open(path) as f:
             record = json.load(f)
 
         title: Optional[str] = record['name']
         author_info: Union[List[Dict], Dict] = record['author']
 
-        if isinstance(author_info, List):
-            authors_list: List[AuthorInfo] = list(map(analyze_author_info_datacite, author_info))
-            return PublicationInfo(doi=unquote(str(Path(*path.parts[-2:]))), title=title, authors=authors_list)
+        if doi in orcid_info:
+            orcid_author_info = orcid_info[doi]
         else:
-            author_single: List[AuthorInfo] = [analyze_author_info_datacite(author_info)]
-            return PublicationInfo(doi=unquote(str(Path(*path.parts[-2:]))), title=title, authors=author_single)
+            orcid_author_info = []
+
+        if isinstance(author_info, List):
+            authors_list: List[AuthorInfo] = list(map(lambda author: analyze_author_info_datacite(author, orcid_author_info), author_info))
+            return PublicationInfo(doi=doi, title=title, authors=authors_list)
+        else:
+            author_single: List[AuthorInfo] = [analyze_author_info_datacite(author_info, orcid_author_info)]
+            return PublicationInfo(doi=doi, title=title, authors=author_single)
 
     except Exception as e:
         print(f'An error occurred in {path}: {e}', file=sys.stderr)
         return None
 
 
-def analyze_author_info_crossref(creator: etree.Element, namespace_map: Any) -> Optional[AuthorInfo]:
+def analyze_author_info_crossref(creator: etree.Element, namespace_map: Any, orcid_info: List[Dict]) -> Optional[AuthorInfo]:
     """
     Transforms an RDF/XML item representing creator information to author information.
 
@@ -92,20 +127,25 @@ def analyze_author_info_crossref(creator: etree.Element, namespace_map: Any) -> 
     family_name_ele: Optional[etree.Element] = creator.find('.//j.3:familyName', namespaces=namespace_map)
     orcid_ele: Optional[etree.Element] = creator.find('.//owl:sameAs', namespaces=namespace_map)
 
+    orcid: Optional[str]
+    origin_orcid: Optional[str]
+
     if given_name_ele is not None and family_name_ele is not None:
         given_name = given_name_ele.text
         family_name = family_name_ele.text
         if orcid_ele is not None:
             orcid = _get_orcid_id_from_url(orcid_ele.attrib.get('{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource'))
-            return AuthorInfo(given_name=given_name, family_name=family_name, orcid=orcid)
+            return AuthorInfo(given_name=given_name, family_name=family_name, orcid=orcid, origin_orcid='doi')
         else:
-            return AuthorInfo(given_name=given_name, family_name=family_name, orcid=None)
+            orcid, origin_orcid = _match_name_with_orcid_profile(orcid_info, given_name, family_name)
+
+            return AuthorInfo(given_name=given_name, family_name=family_name, orcid=orcid, origin_orcid=origin_orcid)
 
     # return None if insufficient information is provided.
     return None
 
 
-def analyze_doi_record_crossref(cache_dir: Path, path: Path) -> Optional[PublicationInfo]:
+def analyze_doi_record_crossref(cache_dir: Path, path: Path, orcid_info: Dict) -> Optional[PublicationInfo]:
     """
     Reads a DOI record (RDF/XML) and transforms it to an item containing author information about a publication.
 
@@ -114,6 +154,8 @@ def analyze_doi_record_crossref(cache_dir: Path, path: Path) -> Optional[Publica
     """
 
     try:
+        doi = unquote(str(Path(*path.parts[-2:])))
+
         tree = etree.parse(path)
         root = tree.getroot()
 
@@ -125,20 +167,25 @@ def analyze_doi_record_crossref(cache_dir: Path, path: Path) -> Optional[Publica
         else:
             title = None
 
+        if doi in orcid_info:
+            orcid_author_info = orcid_info[doi]
+        else:
+            orcid_author_info = []
+
         authors: List[Optional[AuthorInfo]] = list(
-            map(lambda creator: analyze_author_info_crossref(creator, root.nsmap), creators))
+            map(lambda creator: analyze_author_info_crossref(creator, root.nsmap, orcid_author_info), creators))
 
         # filter out None values
         authors_filtered = list(filter(lambda auth: auth is not None, authors))
 
         # https://stackoverflow.com/questions/67274469/mypy-types-and-optional-filtering
-        return PublicationInfo(doi=unquote(str(Path(*path.parts[-2:]))), title=title, authors=cast(List[AuthorInfo], authors_filtered))
+        return PublicationInfo(doi=doi, title=title, authors=cast(List[AuthorInfo], authors_filtered))
     except Exception as e:
         print(f'An error occurred in {path}: {e}', file=sys.stderr)
         return None
 
 
-def analyze_dois(cache_dir: Path, analyzer: Callable[[Path, Path], Optional[PublicationInfo]]) -> Dict[
+def analyze_dois(cache_dir: Path, analyzer: Callable[[Path, Path, Dict], Optional[PublicationInfo]]) -> Dict[
     str, PublicationInfo]:
     """
     Reads resolved DOIs from the cache and returns a dict indexed by DOI (without base URL).
@@ -166,7 +213,11 @@ def analyze_dois(cache_dir: Path, analyzer: Callable[[Path, Path], Optional[Publ
 
     print('dois to analyze ', len(dois_to_analyze))
 
-    records: List[Optional[PublicationInfo]] = list(map(lambda file: analyzer(cache_dir, file), dois_to_analyze))
+    # TODO: see if additional ORCIDs could be added from cached ORCID profiles
+    dois_per_orcid = get_dois_for_orcid(Path('orcid'))
+    grouped: Dict = group_orcids_per_doi(dois_per_orcid)
+
+    records: List[Optional[PublicationInfo]] = list(map(lambda file: analyzer(cache_dir, file, grouped), dois_to_analyze))
 
     # filter out None values
     records_non_empty: List[PublicationInfo] = cast(List[PublicationInfo],
@@ -229,7 +280,7 @@ def parse_resolved_dois_from_json(resolved_dois_json: Path) -> Dict[str, Publica
   ] 
     '''
     mapped_items = map(lambda doi: [doi[0], PublicationInfo(doi=doi[0], title=doi[1][1], authors=list(
-        map(lambda auth: AuthorInfo(given_name=auth[0], family_name=auth[1], orcid=auth[2]), doi[1][2])))],
+        map(lambda auth: AuthorInfo(given_name=auth[0], family_name=auth[1], orcid=auth[2], origin_orcid=auth[3]), doi[1][2])))],
                        doi_items)
 
     # recreate Dict[str, PublicationInfo] from JSON

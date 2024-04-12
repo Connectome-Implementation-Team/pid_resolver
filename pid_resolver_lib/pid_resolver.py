@@ -2,7 +2,7 @@ from pathlib import Path
 import jq  # type: ignore
 import sys
 from typing import List, NamedTuple, Optional, cast, Tuple
-import aiohttp
+import aiohttp # type: ignore
 from aiohttp import ClientSession, TCPConnector, ClientTimeout
 import asyncio
 from urllib.parse import quote
