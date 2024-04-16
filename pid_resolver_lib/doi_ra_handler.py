@@ -1,4 +1,4 @@
-from typing import List, Dict, Union, cast
+from typing import List, Dict, Union, cast, Any
 from functools import reduce
 import asyncio
 from aiohttp import ClientSession, TCPConnector, ClientTimeout # type: ignore
@@ -24,7 +24,7 @@ def get_registration_agency_prefixes(dois: List[str]) -> List[str]:
     return agencies
 
 
-async def _make_registration_agency_prefix_request(session: ClientSession, doi_prefix: str) -> Union[Dict, None]:
+async def _make_registration_agency_prefix_request(session: ClientSession, doi_prefix: str) -> Union[Dict[str, str], None]:
     """
     Given a DOI prefix, fetches information about the RA.
 
@@ -32,14 +32,18 @@ async def _make_registration_agency_prefix_request(session: ClientSession, doi_p
     @param doi_prefix: The DOI prefix to be fetched.
     """
 
-    base_url = 'https://doi.org/ra/'
+    base_url = 'https://doi.org/ra'
 
     try:
         async with session.get(f'{base_url}/{doi_prefix}') as request:
-            return await request.json()
+            res = await request.json()
+            if isinstance(res, list) and len(res) == 1:
+                return res[0]
+            else:
+                raise Exception(f'DOI RA result is not a list: {res}')
 
     except Exception as e:
-        print('DOI Error ' + str(e), file=sys.stderr)
+        print('DOI RA Error ' + str(e), file=sys.stderr)
         return None
 
 
@@ -59,9 +63,9 @@ async def resolve_registration_agency_prefixes(doi_prefixes: List[str]) -> List[
 
         results = await asyncio.gather(*requests)
 
-        # https://stackoverflow.com/questions/952914/how-do-i-make-a-flat-list-out-of-a-list-of-lists
-        # TODO: handle error cases (None is returned)
-        return [item for sublist in cast(List[List[Dict]], results) for item in sublist]
+        filtered: List[Dict[str, str]] = list(filter(lambda res: res is not None, cast(List[Union[Dict[str, str]]], results)))
+
+        return filtered
 
 
 def filter_prefixes_by_registration_agency(resolved_doi_registration_agencies:  List[Dict[str, str]], registration_agency: str) -> List[str]:
