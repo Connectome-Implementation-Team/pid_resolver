@@ -1,0 +1,437 @@
+{
+  "@context" : "http://schema.org",
+  "@type" : "Person",
+  "@id" : "https://orcid.org/0000-0002-3671-895X",
+  "mainEntityOfPage" : "https://orcid.org/0000-0002-3671-895X",
+  "givenName" : "Irina",
+  "familyName" : "Balaur",
+  "alternateName" : [ "Irina Roznovat", "Irina A Roznovat", "Irina-Afrodita Balaur", "Irina Balaur (Roznovat)" ],
+  "address" : [ {
+    "addressCountry" : "LU",
+    "@type" : "PostalAddress"
+  }, {
+    "addressCountry" : "FR",
+    "@type" : "PostalAddress"
+  }, {
+    "addressCountry" : "IE",
+    "@type" : "PostalAddress"
+  }, {
+    "addressCountry" : "RO",
+    "@type" : "PostalAddress"
+  } ],
+  "alumniOf" : [ {
+    "@type" : "Organization",
+    "name" : "Alexandru Ioan Cuza University",
+    "alternateName" : "Computer Science Faculty",
+    "identifier" : {
+      "@type" : "PropertyValue",
+      "propertyID" : "ROR",
+      "value" : "https://ror.org/022kvet57"
+    }
+  }, {
+    "@type" : "Organization",
+    "name" : "Dublin City University School of Computing",
+    "alternateName" : "School of Computing ",
+    "identifier" : {
+      "@type" : "PropertyValue",
+      "propertyID" : "RINGGOLD",
+      "value" : "315685"
+    }
+  } ],
+  "affiliation" : [ {
+    "@type" : "Organization",
+    "name" : "Université du Luxembourg Luxembourg Centre for Systems Biomedicine",
+    "alternateName" : "Bioinformatics Core",
+    "identifier" : {
+      "@type" : "PropertyValue",
+      "propertyID" : "RINGGOLD",
+      "value" : "549046"
+    }
+  }, {
+    "@type" : "Organization",
+    "@id" : "https://doi.org/10.13039/501100004794",
+    "name" : "Centre National de la Recherche Scientifique",
+    "alternateName" : "European Institute for Systems Biology and Medicine (CNRS - EISBM)"
+  }, {
+    "@type" : "Organization",
+    "name" : "Continental Automotive Romania SRL",
+    "alternateName" : "Human-Machine Interface Research",
+    "identifier" : {
+      "@type" : "PropertyValue",
+      "propertyID" : "RINGGOLD",
+      "value" : "508442"
+    }
+  }, {
+    "@type" : "Organization",
+    "name" : "Université du Luxembourg Luxembourg Centre for Systems Biomedicine",
+    "identifier" : {
+      "@type" : "PropertyValue",
+      "propertyID" : "RINGGOLD",
+      "value" : "549046"
+    }
+  }, {
+    "@type" : "Organization",
+    "name" : "Université du Luxembourg Luxembourg Centre for Systems Biomedicine",
+    "alternateName" : "University of Luxembourg Leadership Academy - ULLA",
+    "identifier" : {
+      "@type" : "PropertyValue",
+      "propertyID" : "RINGGOLD",
+      "value" : "549046"
+    }
+  }, {
+    "@type" : "Organization",
+    "name" : "Dublin City University School of Computing",
+    "alternateName" : "PhD Scholarship through European Complexity/Irish Research 2011 - 2014 Council (IRC) ERA-Net (2011 - 2013) + final year IRC scholarship award (2013 - 2014)",
+    "identifier" : {
+      "@type" : "PropertyValue",
+      "propertyID" : "RINGGOLD",
+      "value" : "315685"
+    }
+  }, {
+    "@type" : "Organization",
+    "name" : "International Society for Computational Biology",
+    "identifier" : {
+      "@type" : "PropertyValue",
+      "propertyID" : "ROR",
+      "value" : "https://ror.org/01jv71z12"
+    }
+  } ],
+  "@reverse" : {
+    "creator" : [ {
+      "@type" : "CreativeWork",
+      "@id" : "https://doi.org/10.52825/cordi.v1i.415",
+      "name" : "Experiences From FAIRifying Community Data and FAIR Infrastructure in Biomedical Research Domains",
+      "identifier" : [ {
+        "@type" : "PropertyValue",
+        "propertyID" : "uri",
+        "value" : "https://www.tib-op.org/ojs/index.php/CoRDI/article/view/415"
+      }, {
+        "@type" : "PropertyValue",
+        "propertyID" : "doi",
+        "value" : "10.52825/cordi.v1i.415"
+      } ]
+    }, {
+      "@type" : "CreativeWork",
+      "@id" : "https://doi.org/10.1515/jib-2022-0030",
+      "name" : "GraphML-SBGN bidirectional converter for metabolic networks",
+      "identifier" : {
+        "@type" : "PropertyValue",
+        "propertyID" : "doi",
+        "value" : "10.1515/jib-2022-0030"
+      }
+    }, {
+      "@type" : "CreativeWork",
+      "@id" : "https://doi.org/10.1101/2022.12.17.520865",
+      "name" : "A versatile and interoperable computational framework for the analysis and modeling of COVID-19 disease mechanisms",
+      "identifier" : {
+        "@type" : "PropertyValue",
+        "propertyID" : "doi",
+        "value" : "10.1101/2022.12.17.520865"
+      }
+    }, {
+      "@type" : "CreativeWork",
+      "@id" : "https://doi.org/10.20944/preprints202212.0209.v1",
+      "name" : "High-quality Reconstruction of Disease Mechanisms: Planning, Development and Maintenance",
+      "identifier" : {
+        "@type" : "PropertyValue",
+        "propertyID" : "doi",
+        "value" : "10.20944/preprints202212.0209.v1"
+      }
+    }, {
+      "@type" : "CreativeWork",
+      "@id" : "https://doi.org/10.1038/s41598-021-01618-3",
+      "name" : "CyFi-MAP: an interactive pathway-based resource for cystic fibrosis.",
+      "identifier" : [ {
+        "@type" : "PropertyValue",
+        "propertyID" : "doi",
+        "value" : "10.1038/s41598-021-01618-3"
+      }, {
+        "@type" : "PropertyValue",
+        "propertyID" : "pmid",
+        "value" : "34782688"
+      }, {
+        "@type" : "PropertyValue",
+        "propertyID" : "pmc",
+        "value" : "8592983"
+      } ],
+      "sameAs" : [ "https://pubmed.ncbi.nlm.nih.gov/34782688", "https://europepmc.org/article/pmc/8592983" ]
+    }, {
+      "@type" : "CreativeWork",
+      "@id" : "https://doi.org/10.1016/j.jaci.2020.11.032",
+      "name" : "AsthmaMap: An interactive knowledge repository for mechanisms of asthma.",
+      "identifier" : [ {
+        "@type" : "PropertyValue",
+        "propertyID" : "doi",
+        "value" : "10.1016/j.jaci.2020.11.032"
+      }, {
+        "@type" : "PropertyValue",
+        "propertyID" : "pmid",
+        "value" : "33309742"
+      } ],
+      "sameAs" : "https://pubmed.ncbi.nlm.nih.gov/33309742"
+    }, {
+      "@type" : "CreativeWork",
+      "@id" : "https://doi.org/10.1038/s41585-020-0355-3",
+      "name" : "Author Correction: Introducing PIONEER: a project to harness big data in prostate cancer research",
+      "identifier" : {
+        "@type" : "PropertyValue",
+        "propertyID" : "doi",
+        "value" : "10.1038/s41585-020-0355-3"
+      }
+    }, {
+      "@type" : "CreativeWork",
+      "@id" : "https://doi.org/10.1038/s41585-020-0324-x",
+      "name" : "Introducing PIONEER: a project to harness big data in prostate cancer research",
+      "identifier" : {
+        "@type" : "PropertyValue",
+        "propertyID" : "doi",
+        "value" : "10.1038/s41585-020-0324-x"
+      }
+    }, {
+      "@type" : "CreativeWork",
+      "@id" : "https://doi.org/10.1093/bioinformatics/btz969",
+      "name" : "cd2sbgnml: bidirectional conversion between CellDesigner and SBGN formats",
+      "identifier" : {
+        "@type" : "PropertyValue",
+        "propertyID" : "doi",
+        "value" : "10.1093/bioinformatics/btz969"
+      }
+    }, {
+      "@type" : "CreativeWork",
+      "@id" : "https://doi.org/10.1515/jib-2019-0022",
+      "name" : "Systems Biology Graphical Notation: Process Description language Level 1 Version 2.0",
+      "identifier" : {
+        "@type" : "PropertyValue",
+        "propertyID" : "doi",
+        "value" : "10.1515/jib-2019-0022"
+      }
+    }, {
+      "@type" : "CreativeWork",
+      "@id" : "https://doi.org/10.1093/bib/bby099",
+      "name" : "Human-like layout algorithms for signalling hypergraphs: outlining requirements. ",
+      "identifier" : [ {
+        "@type" : "PropertyValue",
+        "propertyID" : "doi",
+        "value" : "10.1093/bib/bby099"
+      }, {
+        "@type" : "PropertyValue",
+        "propertyID" : "pmid",
+        "value" : "30289443"
+      } ],
+      "sameAs" : "https://pubmed.ncbi.nlm.nih.gov/30289443"
+    }, {
+      "@type" : "CreativeWork",
+      "@id" : "https://doi.org/10.1038/s41540-018-0059-y",
+      "name" : "Systems medicine disease maps: community-driven comprehensive representation of disease mechanisms",
+      "identifier" : {
+        "@type" : "PropertyValue",
+        "propertyID" : "doi",
+        "value" : "10.1038/s41540-018-0059-y"
+      }
+    }, {
+      "@type" : "CreativeWork",
+      "@id" : "https://doi.org/10.1186/s12918-018-0556-z",
+      "name" : "A computational framework for complex disease stratification from multiple large-scale datasets.",
+      "identifier" : [ {
+        "@type" : "PropertyValue",
+        "propertyID" : "pmid",
+        "value" : "29843806"
+      }, {
+        "@type" : "PropertyValue",
+        "propertyID" : "pmc",
+        "value" : "5975674"
+      }, {
+        "@type" : "PropertyValue",
+        "propertyID" : "doi",
+        "value" : "10.1186/s12918-018-0556-z"
+      } ],
+      "sameAs" : [ "https://pubmed.ncbi.nlm.nih.gov/29843806", "https://europepmc.org/article/pmc/5975674" ]
+    }, {
+      "@type" : "CreativeWork",
+      "@id" : "https://doi.org/10.1093/bioinformatics/btw731",
+      "name" : "Recon2Neo4j: applying graph database technologies for managing comprehensive genome-scale networks.",
+      "identifier" : [ {
+        "@type" : "PropertyValue",
+        "propertyID" : "pmid",
+        "value" : "27993779"
+      }, {
+        "@type" : "PropertyValue",
+        "propertyID" : "pmc",
+        "value" : "5408918"
+      }, {
+        "@type" : "PropertyValue",
+        "propertyID" : "doi",
+        "value" : "10.1093/bioinformatics/btw731"
+      } ],
+      "sameAs" : [ "https://pubmed.ncbi.nlm.nih.gov/27993779", "https://europepmc.org/article/pmc/5408918" ]
+    }, {
+      "@type" : "CreativeWork",
+      "@id" : "https://doi.org/10.1186/s12859-016-1394-x",
+      "name" : "STON: exploring biological pathways using the SBGN standard and graph databases.",
+      "identifier" : [ {
+        "@type" : "PropertyValue",
+        "propertyID" : "doi",
+        "value" : "10.1186/s12859-016-1394-x"
+      }, {
+        "@type" : "PropertyValue",
+        "propertyID" : "pmc",
+        "value" : "5139139"
+      }, {
+        "@type" : "PropertyValue",
+        "propertyID" : "pmid",
+        "value" : "27919219"
+      } ],
+      "sameAs" : [ "https://europepmc.org/article/pmc/5139139", "https://pubmed.ncbi.nlm.nih.gov/27919219" ]
+    }, {
+      "@type" : "CreativeWork",
+      "@id" : "https://doi.org/10.1089/cmb.2016.0095",
+      "name" : "EpiGeNet: A Graph Database of Interdependencies Between Genetic and Epigenetic Events in Colorectal Cancer.",
+      "identifier" : [ {
+        "@type" : "PropertyValue",
+        "propertyID" : "doi",
+        "value" : "10.1089/cmb.2016.0095"
+      }, {
+        "@type" : "PropertyValue",
+        "propertyID" : "pmid",
+        "value" : "27627442"
+      } ],
+      "sameAs" : "https://pubmed.ncbi.nlm.nih.gov/27627442"
+    }, {
+      "@type" : "CreativeWork",
+      "@id" : "https://doi.org/10.1186/s13040-016-0102-8",
+      "name" : "Representing and querying disease networks using graph databases.",
+      "identifier" : [ {
+        "@type" : "PropertyValue",
+        "propertyID" : "pmid",
+        "value" : "27462371"
+      }, {
+        "@type" : "PropertyValue",
+        "propertyID" : "pmc",
+        "value" : "4960687"
+      }, {
+        "@type" : "PropertyValue",
+        "propertyID" : "doi",
+        "value" : "10.1186/s13040-016-0102-8"
+      } ],
+      "sameAs" : [ "https://pubmed.ncbi.nlm.nih.gov/27462371", "https://europepmc.org/article/pmc/4960687" ]
+    }, {
+      "@type" : "CreativeWork",
+      "@id" : "https://doi.org/10.1007/978-1-4939-3283-2_3",
+      "name" : "Systems Medicine: The Future of Medical Genomics, Healthcare, and Wellness.",
+      "identifier" : [ {
+        "@type" : "PropertyValue",
+        "propertyID" : "doi",
+        "value" : "10.1007/978-1-4939-3283-2_3"
+      }, {
+        "@type" : "PropertyValue",
+        "propertyID" : "pmid",
+        "value" : "26677178"
+      } ],
+      "sameAs" : "https://pubmed.ncbi.nlm.nih.gov/26677178"
+    }, {
+      "@type" : "CreativeWork",
+      "@id" : "https://doi.org/10.1049/iet-syb.2015.0078",
+      "name" : "Computational Models & Methods in Systems Biology & Medicine.",
+      "identifier" : [ {
+        "@type" : "PropertyValue",
+        "propertyID" : "pmid",
+        "value" : "26577155"
+      }, {
+        "@type" : "PropertyValue",
+        "propertyID" : "doi",
+        "value" : "10.1049/iet-syb.2015.0078"
+      }, {
+        "@type" : "PropertyValue",
+        "propertyID" : "pmc",
+        "value" : "8687174"
+      } ],
+      "sameAs" : [ "https://pubmed.ncbi.nlm.nih.gov/26577155", "https://europepmc.org/article/pmc/8687174" ]
+    }, {
+      "@type" : "CreativeWork",
+      "@id" : "https://doi.org/10.1049/iet-syb.2015.0048",
+      "name" : "Theoretical cross-comparative analysis on dynamics of small intestine and colon crypts during cancer initiation.",
+      "identifier" : [ {
+        "@type" : "PropertyValue",
+        "propertyID" : "pmc",
+        "value" : "8687420"
+      }, {
+        "@type" : "PropertyValue",
+        "propertyID" : "doi",
+        "value" : "10.1049/iet-syb.2015.0048"
+      }, {
+        "@type" : "PropertyValue",
+        "propertyID" : "pmid",
+        "value" : "26577160"
+      } ],
+      "sameAs" : [ "https://europepmc.org/article/pmc/8687420", "https://pubmed.ncbi.nlm.nih.gov/26577160" ]
+    }, {
+      "@type" : "CreativeWork",
+      "name" : "A computational model for colon cancer dynamics"
+    }, {
+      "@type" : "CreativeWork",
+      "@id" : "https://doi.org/10.1109/bibm.2014.6999255",
+      "name" : "A computational analysis on methylation inhibition during intestinal cancer initiation",
+      "identifier" : {
+        "@type" : "PropertyValue",
+        "propertyID" : "doi",
+        "value" : "10.1109/bibm.2014.6999255"
+      }
+    }, {
+      "@type" : "CreativeWork",
+      "@id" : "https://doi.org/10.1109/bibm.2014.6999256",
+      "name" : "Building cross-scale models of epigenetic mechanisms",
+      "identifier" : {
+        "@type" : "PropertyValue",
+        "propertyID" : "doi",
+        "value" : "10.1109/bibm.2014.6999256"
+      }
+    }, {
+      "@type" : "CreativeWork",
+      "@id" : "https://doi.org/10.1109/bibm.2014.6999254",
+      "name" : "LogisticCrypt &amp;#x2014; A logistic model of intestinal crypt structure",
+      "identifier" : {
+        "@type" : "PropertyValue",
+        "propertyID" : "doi",
+        "value" : "10.1109/bibm.2014.6999254"
+      }
+    }, {
+      "@type" : "CreativeWork",
+      "@id" : "https://doi.org/10.1109/ems.2013.27",
+      "name" : "Methylation Inhibitors and Carcinogens in an Agent-Based Model for Colon Crypt Dynamics during Cancer Development",
+      "identifier" : {
+        "@type" : "PropertyValue",
+        "propertyID" : "doi",
+        "value" : "10.1109/ems.2013.27"
+      }
+    }, {
+      "@type" : "CreativeWork",
+      "@id" : "https://doi.org/10.1007/s12539-013-0172-y",
+      "name" : "A computational model for genetic and epigenetic signals in colon cancer.",
+      "identifier" : [ {
+        "@type" : "PropertyValue",
+        "propertyID" : "pmid",
+        "value" : "24307409"
+      }, {
+        "@type" : "PropertyValue",
+        "propertyID" : "doi",
+        "value" : "10.1007/s12539-013-0172-y"
+      } ],
+      "sameAs" : "https://pubmed.ncbi.nlm.nih.gov/24307409"
+    }, {
+      "@type" : "CreativeWork",
+      "@id" : "https://doi.org/10.1007/978-3-319-00395-5_126",
+      "name" : "Modelling the Genetic and Epigenetic Signals in Colon Cancer Using a Bayesian Network",
+      "identifier" : {
+        "@type" : "PropertyValue",
+        "propertyID" : "doi",
+        "value" : "10.1007/978-3-319-00395-5_126"
+      }
+    } ]
+  },
+  "url" : [ "https://scholar.google.it/citations?hl=en&user=qz9GnEwAAAAJ&view_op=list_works&gmla=AJsN-F6NI9b0D8syW0_XY1xa6aRaMDStJvEpAQqDHq-rMiuDk5_rW67I7_l0DDuyXh6B-puKYRKXnKb6KZ3_UD6aIM0mZQgbog", "https://sites.google.com/view/irinabalaur" ],
+  "identifier" : {
+    "@type" : "PropertyValue",
+    "propertyID" : "SciProfiles",
+    "value" : "530089"
+  }
+}

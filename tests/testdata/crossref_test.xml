@@ -1,0 +1,79 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:j.0="http://purl.org/dc/terms/"
+    xmlns:j.1="http://prismstandard.org/namespaces/basic/2.1/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:j.2="http://purl.org/ontology/bibo/"
+    xmlns:j.3="http://xmlns.com/foaf/0.1/">
+  <rdf:Description rdf:about="http://dx.doi.org/10.2196/38754">
+    <j.0:creator>
+      <j.3:Person rdf:about="http://id.crossref.org/contributor/alena-buyx-1durnpvfydf77">
+        <j.3:name>Alena Buyx</j.3:name>
+        <j.3:familyName>Buyx</j.3:familyName>
+        <j.3:givenName>Alena</j.3:givenName>
+        <owl:sameAs rdf:resource="http://orcid.org/0000-0002-5726-7633"/>
+      </j.3:Person>
+    </j.0:creator>
+    <j.2:pageStart>e38754</j.2:pageStart>
+    <j.0:creator>
+      <j.3:Person rdf:about="http://id.crossref.org/contributor/sarah-rachut-1durnpvfydf77">
+        <j.3:name>Sarah Rachut</j.3:name>
+        <j.3:familyName>Rachut</j.3:familyName>
+        <j.3:givenName>Sarah</j.3:givenName>
+        <owl:sameAs rdf:resource="http://orcid.org/0000-0003-2003-0074"/>
+      </j.3:Person>
+    </j.0:creator>
+    <owl:sameAs rdf:resource="info:doi/10.2196/38754"/>
+    <j.1:doi>10.2196/38754</j.1:doi>
+    <j.0:creator>
+      <j.3:Person rdf:about="http://id.crossref.org/contributor/dirk-heckmann-1durnpvfydf77">
+        <j.3:name>Dirk Heckmann</j.3:name>
+        <j.3:familyName>Heckmann</j.3:familyName>
+        <j.3:givenName>Dirk</j.3:givenName>
+        <owl:sameAs rdf:resource="http://orcid.org/0000-0002-3640-1645"/>
+      </j.3:Person>
+    </j.0:creator>
+    <j.0:identifier>10.2196/38754</j.0:identifier>
+    <j.1:startingPage>e38754</j.1:startingPage>
+    <j.0:creator>
+      <j.3:Person rdf:about="http://id.crossref.org/contributor/stuart-mclennan-1durnpvfydf77">
+        <j.3:name>Stuart McLennan</j.3:name>
+        <j.3:familyName>McLennan</j.3:familyName>
+        <j.3:givenName>Stuart</j.3:givenName>
+        <owl:sameAs rdf:resource="http://orcid.org/0000-0002-2019-6253"/>
+      </j.3:Person>
+    </j.0:creator>
+    <j.0:creator>
+      <j.3:Person rdf:about="http://id.crossref.org/contributor/amelia-fiske-1durnpvfydf77">
+        <j.3:name>Amelia Fiske</j.3:name>
+        <j.3:familyName>Fiske</j.3:familyName>
+        <j.3:givenName>Amelia</j.3:givenName>
+        <owl:sameAs rdf:resource="http://orcid.org/0000-0001-7207-6897"/>
+      </j.3:Person>
+    </j.0:creator>
+    <owl:sameAs rdf:resource="doi:10.2196/38754"/>
+    <j.1:volume>24</j.1:volume>
+    <j.0:creator>
+      <j.3:Person rdf:about="http://id.crossref.org/contributor/johannes-lange-1durnpvfydf77">
+        <j.3:name>Johannes Lange</j.3:name>
+        <j.3:familyName>Lange</j.3:familyName>
+        <j.3:givenName>Johannes</j.3:givenName>
+        <owl:sameAs rdf:resource="http://orcid.org/0000-0001-9643-7407"/>
+      </j.3:Person>
+    </j.0:creator>
+    <j.2:volume>24</j.2:volume>
+    <j.2:doi>10.2196/38754</j.2:doi>
+    <j.0:publisher>JMIR Publications Inc.</j.0:publisher>
+    <j.0:isPartOf>
+      <j.2:Journal rdf:about="http://id.crossref.org/issn/1438-8871">
+        <owl:sameAs>urn:issn:1438-8871</owl:sameAs>
+        <j.0:title>Journal of Medical Internet Research</j.0:title>
+        <j.1:issn>1438-8871</j.1:issn>
+        <j.2:issn>1438-8871</j.2:issn>
+      </j.2:Journal>
+    </j.0:isPartOf>
+    <j.0:title>Practices and Attitudes of Bavarian Stakeholders Regarding the Secondary Use of Health Data for Research Purposes During the COVID-19 Pandemic: Qualitative Interview Study</j.0:title>
+    <j.0:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date"
+    >2022-06-27</j.0:date>
+  </rdf:Description>
+</rdf:RDF>

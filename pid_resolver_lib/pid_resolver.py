@@ -5,8 +5,7 @@ from typing import List, NamedTuple, Optional, cast, Tuple
 import aiohttp # type: ignore
 from aiohttp import ClientSession, TCPConnector, ClientTimeout
 import asyncio
-from urllib.parse import quote
-import os
+from .cache_handler import get_keys, write_records_to_cache
 
 
 class ResolvedRecord(NamedTuple):
@@ -61,18 +60,6 @@ async def _fetch_record_batch(record_ids: List[str], base_url: str, accept_heade
         return cast(List[ResolvedRecord], list(filter(lambda res: res is not None, results)))
 
 
-def _record_to_path(record_id: str) -> Tuple[Path, Path]:
-    parts = record_id.split('/', 1) # split on first occurrence of slash as DOI suffixes may contain slashes
-    if len(parts) == 2: # it is a DOI
-        return Path(parts[0]), Path(parts[1])
-    else: # it is an ORCID
-        return Path(parts[0]), Path() # second part won't have any effect
-
-
-def _quote_path(record_path: Tuple[Path, Path]):
-    return record_path[0] / quote(str(record_path[1]), safe="")
-
-
 async def fetch_records(record_ids: List[str], cache_dir: Path, base_url: str, accept_header: str, sleep_per_batch: int = 0) -> None:
     """
     Fetches a list of records (DOIs, ORCIDs) and writes them to the cache directory.
@@ -85,12 +72,7 @@ async def fetch_records(record_ids: List[str], cache_dir: Path, base_url: str, a
     @param sleep_per_batch: Sleep in seconds after each batch to respect rate limits, if any. See https://support.datacite.org/docs/is-there-a-rate-limit-for-making-requests-against-the-datacite-apis.
     """
 
-    record_ids_deduplicated = list(set(record_ids))
-
-    # check if a record is already in the cache
-    records_not_cached = list(
-        filter(lambda rec_id: not os.path.isfile(f'{cache_dir / _quote_path(_record_to_path(rec_id))}'),  # https://stackoverflow.com/questions/14826888/python-os-path-join-on-a-list
-               record_ids_deduplicated))
+    records_not_cached = list(set(record_ids) - set(get_keys(cache_dir)))
 
     print(f'fetching number of records for {cache_dir}: ', len(records_not_cached))
 
@@ -108,32 +90,21 @@ async def fetch_records(record_ids: List[str], cache_dir: Path, base_url: str, a
 
         print('fetching batch: ',  offset, limit)
 
-        results = await _fetch_record_batch(records_not_cached[offset:limit], base_url, accept_header)
+        results: List[ResolvedRecord] = await _fetch_record_batch(records_not_cached[offset:limit], base_url, accept_header)
 
-        # store records as files
-        for res in results:
-            try:
-                if 'doi.org' in base_url:
-                    # DOI
-                    prefix, suffix = _record_to_path(res.rec_id)
-                    # organize DOIs by prefixes
-                    if not os.path.isdir(cache_dir / prefix):
-                        os.makedirs(cache_dir / Path(prefix))
-                    with open(f'{cache_dir / _quote_path((prefix, suffix)) }', 'w') as f:
-                        f.write(res.content)
-                else:
-                    # ORCID
-                    with open(f'{cache_dir / Path(res.rec_id) }', 'w') as f:
-                        f.write(res.content)
+        # store records in cache
+        try:
+            # TODO: try to use member names of named tuple, i.e rec_id and content
+            print('results', len(results))
+            write_records_to_cache(results, 0, 1, cache_dir)
 
-            except Exception as e:
-                print(f'An error occurred when writing record {res}: {e}')
+        except Exception as e:
+            print(f'An error occurred when writing results: {e}')
 
-
-        # sleep because of rate limits
-        print('pausing')
-        await asyncio.sleep(sleep_per_batch)
-        print('working')
+            # sleep because of rate limits
+            print('pausing')
+            await asyncio.sleep(sleep_per_batch)
+            print('working')
 
         offset = offset + batch_size
 

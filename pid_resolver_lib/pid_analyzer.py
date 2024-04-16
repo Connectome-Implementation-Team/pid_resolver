@@ -2,10 +2,19 @@ from pathlib import Path
 from lxml import etree  # type: ignore
 from typing import List, Optional, Dict, Any, NamedTuple, cast, Callable, Union, Tuple
 import sys
-from urllib.parse import unquote, quote
-import os
 import json
 import jq # type: ignore
+from .cache_handler import get_keys, read_from_cache
+
+
+class OrcidProfile(NamedTuple):
+    """
+    Represents information about an ORCID profile.
+    """
+
+    id: str # 0
+    given_name: str # 1
+    family_name: str # 2
 
 
 class AuthorInfo(NamedTuple):
@@ -16,7 +25,7 @@ class AuthorInfo(NamedTuple):
     given_name: str  # 0
     family_name: str  # 1
     orcid: Optional[str]  # 2
-    origin_orcid: Optional[str]
+    origin_orcid: Optional[str] # 3
 
 
 class PublicationInfo(NamedTuple):
@@ -36,7 +45,7 @@ def _get_orcid_id_from_url(orcid_url: str) -> str:
                                                       'https://').strip()[len('https://orcid.org/'):]  # fix invalid ORCIDs, use https scheme for ORCID
 
 
-def _match_name_with_orcid_profile(orcid_info: List[Dict], given_name: str, family_name: str) -> Tuple[Optional[str], Optional[str]]:
+def _match_name_with_orcid_profile(orcid_info: List[OrcidProfile], given_name: str, family_name: str) -> Tuple[Optional[str], Optional[str]]:
     """
     Given a list of ORCID profiles for a DOI, filters them by name.
 
@@ -44,12 +53,14 @@ def _match_name_with_orcid_profile(orcid_info: List[Dict], given_name: str, fami
     @param given_name: The author's first name.
     @param family_name: The author's last name.
     """
+
+    # match ORCID profiles by name
     author_orcid = list(
-        filter(lambda orcid: orcid['familyName'] == family_name and orcid['givenName'] == given_name, orcid_info))
+        filter(lambda orcid: orcid.family_name == family_name and orcid.given_name == given_name, orcid_info))
 
     if len(author_orcid) == 1:
         # get ORCID ID from URL
-        orcid = author_orcid[0]['id'].rsplit('/', 1)[-1]
+        orcid = author_orcid[0].id.rsplit('/', 1)[-1]
         origin_orcid = 'orcid'
     else:
         orcid = None
@@ -58,11 +69,12 @@ def _match_name_with_orcid_profile(orcid_info: List[Dict], given_name: str, fami
     return orcid, origin_orcid
 
 
-def analyze_author_info_datacite(author_info: Dict, orcid_info: List[Dict]) -> AuthorInfo:
+def analyze_author_info_datacite(author_info: Dict, orcid_info: List[OrcidProfile]) -> AuthorInfo:
     """
     Transforms a JSON-LD item representing author information.
 
     @param author_info: Information about a publication's author.
+    @param orcid_info: ORCID profiles associated with the current DOI/publication.
     """
 
     given_name = author_info['givenName']
@@ -81,19 +93,17 @@ def analyze_author_info_datacite(author_info: Dict, orcid_info: List[Dict]) -> A
     return AuthorInfo(given_name=given_name, family_name=family_name, orcid=orcid, origin_orcid=origin_orcid)
 
 
-def analyze_doi_record_datacite(cache_dir: Path, path: Path, orcid_info: Dict) -> Optional[PublicationInfo]:
+def analyze_doi_record_datacite(cache_dir: Path, doi: str, orcid_info: Dict[str, List[OrcidProfile]]) -> Optional[PublicationInfo]:
     """
     Reads a DOI record (JSON-LD/schema.org) and transforms it to an item containing author information about a publication.
 
     @type cache_dir: Directory resolved DOIs have been written to.
-    @param path: Path to read record from.
+    @param doi: Path to read record from.
+    @param orcid_info: ORCID profiles organized by DOI.
     """
 
     try:
-        doi = unquote(str(Path(*path.parts[-2:])))
-
-        with open(path) as f:
-            record = json.load(f)
+        record = json.loads(read_from_cache(doi, cache_dir))
 
         title: Optional[str] = record['name']
         author_info: Union[List[Dict], Dict] = record['author']
@@ -111,16 +121,17 @@ def analyze_doi_record_datacite(cache_dir: Path, path: Path, orcid_info: Dict) -
             return PublicationInfo(doi=doi, title=title, authors=author_single)
 
     except Exception as e:
-        print(f'An error occurred in {path}: {e}', file=sys.stderr)
+        print(f'An error occurred in {doi}: {e}', file=sys.stderr)
         return None
 
 
-def analyze_author_info_crossref(creator: etree.Element, namespace_map: Any, orcid_info: List[Dict]) -> Optional[AuthorInfo]:
+def analyze_author_info_crossref(creator: etree.Element, namespace_map: Any, orcid_info: List[OrcidProfile]) -> Optional[AuthorInfo]:
     """
     Transforms an RDF/XML item representing creator information to author information.
 
     @param creator: DOI information about a creator.
     @param namespace_map: XML namespace information for the XML element.
+    @param orcid_info: ORCID profiles associated with the current DOI/publication.
     """
 
     given_name_ele: Optional[etree.Element] = creator.find('.//j.3:givenName', namespaces=namespace_map)
@@ -145,19 +156,19 @@ def analyze_author_info_crossref(creator: etree.Element, namespace_map: Any, orc
     return None
 
 
-def analyze_doi_record_crossref(cache_dir: Path, path: Path, orcid_info: Dict) -> Optional[PublicationInfo]:
+def analyze_doi_record_crossref(cache_dir: Path, doi: str, orcid_info: Dict[str, List[OrcidProfile]]) -> Optional[PublicationInfo]:
     """
     Reads a DOI record (RDF/XML) and transforms it to an item containing author information about a publication.
 
     @type cache_dir: Directory resolved DOIs have been written to.
-    @param path: Path to read record from.
+    @param doi: Path to read record from.
+    @param orcid_info: ORCID profiles organized by DOI.
     """
 
     try:
-        doi = unquote(str(Path(*path.parts[-2:])))
+        rec_str = read_from_cache(doi, cache_dir)
 
-        tree = etree.parse(path)
-        root = tree.getroot()
+        root = etree.fromstring(rec_str)
 
         title_ele: Optional[etree.Element] = root.find('.//rdf:Description/j.0:title', namespaces=root.nsmap)
         creators: List[etree.Element] = root.findall('.//j.0:creator/j.3:Person', namespaces=root.nsmap)
@@ -168,7 +179,7 @@ def analyze_doi_record_crossref(cache_dir: Path, path: Path, orcid_info: Dict) -
             title = None
 
         if doi in orcid_info:
-            orcid_author_info = orcid_info[doi]
+            orcid_author_info: List[OrcidProfile] = orcid_info[doi]
         else:
             orcid_author_info = []
 
@@ -181,11 +192,11 @@ def analyze_doi_record_crossref(cache_dir: Path, path: Path, orcid_info: Dict) -
         # https://stackoverflow.com/questions/67274469/mypy-types-and-optional-filtering
         return PublicationInfo(doi=doi, title=title, authors=cast(List[AuthorInfo], authors_filtered))
     except Exception as e:
-        print(f'An error occurred in {path}: {e}', file=sys.stderr)
+        print(f'An error occurred in {doi}: {e}', file=sys.stderr)
         return None
 
 
-def analyze_dois(cache_dir: Path, analyzer: Callable[[Path, Path, Dict], Optional[PublicationInfo]]) -> Dict[
+def analyze_dois(cache_dir: Path, analyzer: Callable[[Path, str, Dict], Optional[PublicationInfo]]) -> Dict[
     str, PublicationInfo]:
     """
     Reads resolved DOIs from the cache and returns a dict indexed by DOI (without base URL).
@@ -194,6 +205,7 @@ def analyze_dois(cache_dir: Path, analyzer: Callable[[Path, Path, Dict], Optiona
     @param analyzer: Function that parses the metadata resolved for a DOI and transforms it to a PublicationInfo.
     """
 
+    '''
     records_cache_file = Path('resolved_dois.json')
 
     # check if cache_file exists
@@ -203,21 +215,32 @@ def analyze_dois(cache_dir: Path, analyzer: Callable[[Path, Path, Dict], Optiona
         os.rename(records_cache_file, f'{records_cache_file}.bkp')
     else:
         cached_records = {}
+    '''
 
+
+    '''
     files: List[Path] = list(Path(cache_dir).rglob('*/*'))
     sorted_files: List[Path] = sorted(files)
+    '''
 
     # only analyze those DOIs from cache dir that were not contained in cache file
     # quote cached DOIs since paths are quoted
-    dois_to_analyze = set(sorted_files) - set(map(lambda doi: cache_dir / Path(doi), cached_records.keys()))
 
-    print('dois to analyze ', len(dois_to_analyze))
+    # dois_to_analyze = set(sorted_files) - set(map(lambda doi: cache_dir / Path(doi), cached_records.keys()))
 
-    # TODO: see if additional ORCIDs could be added from cached ORCID profiles
-    dois_per_orcid = get_dois_for_orcid(Path('orcid'))
-    grouped: Dict = group_orcids_per_doi(dois_per_orcid)
 
-    records: List[Optional[PublicationInfo]] = list(map(lambda file: analyzer(cache_dir, file, grouped), dois_to_analyze))
+    # dois_to_analyze = list(set(cache_ref.iterkeys() - cached_records.keys()))
+    dois_to_analyze = list(get_keys(cache_dir))
+
+    #print('dois to analyze ', len(dois_to_analyze), dois_to_analyze)
+
+    # check if additional ORCIDs could be added from cached ORCID profiles
+    dois_per_orcid: List[Dict] = get_dois_per_orcid(Path('orcid'))
+    orcids_grouped_by_doi: Dict[str, List[OrcidProfile]] = group_orcids_per_doi(dois_per_orcid)
+
+    # print(grouped)
+
+    records: List[Optional[PublicationInfo]] = list(map(lambda file: analyzer(cache_dir, file, orcids_grouped_by_doi), dois_to_analyze))
 
     # filter out None values
     records_non_empty: List[PublicationInfo] = cast(List[PublicationInfo],
@@ -228,13 +251,16 @@ def analyze_dois(cache_dir: Path, analyzer: Callable[[Path, Path, Dict], Optiona
     records_as_dict = dict(map(lambda x: (x[0], x), records_non_empty))
 
     # https://www.geeksforgeeks.org/python-merging-two-dictionaries/
-    combined_records = {**cached_records, **records_as_dict}
+    #combined_records = {**cached_records, **records_as_dict}
 
     # write dois to new cache file
+    '''
     with open(records_cache_file, 'w') as f:
         f.write(json.dumps(combined_records))
+    '''
 
-    return combined_records
+    #return combined_records
+    return records_as_dict
 
 
 def parse_resolved_dois_from_json(resolved_dois_json: Path) -> Dict[str, PublicationInfo]:
@@ -304,43 +330,40 @@ def get_orcids_from_resolved_dois(dois: Dict[str, PublicationInfo]) -> List[str]
     return cast(List[str], list(set(filter(lambda auth: auth is not None, orcids))))
 
 
-def get_dois_for_orcid(cache_dir: Path) -> List[Dict]:
+def get_dois_per_orcid(cache_dir: Path) -> List[Dict]:
     """
     Collects cached ORCID profiles and organizes them as a list of objects with id and DOIs.
 
     @param cache_dir: The ORCID cache directory.
     """
 
-    files: List[Path] = list(cache_dir.rglob('*'))
+    orcids = list(get_keys(cache_dir))
 
-    orcid_profiles: List[Dict] = list(map(lambda file: json.load(file.open()), files))
+    orcid_profiles: List[Dict] = list(map(lambda orcid: json.loads(read_from_cache(orcid, cache_dir)), orcids))
 
-    # structure [{id, dois}]
+    # structure [{id, givenName, familyName, dois}]
     dois_per_orcid: List[Dict] = jq.compile(
         '. | map({"id": ."@id", "givenName": .givenName, "familyName": .familyName, "dois": [[."@reverse".creator] | flatten[] | select(."@type" == "CreativeWork")] | [[map(.identifier)] | flatten[] | [select(.propertyID == "doi")] | map(.value)] | flatten})').input_value(
         orcid_profiles).first()
 
     return dois_per_orcid
 
-def _make_entry(ele: Dict):
+
+def _make_entry(ele: Dict) -> OrcidProfile:
     # TODO: error handling for missing info (None)
-    return {
-        'id': ele['id'],
-        'givenName': ele['givenName'],
-        'familyName': ele['familyName']
-    }
+    return OrcidProfile(ele['id'], ele['givenName'], ele['familyName'])
 
 
-def group_orcids_per_doi(dois_for_orcid: List[Dict]) -> Dict:
+def group_orcids_per_doi(dois_per_orcid: List[Dict]) -> Dict[str, List[OrcidProfile]]:
     """
     Groups ORCID profile contents by DOI (key) and associates the ORCIDs with them (values).
 
-    @param dois_for_orcid: A list of ORCIDs with their associated DOIs.
+    @param dois_per_orcid: A list of ORCIDs with their associated DOIs.
     """
 
     orcids_by_doi = {}
 
-    for ele in dois_for_orcid:
+    for ele in dois_per_orcid:
         for doi in ele['dois']:
             if doi not in orcids_by_doi:
                 orcids_by_doi[doi] = [_make_entry(ele)]
@@ -350,52 +373,5 @@ def group_orcids_per_doi(dois_for_orcid: List[Dict]) -> Dict:
     return orcids_by_doi
 
 
-
-def analyze_orcid_record(orcid: str) -> Optional[Dict]:
-    """
-    Transform a resolved ORCID into a dict.
-
-    @param orcid: Path to the resolved ORCID.
-    """
-
-    try:
-        with open(orcid) as f:
-            rec = json.load(f)
-
-        return {
-            '@id': f'https://data.connectome.ch/orcid/person/{rec["@id"][18:]}',
-            '@type': 'Person',
-            'givenName': rec['givenName'],
-            'familyName': rec['familyName'],
-            'name': f'{rec["givenName"]} {rec["familyName"]}',
-            'sameAs': {'@id': rec['@id'].replace('http://', 'https://')},  # normalize URL
-        }
-    except Exception as e:
-        print(f'An error occurred in ORCID {orcid}: {e}', file=sys.stderr)
-        return None
-
-
-def analyze_orcids(cache_dir: Path) -> Dict:
-    """
-    Analyze resolved ORCIDs.
-
-    @param cache_dir: Directory resolved ORCIDs have been written.
-    """
-
-    files: List[str] = os.listdir(cache_dir)
-    sorted_files: List[str] = sorted(files)
-
-    print(len(sorted_files))
-
-    records = list(map(lambda file: analyze_orcid_record(f'{cache_dir}/{file}'), sorted_files))
-
-    graph = {
-        '@context': {'@vocab': 'http://schema.org/'},
-        '@graph': list(filter(lambda rec: rec is not None, records))
-    }
-
-    return graph
-
-
-__all__ = ['PublicationInfo', 'analyze_dois', 'analyze_doi_record_crossref', 'analyze_doi_record_datacite', 'get_orcids_from_resolved_dois', 'analyze_orcids',
-           'get_dois_for_orcid', 'group_orcids_per_doi']
+__all__ = ['PublicationInfo', 'analyze_dois', 'analyze_doi_record_crossref', 'analyze_doi_record_datacite', 'get_orcids_from_resolved_dois',
+           'get_dois_per_orcid', 'group_orcids_per_doi']

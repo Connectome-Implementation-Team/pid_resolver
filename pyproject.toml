@@ -4,7 +4,8 @@ version = "0.0.1"
 dependencies = [
     'jq',
     'aiohttp',
-    'lxml'
+    'lxml',
+    'diskcache'
 ]
 authors = [
   { name="Tobias Schweizer", email="tobias.schweizer@switch.ch" },
