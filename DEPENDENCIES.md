@@ -321,7 +321,7 @@ under the terms of *both* these licenses.
 
    END OF TERMS AND CONDITIONS
 
-## BSD
+### BSD
 
 Copyright (c) Donald Stufft and individual contributors.
 All rights reserved.
