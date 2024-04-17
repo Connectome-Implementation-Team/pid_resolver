@@ -50,7 +50,7 @@ from pathlib import Path
 from typing import Dict, List
 import pid_resolver_lib
 import asyncio
-
+import json
 
 async def fetch_dois(dois: List[str]):
     # group the DOIs by registration agency
@@ -73,6 +73,9 @@ async def fetch_dois(dois: List[str]):
     # combined resolved DOIs
     resolved_dois = {**resolved_dois_crossref, **resolved_dois_datacite}
 
+    with open('results.json', 'w') as f:
+       f.write(json.dumps(resolved_dois))
+    
     orcids = pid_resolver_lib.get_orcids_from_resolved_dois(resolved_dois)
 
     await pid_resolver_lib.fetch_records(orcids, Path('orcid'), 'https://orcid.org/', 'application/ld+json')
@@ -98,7 +101,6 @@ async def main():
         print(f'iteration {idx}')
 
         dois_to_harvest = await fetch_dois(dois_to_harvest)
-
 
 asyncio.run(main())
 
