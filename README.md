@@ -28,6 +28,12 @@ The library consists of three modules:
 
 All resolved DOIs and ORCIDs are cached. For each registration agency (RA), a separate cache is used.
 
+### Licensing
+
+This library is licensed under the terms defined in (LICENSE)[LICENSE].
+Software dependencies are explicitly mentioned in the (dependencies document)[DEPENDENCIES.md].
+
+
 ### Usage
 
 Here is some sample code how to use the library. You can install it from the local repo using `pip install -e <path/to/repo>`
