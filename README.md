@@ -30,8 +30,8 @@ All resolved DOIs and ORCIDs are cached. For each registration agency (RA), a se
 
 ### Licensing
 
-This library is licensed under the terms defined in (LICENSE)[LICENSE].
-Software dependencies are explicitly mentioned in the (dependencies document)[DEPENDENCIES.md].
+This library is licensed under the terms defined in [LICENSE](LICENSE).
+Software dependencies are explicitly mentioned in the [dependencies document](DEPENDENCIES.md).
 
 
 ### Usage
