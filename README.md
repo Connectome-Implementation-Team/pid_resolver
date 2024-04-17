@@ -6,6 +6,14 @@ This library facilitates the retrieval of structured metadata based on a collect
 It resolves DOIs to structured metadata using content negotiation taking into account different standards used by registration agencies.
 It provides method to analyse this metadata and extract ORCIDs from it which can then also be resolved.
 
+### Use Cases
+
+The use cases range from very simple to more complex ones.
+Initially, this library was designed to resolve DOIs to structured metadata to obtain ORCIDs for a given publication.
+Then more functionality was added to extract DOIs from ORCID profiles to continue the process.
+This means that given some DOIs as a starting point, this library can be used like a crawler following the connection between DOIs and ORCIDs.
+From a few DOIs, the co-author network can be constructed by combining DOI and ORCID metadata, using DOIs and ORCIDs as identifiers. 
+
 ### Structure
 
 The library consists of three modules:
@@ -14,11 +22,22 @@ The library consists of three modules:
    The serialisation format and data model depends on the registration agency.
    Resolved DOI metadata will be cached in the corresponding directory.
 3. `pid_analyzer`: Given DOI metadata, provides methods to analyse this data and build a general structure called `PublicationInfo` 
-   representing basic information such as title and author information including ORCID for a given DOI.   
+   representing basic information such as title and author information including ORCID for a given DOI.
+
+### Caching
+
+All resolved DOIs and ORCIDs are cached. For each registration agency (RA), a separate cache is used.
 
 ### Usage
 
 Here is some sample code how to use the library. You can install it from the local repo using `pip install -e <path/to/repo>`
+
+The code sample defines two methods:
+- `fetch_dois(dois: List[str])`: fetches structured metadata for the given DOIs. Then, ORCIDs are extracted from this metadata, if any are given. These ORCIDs are then resolved. From these ORCIDs, the linked DOIs are extracted for the next iteration. 
+- `main()`: inits the process and defines the number of iterations. 
+
+The process in `main` starts with two given DOIs: one from Crossref and one from DataCite to illustrate the process for both registration agencies (RAs).
+It calls `fetch_dois` with the two given DOIs. The method returns the DOIs it obtained from the linked ORCID profiles which are used for the next iteration and so on.
 
 ```python
 from pathlib import Path
