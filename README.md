@@ -53,6 +53,10 @@ import asyncio
 import json
 
 async def fetch_dois(dois: List[str]):
+   
+    if len(dois) == 0:
+        return []
+       
     # group the DOIs by registration agency
     org_dois: Dict = await pid_resolver_lib.group_dois_by_ra(dois)
 
@@ -89,15 +93,13 @@ async def fetch_dois(dois: List[str]):
     return dois_to_harvest
 
 async def main():
-    dois = [
-        "10.1371/journal.pone.0266659",
-        "10.5061/dryad.cv86385c"
+    
+    dois_to_harvest = [
+        '10.1007/978-3-031-47243-5_6'
     ]
 
-    dois_to_harvest = await fetch_dois(dois)
-
-    for idx in range(1, 2):
-
+    # range's end is exclusive
+    for idx in range(1, 5):
         print(f'iteration {idx}')
 
         dois_to_harvest = await fetch_dois(dois_to_harvest)
