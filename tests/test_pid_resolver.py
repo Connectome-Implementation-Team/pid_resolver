@@ -22,6 +22,19 @@ class TestPidResolver(unittest.IsolatedAsyncioTestCase):
             assert resp.rec_id == 'one'
             assert resp.content == 'data'
 
+
+    def test_records_not_in_cache(self):
+        with mock.patch('pid_resolver_lib.pid_resolver.get_keys') as mock_get_keys:
+            mock_get_keys.return_value = ['1', '3', '5']
+
+            not_cached = pid_resolver.records_not_in_cache(['1', '2', '3', '4'], Path('.'))
+
+            assert set(not_cached) == set(['2', '4'])
+
+            args = mock_get_keys.mock_calls[0].args
+
+            assert Path('.') == args[0]
+
     async def test_fetch_records(self):
 
         # https://medium.com/@durgaswaroop/writing-better-tests-in-python-with-pytest-mock-part-2-92b828e1453c

@@ -60,6 +60,11 @@ async def _fetch_record_batch(record_ids: List[str], base_url: str, accept_heade
         return cast(List[ResolvedRecord], list(filter(lambda res: res is not None, results)))
 
 
+def records_not_in_cache(record_ids: List[str], cache_dir: Path) -> List[str]:
+    return list(set(record_ids) - set(get_keys(cache_dir)))
+
+
+
 async def fetch_records(record_ids: List[str], cache_dir: Path, base_url: str, accept_header: str, sleep_per_batch: int = 0) -> None:
     """
     Fetches a list of records (DOIs, ORCIDs) and writes them to the cache directory.
@@ -72,7 +77,7 @@ async def fetch_records(record_ids: List[str], cache_dir: Path, base_url: str, a
     @param sleep_per_batch: Sleep in seconds after each batch to respect rate limits, if any. See https://support.datacite.org/docs/is-there-a-rate-limit-for-making-requests-against-the-datacite-apis.
     """
 
-    records_not_cached = list(set(record_ids) - set(get_keys(cache_dir)))
+    records_not_cached = records_not_in_cache(record_ids, cache_dir)
 
     print(f'fetching number of records for {cache_dir}: ', len(records_not_cached))
 
@@ -108,5 +113,4 @@ async def fetch_records(record_ids: List[str], cache_dir: Path, base_url: str, a
 
         offset = offset + batch_size
 
-
-__all__ = ['fetch_records']
+__all__ = ['fetch_records', 'records_not_in_cache']
