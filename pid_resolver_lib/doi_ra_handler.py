@@ -19,6 +19,7 @@ import asyncio
 from aiohttp import ClientSession, TCPConnector, ClientTimeout # type: ignore
 import sys
 import jq # type: ignore
+from .cache_handler import get_keys
 
 
 RA_MIME = {
@@ -114,8 +115,16 @@ async def group_dois_by_ra(dois: List[str]) -> Dict[str, List[str]]:
     @param dois: DOIs to be grouped.
     """
 
+    existing_dois = list(map(lambda ra: get_keys(ra), RA_MIME))
+
+    dois_to_harvest = list(set(dois) - set([item for sublist in existing_dois for item in sublist]))
+
+    # return if list is empty
+    if len(dois_to_harvest) == 0:
+        return {}
+
     # get prefixes from DOIs
-    doi_prefixes: List[str] = get_registration_agency_prefixes(dois)
+    doi_prefixes: List[str] = get_registration_agency_prefixes(dois_to_harvest)
 
     # For each prefix, resolve its RA.
     resolved_ras_for_doi_prefixes: List[Dict[str, str]] = await resolve_registration_agency_prefixes(doi_prefixes)
