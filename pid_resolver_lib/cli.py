@@ -88,7 +88,7 @@ def main():
     #print(sys.argv)
 
     iterations = 0
-    dois = None
+    dois = []
 
     argv = sys.argv[1:]
 
