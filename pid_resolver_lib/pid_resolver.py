@@ -79,7 +79,6 @@ def records_not_in_cache(record_ids: List[str], cache_dir: Path) -> List[str]:
     return list(set(record_ids) - set(get_keys(cache_dir)))
 
 
-
 async def fetch_records(record_ids: List[str], cache_dir: Path, base_url: str, accept_header: str, sleep_per_batch: int = 0) -> None:
     """
     Fetches a list of records (DOIs, ORCIDs) and writes them to the cache directory.
@@ -121,10 +120,10 @@ async def fetch_records(record_ids: List[str], cache_dir: Path, base_url: str, a
         except Exception as e:
             print(f'An error occurred when writing results: {e}')
 
-            # sleep because of rate limits
-            print('pausing')
-            await asyncio.sleep(sleep_per_batch)
-            print('working')
+        # sleep because of rate limits
+        print('pausing')
+        await asyncio.sleep(sleep_per_batch)
+        print('working')
 
         offset = offset + batch_size
 
