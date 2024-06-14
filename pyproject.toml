@@ -19,6 +19,9 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 
+[project.scripts]
+pid_resolver = "pid_resolver_lib.cli:main"
+
 [project.urls]
 Homepage = "https://gitlab.switch.ch/connectome/pid_resolver"
 Issues = "https://gitlab.switch.ch/connectome/pid_resolver/-/issues"
