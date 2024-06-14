@@ -15,13 +15,16 @@
 
 from pathlib import Path
 import jq  # type: ignore
-import sys
 from typing import List, NamedTuple, Optional, cast, Tuple
 import aiohttp # type: ignore
 from aiohttp import ClientSession, TCPConnector, ClientTimeout
 import asyncio
+import logging
 from .cache_handler import get_keys, write_records_to_cache
 
+logger = logging.getLogger(__name__)
+
+RESOLVER = 'RESOLVER:'
 
 class ResolvedRecord(NamedTuple):
     """
@@ -51,7 +54,7 @@ async def _make_record_request(session: ClientSession, record_id: str, base_url:
             return ResolvedRecord(record_id, await request.text())
 
     except Exception as e:
-        print(f'Error when resolving record {e}', file=sys.stderr)
+        logging.error(f'{RESOLVER} Error when resolving record {e}')
         return None
 
 
@@ -93,7 +96,7 @@ async def fetch_records(record_ids: List[str], cache_dir: Path, base_url: str, a
 
     records_not_cached = records_not_in_cache(record_ids, cache_dir)
 
-    print(f'fetching number of records for {cache_dir}: ', len(records_not_cached))
+    logging.info(f'{RESOLVER} fetching number of records for {cache_dir}: {len(records_not_cached)}')
 
     offset = 0
     batch_size = 500
@@ -107,23 +110,23 @@ async def fetch_records(record_ids: List[str], cache_dir: Path, base_url: str, a
             limit = len(records_not_cached)
             last_run = True
 
-        print('fetching batch: ',  offset, limit)
+        logging.info(f'{RESOLVER} fetching batch: {offset}, {limit}')
 
         results: List[ResolvedRecord] = await _fetch_record_batch(records_not_cached[offset:limit], base_url, accept_header)
 
         # store records in cache
         try:
             # TODO: try to use member names of named tuple, i.e rec_id and content
-            print('results', len(results))
+            logging.info(f'{RESOLVER} results {len(results)}')
             write_records_to_cache(results, 0, 1, cache_dir)
 
         except Exception as e:
-            print(f'An error occurred when writing results: {e}')
+            logging.error(f'{RESOLVER} An error occurred when writing results: {e}')
 
         # sleep because of rate limits
-        print('pausing')
+        logging.info(f'{RESOLVER} pausing')
         await asyncio.sleep(sleep_per_batch)
-        print('working')
+        logging.info(f'{RESOLVER} working')
 
         offset = offset + batch_size
 

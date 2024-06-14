@@ -12,15 +12,17 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 #
-
+import logging
 from pathlib import Path
 from lxml import etree  # type: ignore
 from typing import List, Optional, Dict, Any, NamedTuple, cast, Callable, Union, Tuple
-import sys
 import json
 import jq # type: ignore
 from .cache_handler import get_keys, read_from_cache
 
+ANALYZER = 'ANALYZER:'
+
+logger = logging.getLogger(__name__)
 
 class OrcidProfile(NamedTuple):
     """
@@ -136,7 +138,7 @@ def analyze_doi_record_datacite(cache_dir: Path, doi: str, orcid_info: Dict[str,
             return PublicationInfo(doi=doi, title=title, authors=author_single)
 
     except Exception as e:
-        print(f'An error occurred in {doi}: {e}', file=sys.stderr)
+        logging.error(f'{ANALYZER} An error occurred in {doi}: {e}')
         return None
 
 
@@ -207,7 +209,7 @@ def analyze_doi_record_crossref(cache_dir: Path, doi: str, orcid_info: Dict[str,
         # https://stackoverflow.com/questions/67274469/mypy-types-and-optional-filtering
         return PublicationInfo(doi=doi, title=title, authors=cast(List[AuthorInfo], authors_filtered))
     except Exception as e:
-        print(f'An error occurred in {doi}: {e}', file=sys.stderr)
+        logging.error(f'{ANALYZER} An error occurred in {doi}: {e}')
         return None
 
 

@@ -12,7 +12,7 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 #
-
+import logging
 import sys
 import getopt
 import os
@@ -24,6 +24,14 @@ from .doi_ra_handler import group_dois_by_ra, RA_MIME
 from .pid_resolver import fetch_records
 from .pid_analyzer import analyze_dois, analyze_doi_record_crossref, analyze_doi_record_datacite, get_orcids_from_resolved_dois, get_dois_per_orcid
 
+logging.basicConfig(filename='pid_resolver.log',
+                    filemode='a',
+                    format='%(module)s %(levelname)s: %(asctime)s %(message)s',
+                    datefmt='%H:%M:%S',
+                    encoding='utf-8',
+                    level=logging.DEBUG)
+
+logger = logging.getLogger(__name__)
 
 async def fetch_dois(dois: List[str], ):
     if len(dois) == 0:
@@ -83,8 +91,6 @@ def usage() -> None:
 
 
 def main():
-
-    #print(sys.argv)
 
     iterations = 0
     dois = []

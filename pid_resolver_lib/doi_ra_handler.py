@@ -17,10 +17,9 @@ from typing import List, Dict, Union, cast, Any
 from functools import reduce
 import asyncio
 from aiohttp import ClientSession, TCPConnector, ClientTimeout # type: ignore
-import sys
 import jq # type: ignore
 from .cache_handler import get_keys
-
+import logging
 
 RA_MIME = {
     'DataCite': 'application/ld+json',
@@ -28,6 +27,9 @@ RA_MIME = {
     'mEDRA': ' application/rdf+xml'
 }
 
+REGISTRATION_AGENCY = 'RA:'
+
+logger = logging.getLogger(__name__)
 
 def get_registration_agency_prefixes(dois: List[str]) -> List[str]:
     """
@@ -59,7 +61,7 @@ async def _make_registration_agency_prefix_request(session: ClientSession, doi_p
                 raise Exception(f'DOI RA result is not a list: {res}')
 
     except Exception as e:
-        print('DOI RA Error ' + str(e), file=sys.stderr)
+        logging.error(f'{REGISTRATION_AGENCY} DOI RA Error {str(e)}')
         return None
 
 
