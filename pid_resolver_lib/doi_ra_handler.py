@@ -12,7 +12,7 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 #
-
+from pathlib import Path
 from typing import List, Dict, Union, cast, Any
 from functools import reduce
 import asyncio
@@ -115,7 +115,7 @@ async def group_dois_by_ra(dois: List[str]) -> Dict[str, List[str]]:
     @param dois: DOIs to be grouped.
     """
 
-    existing_dois = list(map(lambda ra: get_keys(ra), RA_MIME))
+    existing_dois = list(map(lambda ra: get_keys(Path(ra)), RA_MIME))
 
     dois_to_harvest = list(set(dois) - set([item for sublist in existing_dois for item in sublist]))
 
