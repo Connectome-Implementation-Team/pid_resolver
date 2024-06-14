@@ -21,10 +21,10 @@ import jq # type: ignore
 from .cache_handler import get_keys
 import logging
 
-RA_MIME = {
-    'DataCite': 'application/ld+json',
-    'Crossref': 'application/rdf+xml',
-    'mEDRA': ' application/rdf+xml'
+RAs: Dict[str, Dict[str, Union[str, int]]] = {
+    'DataCite': {'mime': 'application/ld+json', 'sleep': 120},
+    'Crossref': {'mime': 'application/rdf+xml', 'sleep': 0},
+    'mEDRA': {'mime': 'application/rdf+xml', 'sleep': 0}
 }
 
 REGISTRATION_AGENCY = 'RA:'
@@ -117,7 +117,7 @@ async def group_dois_by_ra(dois: List[str]) -> Dict[str, List[str]]:
     @param dois: DOIs to be grouped.
     """
 
-    existing_dois = list(map(lambda ra: get_keys(Path(ra)), RA_MIME))
+    existing_dois = list(map(lambda ra: get_keys(Path(ra)), RAs))
 
     dois_to_harvest = list(set(dois) - set([item for sublist in existing_dois for item in sublist]))
 
@@ -145,4 +145,4 @@ async def group_dois_by_ra(dois: List[str]) -> Dict[str, List[str]]:
     return reduce(lambda a, b: {**a, **b}, ra_list)
 
 
-__all__ = ['RA_MIME', 'group_dois_by_ra']
+__all__ = ['RAs', 'group_dois_by_ra']

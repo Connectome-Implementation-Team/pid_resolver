@@ -123,10 +123,11 @@ async def fetch_records(record_ids: List[str], cache_dir: Path, base_url: str, a
         except Exception as e:
             logging.error(f'{RESOLVER} An error occurred when writing results: {e}')
 
-        # sleep because of rate limits
-        logging.info(f'{RESOLVER} pausing')
-        await asyncio.sleep(sleep_per_batch)
-        logging.info(f'{RESOLVER} working')
+        if not last_run:
+            # sleep because of rate limits
+            logging.info(f'{RESOLVER} pausing')
+            await asyncio.sleep(sleep_per_batch)
+            logging.info(f'{RESOLVER} working')
 
         offset = offset + batch_size
 

@@ -20,7 +20,7 @@ from pathlib import Path
 from typing import Dict, List
 import asyncio
 import json
-from .doi_ra_handler import group_dois_by_ra, RA_MIME
+from .doi_ra_handler import group_dois_by_ra, RAs
 from .pid_resolver import fetch_records
 from .pid_analyzer import analyze_dois, analyze_doi_record_crossref, analyze_doi_record_datacite, get_orcids_from_resolved_dois, get_dois_per_orcid
 
@@ -44,9 +44,10 @@ async def fetch_dois(dois: List[str], ):
     for ra in org_dois.keys():
 
         # for each RA, resolve the DOIs
-        if ra in RA_MIME:
-            mime = RA_MIME[ra]
-            await fetch_records(org_dois[ra], Path(ra), 'https://doi.org/', mime, 0)
+        if ra in RAs:
+            mime: str = str(RAs[ra]['mime'])
+            sleep: int = int(RAs[ra]['sleep'])
+            await fetch_records(org_dois[ra], Path(ra), 'https://doi.org/', mime, sleep)
 
     resolved_dois_crossref = analyze_dois(Path('Crossref'),
                                                            analyze_doi_record_crossref)
