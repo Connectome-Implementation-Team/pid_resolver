@@ -39,7 +39,7 @@ Software dependencies are explicitly mentioned in the [dependencies document](DE
 The library offers a [CLI version](pid_resolver_lib/cli.py) that can be used as follows:
 - Create a virtual environment, see https://docs.python.org/3/tutorial/venv.html#creating-virtual-environments
 - Install the library `pip install -e <path/to/local/repo>` (from locally checked out repo).
-- Create a JSON file containing one or several DOIs, e.g., a file `dois.json` with the contents `["10.1007/978-3-031-47243-5_6"]`.
+- Create a JSON file containing one or several DOIs, e.g., a file `dois.json` with the contents `["10.1007/978-3-031-47243-5_6"]`. Note that DOIs are **without** base path `https://doi.org/`.
 - Use the script as follows: `pid_resolver -i 2 -d dois.json`
 - Run `pid_resolver` for usage instructions.
 
