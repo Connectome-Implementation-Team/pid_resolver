@@ -33,7 +33,13 @@ logging.basicConfig(filename='pid_resolver.log',
 
 logger = logging.getLogger(__name__)
 
-async def fetch_dois(dois: List[str], ):
+
+def normalize_doi(doi: str) -> str:
+    # remove backslashes
+    return doi.replace('\\', '')
+
+
+async def fetch_dois(dois: List[str], ) -> List[str]:
     if len(dois) == 0:
         return []
 
@@ -71,7 +77,7 @@ async def fetch_dois(dois: List[str], ):
 
     dois_to_harvest = [item for sublist in new_dois for item in sublist]
 
-    return dois_to_harvest
+    return list(map(normalize_doi, dois_to_harvest))
 
 
 async def start(dois_to_harvest: List[str], number_of_iterations: int):
