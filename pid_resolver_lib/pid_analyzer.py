@@ -347,6 +347,14 @@ def get_orcids_from_resolved_dois(dois: Dict[str, PublicationInfo]) -> List[str]
     return cast(List[str], list(set(filter(lambda auth: auth is not None, orcids))))
 
 
+def _parse_orcid_json(orcid_json: str, orcid: str)-> Optional[Dict]:
+    try:
+        return json.loads(orcid_json)
+    except Exception as e:
+        logging.error(f'{ANALYZER} An error occurred when parsing ORCID JSON for {orcid}: {e}')
+        return None
+
+
 def get_dois_per_orcid(cache_dir: Path) -> List[Dict]:
     """
     Collects cached ORCID profiles and organizes them as a list of objects with id and DOIs.
@@ -356,12 +364,16 @@ def get_dois_per_orcid(cache_dir: Path) -> List[Dict]:
 
     orcids = list(get_keys(cache_dir))
 
-    orcid_profiles: List[Dict] = list(map(lambda orcid: json.loads(read_from_cache(orcid, cache_dir)), orcids))
+    orcid_profiles_maybe: List[Optional[Dict]] = list(map(lambda orcid: _parse_orcid_json(read_from_cache(orcid, cache_dir), orcid), orcids))
+
+    orcid_profiles = list(filter(lambda orcid_profile: orcid_profile is not None, orcid_profiles_maybe))
 
     # structure [{id, givenName, familyName, dois}]
     dois_per_orcid: List[Dict] = jq.compile(
         '. | map({"id": ."@id", "givenName": .givenName, "familyName": .familyName, "dois": [[."@reverse".creator] | flatten[] | select(."@type" == "CreativeWork")] | [[map(.identifier)] | flatten[] | [select(.propertyID == "doi")] | map(.value)] | flatten})').input_value(
         orcid_profiles).first()
+
+    #logging.info(f'{ANALYZER} {dois_per_orcid}')
 
     return dois_per_orcid
 

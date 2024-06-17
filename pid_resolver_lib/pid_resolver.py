@@ -54,7 +54,7 @@ async def _make_record_request(session: ClientSession, record_id: str, base_url:
             return ResolvedRecord(record_id, await request.text())
 
     except Exception as e:
-        logging.error(f'{RESOLVER} Error when resolving record {e}')
+        logging.error(f'{RESOLVER} Error when resolving {record_id} {e}')
         return None
 
 
