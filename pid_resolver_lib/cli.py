@@ -22,7 +22,8 @@ import asyncio
 import json
 from .doi_ra_handler import group_dois_by_ra, RAs
 from .pid_resolver import fetch_records
-from .pid_analyzer import analyze_dois, analyze_doi_record_crossref, analyze_doi_record_datacite, get_orcids_from_resolved_dois, get_dois_per_orcid
+from .pid_analyzer import analyze_dois, analyze_doi_record_crossref, analyze_doi_record_datacite, \
+    get_orcids_from_resolved_dois, get_dois_per_orcid, analyze_doi_record_medra
 
 logging.basicConfig(filename='pid_resolver.log',
                     filemode='a',
@@ -61,8 +62,11 @@ async def fetch_dois(dois: List[str], ) -> List[str]:
     resolved_dois_datacite = analyze_dois(Path('DataCite'),
                                                            analyze_doi_record_datacite)
 
+    resolved_dois_medra = analyze_dois(Path('mEDRA'),
+                                                           analyze_doi_record_medra)
+
     # combined resolved DOIs
-    resolved_dois = {**resolved_dois_crossref, **resolved_dois_datacite}
+    resolved_dois = {**resolved_dois_crossref, **resolved_dois_datacite, **resolved_dois_medra}
 
     with open('results.json', 'w') as f:
         f.write(json.dumps(resolved_dois))

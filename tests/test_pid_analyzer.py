@@ -66,6 +66,29 @@ class TestPidAnalyzer(unittest.IsolatedAsyncioTestCase):
             assert res.authors[0].given_name == 'Irina'
             assert res.authors[0].family_name == 'Balaur'
 
+    def test_analyze_doi_record_medra(self):
+        # https://medium.com/@durgaswaroop/writing-better-tests-in-python-with-pytest-mock-part-2-92b828e1453c
+        with mock.patch('pid_resolver_lib.pid_analyzer.read_from_cache') as mock_read_from_cache:
+
+            with open('tests/testdata/medra_test.xml') as f:
+                medra_xml = f.read()
+
+            mock_read_from_cache.return_value = medra_xml
+
+            res: PublicationInfo | None = pid_resolver_lib.pid_analyzer.analyze_doi_record_medra(Path(),
+                                                                                                    '10.26342/2020-64-4', {})
+
+            assert res is not None
+
+            assert res.doi == '10.26342/2020-64-4'
+            assert res.title == 'Predicting the humorousness of tweets using gaussian process\n            preference learning'
+
+            assert len(res.authors) == 4
+
+            assert res.authors[0].given_name == 'Edwin'
+            assert res.authors[0].family_name == 'Simpson'
+
+
     def test_get_orcids_from_resolved_dois(self):
 
         pub_info = PublicationInfo(

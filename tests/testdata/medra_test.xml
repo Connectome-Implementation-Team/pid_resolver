@@ -1,0 +1,81 @@
+<rdf:RDF xmlns:dc="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:prism="http://prismstandard.org/namespaces/basic/2.1/" xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:bibo="http://purl.org/ontology/bibo/" xmlns:foaf="http://xmlns.com/foaf/0.1/">
+    <bibo:Article
+            rdf:about="https://doi.org/10.26342/2020-64-4">
+        <bibo:pageEnd>44</bibo:pageEnd>
+        <dc:identifier>
+            10.26342/2020-64-4
+        </dc:identifier>
+        <dc:title>Predicting the humorousness of tweets using gaussian process
+            preference learning
+        </dc:title>
+        <dc:creator>
+            <foaf:Person rdf:about="http://id.medra.org/contributor/Edwin+Simpson-10.26342%2F2020-64-4-2">
+                <foaf:familyName>Simpson</foaf:familyName>
+                <foaf:givenName>
+                    Edwin
+                </foaf:givenName>
+                <foaf:name>Edwin Simpson</foaf:name>
+            </foaf:Person>
+
+        </dc:creator>
+        <prism:startingPage>37</prism:startingPage>
+        <dc:creator>
+            <foaf:Person rdf:about="http://id.medra.org/contributor/Erik-L%C3%A2n+Do+Dinh-10.26342%2F2020-64-4-1">
+                <foaf:familyName>Do Dinh</foaf:familyName>
+                <foaf:givenName>Erik-Lân</foaf:givenName>
+                <foaf:name>
+                    Erik-Lân Do Dinh
+                </foaf:name>
+            </foaf:Person>
+
+        </dc:creator>
+        <prism:endingPage>44</prism:endingPage>
+        <dc:isPartOf>
+            <bibo:Journal rdf:about="http://id.medra.org/issn/1989-7553">
+                <dc:identifier>1989-7553</dc:identifier>
+                <owl:sameAs>
+                    urn:issn:1989-7553
+                </owl:sameAs>
+                <prism:eIssn>1989-7553</prism:eIssn>
+                <bibo:eissn>
+                    1989-7553
+                </bibo:eissn>
+                <dc:title>Procesamiento del Lenguaje Natural</dc:title>
+                <dc:hasPart
+                        rdf:resource="https://doi.org/10.26342/2020-64-4"/>
+            </bibo:Journal>
+
+        </dc:isPartOf>
+        <dc:date>2020</dc:date>
+        <bibo:doi>10.26342/2020-64-4</bibo:doi>
+        <owl:sameAs>
+            info:doi/10.26342/2020-64-4
+        </owl:sameAs>
+        <bibo:pageStart>37</bibo:pageStart>
+        <dc:creator>
+            <foaf:Person rdf:about="http://id.medra.org/contributor/Iryna+Gurevych-10.26342%2F2020-64-4-3">
+                <foaf:familyName>Gurevych</foaf:familyName>
+                <foaf:givenName>
+                    Iryna
+                </foaf:givenName>
+                <foaf:name>Iryna Gurevych</foaf:name>
+            </foaf:Person>
+
+        </dc:creator>
+        <owl:sameAs>doi:10.26342/2020-64-4</owl:sameAs>
+        <prism:doi>10.26342/2020-64-4</prism:doi>
+        <dc:creator>
+            <foaf:Person rdf:about="http://id.medra.org/contributor/Tristan+Miller-10.26342%2F2020-64-4-0">
+                <foaf:familyName>Miller</foaf:familyName>
+                <foaf:givenName>
+                    Tristan
+                </foaf:givenName>
+                <foaf:name>Tristan Miller</foaf:name>
+            </foaf:Person>
+
+        </dc:creator>
+        <dc:publisher>Sociedad Española para el Procesamiento del Lenguaje Natural</dc:publisher>
+    </bibo:Article>
+</rdf:RDF>
