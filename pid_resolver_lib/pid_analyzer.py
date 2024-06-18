@@ -213,6 +213,61 @@ def analyze_doi_record_crossref(cache_dir: Path, doi: str, orcid_info: Dict[str,
         return None
 
 
+def analyze_author_info_medra(creator: etree.Element, namespace_map: Any, orcid_info: List[OrcidProfile]) -> Optional[AuthorInfo]:
+    given_name_ele: Optional[etree.Element] = creator.find('.//foaf:givenName', namespaces=namespace_map)
+    family_name_ele: Optional[etree.Element] = creator.find('.//foaf:familyName', namespaces=namespace_map)
+
+    orcid: Optional[str]
+    origin_orcid: Optional[str]
+
+    if given_name_ele is not None and family_name_ele is not None:
+        given_name = given_name_ele.text.strip()
+        family_name = family_name_ele.text.strip()
+
+        orcid, origin_orcid = _match_name_with_orcid_profile(orcid_info, given_name, family_name)
+
+        return AuthorInfo(given_name=given_name, family_name=family_name, orcid=orcid, origin_orcid=origin_orcid)
+
+    # return None if insufficient information is provided.
+    return None
+
+
+def analyze_doi_record_medra(cache_dir: Path, doi: str, orcid_info: Dict[str, List[OrcidProfile]]) -> Optional[PublicationInfo]:
+    try:
+        rec_str = read_from_cache(doi, cache_dir)
+
+        root = etree.fromstring(rec_str)
+
+        title_ele: Optional[etree.Element] = root.find('.//bibo:Article/dc:title', namespaces=root.nsmap)
+
+        if title_ele is not None:
+            title = title_ele.text.strip()
+        else:
+            title = None
+
+        if doi in orcid_info:
+            orcid_author_info: List[OrcidProfile] = orcid_info[doi]
+        else:
+            orcid_author_info = []
+
+        creators: List[etree.Element] = root.findall('.//dc:creator/foaf:Person', namespaces=root.nsmap)
+
+        authors: List[Optional[AuthorInfo]] = list(
+            map(lambda creator: analyze_author_info_medra(creator, root.nsmap, orcid_author_info), creators))
+
+        # filter out None values
+        authors_filtered = list(filter(lambda auth: auth is not None, authors))
+
+        # https://stackoverflow.com/questions/67274469/mypy-types-and-optional-filtering
+        return PublicationInfo(doi=doi, title=title, authors=cast(List[AuthorInfo], authors_filtered))
+
+    except Exception as e:
+        logging.error(f'{ANALYZER} An error occurred in {doi}: {e}')
+
+    return None
+
+
+
 def analyze_dois(cache_dir: Path, analyzer: Callable[[Path, str, Dict], Optional[PublicationInfo]]) -> Dict[
     str, PublicationInfo]:
     """
@@ -402,5 +457,5 @@ def group_orcids_per_doi(dois_per_orcid: List[Dict]) -> Dict[str, List[OrcidProf
     return orcids_by_doi
 
 
-__all__ = ['PublicationInfo', 'analyze_dois', 'analyze_doi_record_crossref', 'analyze_doi_record_datacite', 'get_orcids_from_resolved_dois',
+__all__ = ['PublicationInfo', 'analyze_dois', 'analyze_doi_record_crossref', 'analyze_doi_record_datacite', 'analyze_doi_record_medra', 'get_orcids_from_resolved_dois',
            'get_dois_per_orcid', 'group_orcids_per_doi']
