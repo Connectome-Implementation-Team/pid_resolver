@@ -255,7 +255,8 @@ def analyze_doi_record_medra(cache_dir: Path, doi: str, orcid_info: Dict[str, Li
         else:
             orcid_author_info = []
 
-        creators: List[etree.Element] = root.findall('.//ContentItem/Contributor', namespaces=root.nsmap)
+        # set prefix for namespace used in whole file
+        creators: List[etree.Element] = root.xpath('.//onix:ContentItem/onix:Contributor[onix:ContributorRole[contains(text(), "A01")]]', namespaces={'onix': 'http://www.editeur.org/onix/DOIMetadata/2.0'})
 
         authors: List[Optional[AuthorInfo]] = list(
             map(lambda creator: analyze_author_info_medra(creator, root.nsmap, orcid_author_info), creators))
