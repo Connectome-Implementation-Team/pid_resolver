@@ -81,12 +81,13 @@ class TestPidAnalyzer(unittest.IsolatedAsyncioTestCase):
             assert res is not None
 
             assert res.doi == '10.26342/2020-64-4'
-            assert res.title == 'Predicting the humorousness of tweets using gaussian process\n            preference learning'
+            assert res.title == 'Predicting the humorousness of tweets using gaussian process preference learning'
 
             assert len(res.authors) == 4
 
-            assert res.authors[0].given_name == 'Edwin'
-            assert res.authors[0].family_name == 'Simpson'
+            assert res.authors[0].given_name == 'Tristan'
+            assert res.authors[0].family_name == 'Miller'
+            assert res.authors[0].orcid == '0000-0001-6157-8808'
 
 
     def test_get_orcids_from_resolved_dois(self):
