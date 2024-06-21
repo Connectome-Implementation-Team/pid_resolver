@@ -243,7 +243,7 @@ def analyze_doi_record_medra(cache_dir: Path, doi: str, orcid_info: Dict[str, Li
         # encode to bytes because of Unicode strings with encoding declaration
         root = etree.fromstring(rec_str.encode())
 
-        title_ele: Optional[etree.Element] = root.xpath('.//onix:Title[parent::onix:ContentItem|parent::onix:DOIMonographicProduct and onix:TitleType[contains(text(), "01")]][1]/onix:TitleText', namespaces={'onix': 'http://www.editeur.org/onix/DOIMetadata/2.0'})
+        title_ele: List[etree.Element] = root.xpath('.//onix:Title[parent::onix:ContentItem|parent::onix:DOIMonographicProduct and onix:TitleType[contains(text(), "01")]][1]/onix:TitleText', namespaces={'onix': 'http://www.editeur.org/onix/DOIMetadata/2.0'})
 
         if len(title_ele) == 1:
             title = title_ele[0].text.strip()
