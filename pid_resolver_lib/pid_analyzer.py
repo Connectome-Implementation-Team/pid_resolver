@@ -243,10 +243,10 @@ def analyze_doi_record_medra(cache_dir: Path, doi: str, orcid_info: Dict[str, Li
         # encode to bytes because of Unicode strings with encoding declaration
         root = etree.fromstring(rec_str.encode())
 
-        title_ele: Optional[etree.Element] = root.find('.//ContentItem/Title/TitleText', namespaces=root.nsmap)
+        title_ele: Optional[etree.Element] = root.xpath('.//onix:Title[parent::onix:ContentItem|parent::onix:DOIMonographicProduct and onix:TitleType[contains(text(), "01")]][1]/onix:TitleText', namespaces={'onix': 'http://www.editeur.org/onix/DOIMetadata/2.0'})
 
-        if title_ele is not None:
-            title = title_ele.text.strip()
+        if len(title_ele) == 1:
+            title = title_ele[0].text.strip()
         else:
             title = None
 
@@ -256,7 +256,7 @@ def analyze_doi_record_medra(cache_dir: Path, doi: str, orcid_info: Dict[str, Li
             orcid_author_info = []
 
         # set prefix for namespace used in whole file
-        creators: List[etree.Element] = root.xpath('.//onix:ContentItem/onix:Contributor[onix:ContributorRole[contains(text(), "A01")]]', namespaces={'onix': 'http://www.editeur.org/onix/DOIMetadata/2.0'})
+        creators: List[etree.Element] = root.xpath('.//onix:Contributor[onix:ContributorRole[contains(text(), "A01")]]', namespaces={'onix': 'http://www.editeur.org/onix/DOIMetadata/2.0'})
 
         authors: List[Optional[AuthorInfo]] = list(
             map(lambda creator: analyze_author_info_medra(creator, root.nsmap, orcid_author_info), creators))
