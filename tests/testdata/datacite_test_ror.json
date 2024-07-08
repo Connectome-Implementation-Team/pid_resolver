@@ -1,0 +1,100 @@
+{
+  "@context": "http://schema.org",
+  "@type": "ScholarlyArticle",
+  "@id": "https://doi.org/10.5281/zenodo.10124944",
+  "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "oai",
+    "value": "oai:zenodo.org:10124944"
+  },
+  "url": "https://zenodo.org/doi/10.5281/zenodo.10124944",
+  "additionalType": "Presentation",
+  "name": "Towards a national Social and Behavioral Science Publication Package resource: An inaugural 'participatory infrastructuring' workshop",
+  "author": [
+    {
+      "name": "Andrew S. Hoffman",
+      "givenName": "Andrew S.",
+      "familyName": "Hoffman",
+      "affiliation": {
+        "@type": "Organization",
+        "@id": "https://ror.org/027bh9e22",
+        "name": "Leiden University"
+      },
+      "@type": "Person",
+      "@id": "0000-0001-6137-4047"
+    },
+    {
+      "name": "Katie Hudson",
+      "givenName": "Katie",
+      "familyName": "Hudson",
+      "affiliation": {
+        "@type": "Organization",
+        "@id": "https://ror.org/027bh9e22",
+        "name": "Leiden University"
+      },
+      "@type": "Person",
+      "@id": "0009-0007-1363-0123"
+    },
+    {
+      "name": "Céline Richard",
+      "givenName": "Céline",
+      "familyName": "Richard",
+      "affiliation": {
+        "@type": "Organization",
+        "@id": "https://ror.org/027bh9e22",
+        "name": "Leiden University"
+      },
+      "@type": "Person",
+      "@id": "0009-0007-2393-4964"
+    },
+    {
+      "name": "Yannis Stavrakakis",
+      "givenName": "Yannis",
+      "familyName": "Stavrakakis",
+      "affiliation": {
+        "@type": "Organization",
+        "@id": "https://ror.org/02jz4aj89",
+        "name": "Maastricht University"
+      },
+      "@type": "Person",
+      "@id": "0000-0001-6127-3000"
+    },
+    {
+      "name": "Clifford Tatum",
+      "givenName": "Clifford",
+      "familyName": "Tatum",
+      "affiliation": [
+        {
+          "@type": "Organization",
+          "@id": "https://ror.org/009vhk114",
+          "name": "SURF"
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://ror.org/027bh9e22",
+          "name": "Leiden University"
+        }
+      ],
+      "@type": "Person",
+      "@id": "0000-0002-2212-3197"
+    }
+  ],
+  "description": "These are slides from Workshop #1.8 at the National Open Science Festival, held at Erasmus University in Rotterdam, the Netherlands on 31 August 2023.\nTitle: Towards a national Social and Behavioral Science Publication Package resource: An inaugural 'participatory infrastructuring' workshop\nAbstract\nSince 2018, researchers employed in Faculties of Social and Behavioral Sciences (FSWs) at Dutch universities have been held to a set of domain-specific standards regarding the handling of their research data: the 'Guideline for the archiving of academic research for Faculties of Behavioural and Social Sciences in the Netherlands' (henceforth, the Guideline). One central element of the Guideline – now in its second iteration (DSW, 2022) – is a requirement for research publications to have an associated set of materials assembled into what the document refers to as a Publication Package (PP). The stated goal of PPs is to 'ensure the transparency of qualitative and quantitative empirical research' conducted in FSWs.\nWhile the Guideline applies to all FSWs, at present there is neither a shared understanding of how the PP requirement is being implemented in different institutional settings, nor how it is being adapted to accommodate the diversity of disciplines, methodological approaches, and epistemological traditions that FSW research encapsulates.\nMoreover, despite its aspirations toward transparency, the Guideline also states that PPs are only to be made accessible to 'academic peers' upon 'reasonable request.' While for a myriad of valid reasons the underlying empirical data and/or code contained in Publication Packages cannot be exposed publicly, there is a great deal of information about their projects that researchers are asked to produce in the process of assembling PPs that can be made available to the academic community and the wider public.\nDeparting from these two points, we invite FSW researchers and directors, Research Data Management experts (e.g. Data Stewards, Data Managers), and other stakeholders (e.g. Policy Officers) for an interactive 'participatory infrastructuring' workshop focused on developing a national Publication Package resource. \nIn the first part of the workshop, we aim to establish a preliminary overview of how Publication Packages are being implemented in different Faculties; what workflows, tooling, and metadata formats are being used in their creation and archiving; and what limitations or obstacles those assembling PPs encounter in the process. During the second part, through a mix of breakouts and group discussion, participants will be asked to 'draw together' (Botero et al., 2019) their visions for a web-based Publication Package infrastructure, including a catalog of information it could contain/expose; a set of epistemological and sociotechnical requirements supporting the sharing of this information; as well as envisioned use-cases where this information could be (re)used to further enrich FSW research and/or facilitate meaningful connections with fellow researchers and other societal actors (Leonelli, 2023). \nThe outputs of this inaugural workshop will be used to inform a series of subsequent workshops in Autumn 2023, ultimately culminating in a funding proposal to build such a community-designed Publication Package infrastructure. The creation of this resource will help to better align the PP requirement with the ideals of Open Science and the FAIR Data Principles, while also contributing to the national Recognition & Reward agenda by bringing greater visibility to the efforts that FSW researchers are investing in responsible data management practices.\nReferences\nBotero, A., Karasti, H., Saad-Sulonen, J., Geirbo, C. G., Baker, K. S., Parmiggiani, E., & Marttila, S. (2019). Drawing Together, Infrastructuring and Politics for Participatory Design. University of Oulu, Finland. https://hdl.handle.net/2142/103012\nDSW (Deans of Social Sciences in the Netherlands). (2022). Guideline for the archiving of academic research for Faculties of Behavioural and Social Sciences in the Netherlands (March 2022). Zenodo. https://doi.org/10.5281/zenodo.7583831\nLeonelli, S. (2023). Philosophy of Open Science. Cambridge University Press. https://doi.org/10.1017/9781009416368\n ",
+  "license": "https://creativecommons.org/licenses/by/4.0/legalcode",
+  "keywords": "Open Science, Netherlands, Publication Package, Transparency, Infrastructuring",
+  "inLanguage": "en",
+  "datePublished": "2023-11-14",
+  "citation": {
+    "@id": "https://doi.org/10.5281/zenodo.7583831",
+    "@type": "CreativeWork"
+  },
+  "schemaVersion": "http://datacite.org/schema/kernel-4",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Zenodo"
+  },
+  "provider": {
+    "@type": "Organization",
+    "name": "datacite"
+  }
+}

@@ -176,11 +176,11 @@ def analyze_author_info_crossref(creator: etree.Element, namespace_map: Any, orc
         family_name = family_name_ele.text
         if orcid_ele is not None:
             orcid = _get_orcid_id_from_url(orcid_ele.attrib.get('{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource'))
-            return AuthorInfo(given_name=given_name, family_name=family_name, orcid=orcid, origin_orcid='doi')
+            return AuthorInfo(given_name=given_name, family_name=family_name, orcid=orcid, origin_orcid='doi', ror=None)
         else:
             orcid, origin_orcid = _match_name_with_orcid_profile(orcid_info, given_name, family_name)
 
-            return AuthorInfo(given_name=given_name, family_name=family_name, orcid=orcid, origin_orcid=origin_orcid)
+            return AuthorInfo(given_name=given_name, family_name=family_name, orcid=orcid, origin_orcid=origin_orcid, ror=None)
 
     # return None if insufficient information is provided.
     return None
@@ -239,7 +239,7 @@ def analyze_author_info_medra(creator: etree.Element, namespace_map: Any, orcid_
 
         orcid, origin_orcid = _match_name_with_orcid_profile(orcid_info, given_name, family_name)
 
-        return AuthorInfo(given_name=given_name, family_name=family_name, orcid=orcid, origin_orcid=origin_orcid)
+        return AuthorInfo(given_name=given_name, family_name=family_name, orcid=orcid, origin_orcid=origin_orcid, ror=None)
 
     # return None if insufficient information is provided.
     return None
@@ -391,7 +391,7 @@ def parse_resolved_dois_from_json(resolved_dois_json: Path) -> Dict[str, Publica
   ] 
     '''
     mapped_items = map(lambda doi: [doi[0], PublicationInfo(doi=doi[0], title=doi[1][1], authors=list(
-        map(lambda auth: AuthorInfo(given_name=auth[0], family_name=auth[1], orcid=auth[2], origin_orcid=auth[3]), doi[1][2])))],
+        map(lambda auth: AuthorInfo(given_name=auth[0], family_name=auth[1], orcid=auth[2], origin_orcid=auth[3], ror=auth[4]), doi[1][2])))],
                        doi_items)
 
     # recreate Dict[str, PublicationInfo] from JSON
