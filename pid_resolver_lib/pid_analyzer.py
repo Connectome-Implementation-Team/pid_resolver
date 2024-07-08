@@ -43,6 +43,7 @@ class AuthorInfo(NamedTuple):
     family_name: str  # 1
     orcid: Optional[str]  # 2
     origin_orcid: Optional[str] # 3
+    ror: Optional[List[str]]
 
 
 class PublicationInfo(NamedTuple):
@@ -107,7 +108,19 @@ def analyze_author_info_datacite(author_info: Dict, orcid_info: List[OrcidProfil
     else:
         orcid, origin_orcid = _match_name_with_orcid_profile(orcid_info, given_name, family_name)
 
-    return AuthorInfo(given_name=given_name, family_name=family_name, orcid=orcid, origin_orcid=origin_orcid)
+    if 'affiliation' in author_info:
+        # check for single or multiple affiliations
+        if isinstance(author_info['affiliation'], list):
+            ror_affs = list(filter(lambda aff: '@id' in aff, author_info['affiliation']))
+            ror = list(map(lambda aff: aff['@id'], ror_affs))
+        elif '@id' in author_info['affiliation']:
+            ror = [author_info['affiliation']['@id']]
+        else:
+            ror = None
+    else:
+        ror = None
+
+    return AuthorInfo(given_name=given_name, family_name=family_name, orcid=orcid, origin_orcid=origin_orcid, ror=ror)
 
 
 def analyze_doi_record_datacite(cache_dir: Path, doi: str, orcid_info: Dict[str, List[OrcidProfile]]) -> Optional[PublicationInfo]:
