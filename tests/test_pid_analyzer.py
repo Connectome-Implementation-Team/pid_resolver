@@ -66,6 +66,33 @@ class TestPidAnalyzer(unittest.IsolatedAsyncioTestCase):
             assert res.authors[0].given_name == 'Irina'
             assert res.authors[0].family_name == 'Balaur'
 
+    def test_analyze_doi_record_datacite_ror(self):
+        # https://medium.com/@durgaswaroop/writing-better-tests-in-python-with-pytest-mock-part-2-92b828e1453c
+        with mock.patch('pid_resolver_lib.pid_analyzer.read_from_cache') as mock_read_from_cache:
+
+            with open('tests/testdata/datacite_test_ror.json') as f:
+                datacite_json = f.read()
+
+            mock_read_from_cache.return_value = datacite_json
+
+            res: PublicationInfo | None = pid_resolver_lib.pid_analyzer.analyze_doi_record_datacite(Path(), '10.5281/zenodo.10124944', {})
+
+            assert res is not None
+
+            assert res.doi == '10.5281/zenodo.10124944'
+            assert res.title == 'Towards a national Social and Behavioral Science Publication Package resource: An inaugural \'participatory infrastructuring\' workshop'
+
+            assert len(res.authors) == 5
+
+            assert res.authors[0].given_name == 'Andrew S.'
+            assert res.authors[0].family_name == 'Hoffman'
+            assert res.authors[0].ror[0] == 'https://ror.org/027bh9e22'
+
+            assert res.authors[4].given_name == 'Clifford'
+            assert res.authors[4].family_name == 'Tatum'
+            assert res.authors[4].ror[0] == 'https://ror.org/009vhk114'
+            assert res.authors[4].ror[1] == 'https://ror.org/027bh9e22'
+
     def test_analyze_doi_record_medra(self):
         # https://medium.com/@durgaswaroop/writing-better-tests-in-python-with-pytest-mock-part-2-92b828e1453c
         with mock.patch('pid_resolver_lib.pid_analyzer.read_from_cache') as mock_read_from_cache:
@@ -98,12 +125,14 @@ class TestPidAnalyzer(unittest.IsolatedAsyncioTestCase):
                 given_name='Irina',
                 family_name='Balaur',
                 orcid='0000-0002-3671-895X',
-                origin_orcid='doi'
+                origin_orcid='doi',
+                ror=None
             ), AuthorInfo(
                 given_name='Soumyabrata',
                 family_name='Ghosh',
                 orcid='0000-0003-0659-6733',
-                origin_orcid='doi'
+                origin_orcid='doi',
+                ror=None
             )]
         )
 
