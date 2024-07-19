@@ -62,6 +62,46 @@ def _get_orcid_id_from_url(orcid_url: str) -> str:
     return orcid_url.replace('http://orcid.org/http', 'http').replace('http://',
                                                       'https://').strip()[len('https://orcid.org/'):]  # fix invalid ORCIDs, use https scheme for ORCID
 
+def names_match(given_name: str, family_name: str, orcid: OrcidProfile) -> bool:
+    """
+    Determines if two names match.
+
+    :param given_name: The author's given name.
+    :param family_name: The author's family name.
+    :param orcid: The ORCID profile to match against.
+    :return: True if the names are considered equal.
+    """
+
+    try:
+        if given_name == orcid.given_name and family_name == orcid.family_name:
+            return True
+
+        # split family name
+        author_first_surname, *author_second_surname = family_name.split(' ')
+        orcid_first_surname, *member_second_surname = orcid.family_name.split(' ')
+
+        if author_first_surname == orcid_first_surname:
+            if given_name == orcid.given_name:
+                return True
+            else:
+
+                # check for abbreviated given name
+                if len(given_name) > 1 and len(orcid.given_name) > 1 and given_name[0] == orcid.given_name[0] and (given_name[1] == '.' or given_name[1] == ' ') or (len(given_name) == 1 and given_name[0] == orcid.given_name[0]):
+                    return True
+                else:
+                    author_first_given_name, *author_second_given_name = given_name.split(' ')
+                    member_first_given_name, *member_second_given_name = orcid.given_name.split(' ')
+
+                    if author_first_given_name == member_first_given_name:
+                        return True
+                    else:
+                        return False
+        else:
+            return False
+
+    except Exception as e:
+        logging.error(f'Error when handling {given_name} {family_name} and {orcid}, {e}')
+        return False
 
 def _match_name_with_orcid_profile(orcid_info: List[OrcidProfile], given_name: str, family_name: str) -> Tuple[Optional[str], Optional[str]]:
     """
@@ -72,15 +112,20 @@ def _match_name_with_orcid_profile(orcid_info: List[OrcidProfile], given_name: s
     @param family_name: The author's last name.
     """
 
+    if len(orcid_info) == 0:
+        return None, None
+
     # match ORCID profiles by name
     author_orcid = list(
-        filter(lambda orcid: orcid.family_name == family_name and orcid.given_name == given_name, orcid_info))
+        filter(lambda orcid: names_match(given_name, family_name, orcid), orcid_info))
 
     if len(author_orcid) == 1:
         # get ORCID ID from URL
         orcid = author_orcid[0].id.rsplit('/', 1)[-1]
         origin_orcid = 'orcid'
+        logger.debug(f'Could assign ORCID profile {author_orcid[0]} to {given_name} {family_name}')
     else:
+        logger.debug(f'Could not assign exactly one of {orcid_info} to {given_name} {family_name}')
         orcid = None
         origin_orcid = None
 
@@ -471,4 +516,4 @@ def group_orcids_per_doi(dois_per_orcid: List[Dict]) -> Dict[str, List[OrcidProf
 
 
 __all__ = ['PublicationInfo', 'analyze_dois', 'analyze_doi_record_crossref', 'analyze_doi_record_datacite', 'analyze_doi_record_medra', 'get_orcids_from_resolved_dois',
-           'get_dois_per_orcid', 'group_orcids_per_doi']
+           'get_dois_per_orcid', 'group_orcids_per_doi', 'names_match']
