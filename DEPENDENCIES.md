@@ -1,4 +1,4 @@
-## aiohttp
+## [aiohttp](https://github.com/aio-libs/aiohttp)
 
 Copyright aio-libs contributors.
 
@@ -14,7 +14,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-## aioresponses
+## [aioresponses](https://github.com/pnuckowski/aioresponses)
 
 MIT License
 
@@ -38,7 +38,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-## diskcache
+## [diskcache](https://github.com/grantjenks/python-diskcache)
 
 Copyright 2016-2022 Grant Jenks
 
@@ -53,7 +53,7 @@ under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
 CONDITIONS OF ANY KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations under the License.
 
-## jq
+## [jq](https://github.com/mwilliamson/jq.py)
 
 Copyright (c) 2013, Michael Williamson
 All rights reserved.
@@ -78,7 +78,7 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-## lxml
+## [lxml](https://github.com/lxml/lxml)
 
 Copyright (c) 2004 Infrae. All rights reserved.
 
@@ -110,7 +110,7 @@ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-## mypy
+## [mypy](https://github.com/python/mypy)
 
 The MIT License
 
@@ -135,7 +135,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
-## packaging
+## [packaging](https://github.com/pypa/packaging)
 
 This software is made available under the terms of *either* of the licenses
 found in LICENSE.APACHE or LICENSE.BSD. Contributions to this software is made
