@@ -1,81 +1,98 @@
-<rdf:RDF xmlns:dc="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-         xmlns:prism="http://prismstandard.org/namespaces/basic/2.1/" xmlns:owl="http://www.w3.org/2002/07/owl#"
-         xmlns:bibo="http://purl.org/ontology/bibo/" xmlns:foaf="http://xmlns.com/foaf/0.1/">
-    <bibo:Article
-            rdf:about="https://doi.org/10.26342/2020-64-4">
-        <bibo:pageEnd>44</bibo:pageEnd>
-        <dc:identifier>
-            10.26342/2020-64-4
-        </dc:identifier>
-        <dc:title>Predicting the humorousness of tweets using gaussian process
-            preference learning
-        </dc:title>
-        <dc:creator>
-            <foaf:Person rdf:about="http://id.medra.org/contributor/Edwin+Simpson-10.26342%2F2020-64-4-2">
-                <foaf:familyName>Simpson</foaf:familyName>
-                <foaf:givenName>
-                    Edwin
-                </foaf:givenName>
-                <foaf:name>Edwin Simpson</foaf:name>
-            </foaf:Person>
-
-        </dc:creator>
-        <prism:startingPage>37</prism:startingPage>
-        <dc:creator>
-            <foaf:Person rdf:about="http://id.medra.org/contributor/Erik-L%C3%A2n+Do+Dinh-10.26342%2F2020-64-4-1">
-                <foaf:familyName>Do Dinh</foaf:familyName>
-                <foaf:givenName>Erik-Lân</foaf:givenName>
-                <foaf:name>
-                    Erik-Lân Do Dinh
-                </foaf:name>
-            </foaf:Person>
-
-        </dc:creator>
-        <prism:endingPage>44</prism:endingPage>
-        <dc:isPartOf>
-            <bibo:Journal rdf:about="http://id.medra.org/issn/1989-7553">
-                <dc:identifier>1989-7553</dc:identifier>
-                <owl:sameAs>
-                    urn:issn:1989-7553
-                </owl:sameAs>
-                <prism:eIssn>1989-7553</prism:eIssn>
-                <bibo:eissn>
-                    1989-7553
-                </bibo:eissn>
-                <dc:title>Procesamiento del Lenguaje Natural</dc:title>
-                <dc:hasPart
-                        rdf:resource="https://doi.org/10.26342/2020-64-4"/>
-            </bibo:Journal>
-
-        </dc:isPartOf>
-        <dc:date>2020</dc:date>
-        <bibo:doi>10.26342/2020-64-4</bibo:doi>
-        <owl:sameAs>
-            info:doi/10.26342/2020-64-4
-        </owl:sameAs>
-        <bibo:pageStart>37</bibo:pageStart>
-        <dc:creator>
-            <foaf:Person rdf:about="http://id.medra.org/contributor/Iryna+Gurevych-10.26342%2F2020-64-4-3">
-                <foaf:familyName>Gurevych</foaf:familyName>
-                <foaf:givenName>
-                    Iryna
-                </foaf:givenName>
-                <foaf:name>Iryna Gurevych</foaf:name>
-            </foaf:Person>
-
-        </dc:creator>
-        <owl:sameAs>doi:10.26342/2020-64-4</owl:sameAs>
-        <prism:doi>10.26342/2020-64-4</prism:doi>
-        <dc:creator>
-            <foaf:Person rdf:about="http://id.medra.org/contributor/Tristan+Miller-10.26342%2F2020-64-4-0">
-                <foaf:familyName>Miller</foaf:familyName>
-                <foaf:givenName>
-                    Tristan
-                </foaf:givenName>
-                <foaf:name>Tristan Miller</foaf:name>
-            </foaf:Person>
-
-        </dc:creator>
-        <dc:publisher>Sociedad Española para el Procesamiento del Lenguaje Natural</dc:publisher>
-    </bibo:Article>
-</rdf:RDF>
+<?xml version="1.0" encoding="UTF-8"?>
+<ONIXDOISerialArticleWorkRegistrationMessage xmlns="http://www.editeur.org/onix/DOIMetadata/2.0"
+                                             xmlns:cl="http://www.medra.org/DOIMetadata/2.0/Citations"
+                                             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                             xsi:schemaLocation="http://www.editeur.org/onix/DOIMetadata/2.0 https://www.medra.org/schema/onix/DOIMetadata/2.0/ONIX_DOIMetadata_2.0.xsd">
+   <Header>
+      <FromCompany>mEDRA</FromCompany>
+      <FromEmail>medra@medra.org</FromEmail>
+      <ToCompany>PublicService</ToCompany>
+      <SentDate>20240620</SentDate>
+   </Header>
+   <DOISerialArticleWork>
+      <NotificationType>06</NotificationType>
+      <DOI>10.26342/2020-64-4</DOI>
+      <DOIWebsiteLink>http://journal.sepln.org/sepln/ojs/ojs/index.php/pln/article/view/6193</DOIWebsiteLink>
+      <RegistrantName>SEPLN</RegistrantName>
+      <RegistrationAuthority>mEDRA</RegistrationAuthority>
+      <SerialPublication>
+         <SerialWork>
+            <Title>
+               <TitleType>01</TitleType>
+               <TitleText>Procesamiento del Lenguaje Natural</TitleText>
+            </Title>
+            <Publisher>
+               <PublishingRole>01</PublishingRole>
+               <PublisherName>Sociedad Española para el Procesamiento del Lenguaje Natural</PublisherName>
+            </Publisher>
+            <CountryOfPublication>ES</CountryOfPublication>
+         </SerialWork>
+         <SerialVersion>
+            <ProductIdentifier>
+               <ProductIDType>07</ProductIDType>
+               <IDValue>1989-7553</IDValue>
+            </ProductIdentifier>
+            <ProductForm>JD</ProductForm>
+         </SerialVersion>
+      </SerialPublication>
+      <JournalIssue>
+         <JournalIssueDate>
+            <DateFormat>05</DateFormat>
+            <Date>2020</Date>
+         </JournalIssueDate>
+      </JournalIssue>
+      <ContentItem>
+         <TextItem>
+            <PageRun>
+               <FirstPageNumber>37</FirstPageNumber>
+               <LastPageNumber>44</LastPageNumber>
+            </PageRun>
+         </TextItem>
+         <Title>
+            <TitleType>01</TitleType>
+            <TitleText>Predicting the humorousness of tweets using gaussian process preference learning</TitleText>
+         </Title>
+         <Contributor>
+            <SequenceNumber>1</SequenceNumber>
+            <ContributorRole>A01</ContributorRole>
+            <NameIdentifier>
+               <NameIDType>21</NameIDType>
+               <IDValue>http://orcid.org/0000-0001-6157-8808</IDValue>
+            </NameIdentifier>
+            <PersonName>Tristan Miller</PersonName>
+            <PersonNameInverted>Miller, Tristan</PersonNameInverted>
+            <NamesBeforeKey>Tristan</NamesBeforeKey>
+            <KeyNames>Miller</KeyNames>
+         </Contributor>
+         <Contributor>
+            <SequenceNumber>2</SequenceNumber>
+            <ContributorRole>A01</ContributorRole>
+            <PersonName>Erik-Lân Do Dinh</PersonName>
+            <PersonNameInverted>Do Dinh, Erik-Lân</PersonNameInverted>
+            <NamesBeforeKey>Erik-Lân</NamesBeforeKey>
+            <KeyNames>Do Dinh</KeyNames>
+         </Contributor>
+         <Contributor>
+            <SequenceNumber>3</SequenceNumber>
+            <ContributorRole>A01</ContributorRole>
+            <PersonName>Edwin Simpson</PersonName>
+            <PersonNameInverted>Simpson, Edwin</PersonNameInverted>
+            <NamesBeforeKey>Edwin</NamesBeforeKey>
+            <KeyNames>Simpson</KeyNames>
+         </Contributor>
+         <Contributor>
+            <SequenceNumber>4</SequenceNumber>
+            <ContributorRole>A01</ContributorRole>
+            <PersonName>Iryna Gurevych</PersonName>
+            <PersonNameInverted>Gurevych, Iryna</PersonNameInverted>
+            <NamesBeforeKey>Iryna</NamesBeforeKey>
+            <KeyNames>Gurevych</KeyNames>
+         </Contributor>
+         <Language>
+            <LanguageRole>01</LanguageRole>
+            <LanguageCode>eng</LanguageCode>
+         </Language>
+         <PublicationDate>2020</PublicationDate>
+      </ContentItem>
+   </DOISerialArticleWork>
+</ONIXDOISerialArticleWorkRegistrationMessage>

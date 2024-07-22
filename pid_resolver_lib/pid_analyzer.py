@@ -282,8 +282,9 @@ def analyze_doi_record_crossref(cache_dir: Path, doi: str, orcid_info: Dict[str,
 
 
 def analyze_author_info_medra(creator: etree.Element, namespace_map: Any, orcid_info: List[OrcidProfile]) -> Optional[AuthorInfo]:
-    given_name_ele: Optional[etree.Element] = creator.find('.//foaf:givenName', namespaces=namespace_map)
-    family_name_ele: Optional[etree.Element] = creator.find('.//foaf:familyName', namespaces=namespace_map)
+    given_name_ele: Optional[etree.Element] = creator.find('.//NamesBeforeKey', namespaces=namespace_map)
+    family_name_ele: Optional[etree.Element] = creator.find('.//KeyNames', namespaces=namespace_map)
+    orcid_ele: Optional[etree.Element] = creator.find('.//NameIdentifier/IDValue', namespaces=namespace_map)
 
     orcid: Optional[str]
     origin_orcid: Optional[str]
@@ -292,9 +293,12 @@ def analyze_author_info_medra(creator: etree.Element, namespace_map: Any, orcid_
         given_name = given_name_ele.text.strip()
         family_name = family_name_ele.text.strip()
 
-        orcid, origin_orcid = _match_name_with_orcid_profile(orcid_info, given_name, family_name)
-
-        return AuthorInfo(given_name=given_name, family_name=family_name, orcid=orcid, origin_orcid=origin_orcid, ror=None)
+        if orcid_ele is not None:
+            orcid = _get_orcid_id_from_url(orcid_ele.text)
+            return AuthorInfo(given_name=given_name, family_name=family_name, orcid=orcid, origin_orcid='doi', ror=None)
+        else:
+            orcid, origin_orcid = _match_name_with_orcid_profile(orcid_info, given_name, family_name)
+            return AuthorInfo(given_name=given_name, family_name=family_name, orcid=orcid, origin_orcid=origin_orcid, ror=None)
 
     # return None if insufficient information is provided.
     return None
@@ -304,12 +308,13 @@ def analyze_doi_record_medra(cache_dir: Path, doi: str, orcid_info: Dict[str, Li
     try:
         rec_str = read_from_cache(doi, cache_dir)
 
-        root = etree.fromstring(rec_str)
+        # encode to bytes because of Unicode strings with encoding declaration
+        root = etree.fromstring(rec_str.encode())
 
-        title_ele: Optional[etree.Element] = root.find('.//bibo:Article/dc:title', namespaces=root.nsmap)
+        title_ele: List[etree.Element] = root.xpath('.//onix:Title[parent::onix:ContentItem|parent::onix:DOIMonographicProduct and onix:TitleType[contains(text(), "01")]][1]/onix:TitleText', namespaces={'onix': 'http://www.editeur.org/onix/DOIMetadata/2.0'})
 
-        if title_ele is not None:
-            title = title_ele.text.strip()
+        if len(title_ele) == 1:
+            title = title_ele[0].text.strip()
         else:
             title = None
 
@@ -318,7 +323,8 @@ def analyze_doi_record_medra(cache_dir: Path, doi: str, orcid_info: Dict[str, Li
         else:
             orcid_author_info = []
 
-        creators: List[etree.Element] = root.findall('.//dc:creator/foaf:Person', namespaces=root.nsmap)
+        # set prefix for namespace used in whole file
+        creators: List[etree.Element] = root.xpath('.//onix:Contributor[onix:ContributorRole[contains(text(), "A01")]]', namespaces={'onix': 'http://www.editeur.org/onix/DOIMetadata/2.0'})
 
         authors: List[Optional[AuthorInfo]] = list(
             map(lambda creator: analyze_author_info_medra(creator, root.nsmap, orcid_author_info), creators))
