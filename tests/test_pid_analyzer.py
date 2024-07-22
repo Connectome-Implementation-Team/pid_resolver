@@ -20,7 +20,7 @@ from typing import List, Dict
 from unittest import mock
 import pid_resolver_lib
 from pid_resolver_lib import PublicationInfo
-from pid_resolver_lib.pid_analyzer import AuthorInfo, OrcidProfile
+from pid_resolver_lib.pid_analyzer import AuthorInfo, OrcidProfile, names_match
 
 
 class TestPidAnalyzer(unittest.IsolatedAsyncioTestCase):
@@ -173,7 +173,36 @@ class TestPidAnalyzer(unittest.IsolatedAsyncioTestCase):
         assert len(grouped['10.52825/cordi.v1i.415']) == 2
         assert set(grouped['10.52825/cordi.v1i.415']) == set([OrcidProfile(id='https://orcid.org/0000-0002-3671-895X', given_name='Irina', family_name='Balaur'), OrcidProfile(id='https://orcid.org/0000-0000-0000-0000', given_name='Fictious', family_name='Person')])
 
+    def test_names_match1(self):
+        res = names_match('Marc',  'Veldhoen', OrcidProfile(id='https://orcid.org/0000-0002-1478-9562', given_name='Marc', family_name='Veldhoen'))
 
+        self.assertTrue(res)
 
+    def test_names_match2(self):
+        res = names_match('Marc',  'Veldhoen', OrcidProfile(id='https://orcid.org/0000-0002-1478-9562', given_name='Marc', family_name='Veldhoe'))
 
+        self.assertFalse(res)
 
+    def test_names_match3(self):
+
+        res = names_match('M.', 'Caldera', OrcidProfile(id='https://orcid.org/0000-0001-8728-7961', given_name='Matteo', family_name='Caldera'))
+
+        self.assertTrue(res)
+
+    def test_names_match4(self):
+
+        res = names_match('Maria Rosaria', 'Di Nucci', OrcidProfile(id='https://orcid.org/0000-0002-0833-8247', given_name='Maria Rosaria', family_name='Di Nucci'))
+
+        self.assertTrue(res)
+
+    def test_names_match5(self):
+
+        res = names_match('Maria', 'Di Nucci', OrcidProfile(id='https://orcid.org/0000-0002-0833-8247', given_name='Maria Rosaria', family_name='Di Nucci'))
+
+        self.assertTrue(res)
+
+    def test_names_match6(self):
+
+        res = names_match('Gianluca', 'Ruggieri', OrcidProfile(id='https://orcid.org/0000-0003-2343-8016', given_name='GIANLUCA', family_name='RUGGIERI'))
+
+        self.assertTrue(res)
