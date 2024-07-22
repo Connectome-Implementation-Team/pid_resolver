@@ -103,12 +103,9 @@ def names_match(given_name: str, family_name: str, orcid: OrcidProfile) -> bool:
                     return True
                 else:
                     author_first_given_name, *author_second_given_name = given_name_lc.split(' ')
-                    member_first_given_name, *member_second_given_name = orcid_given_name_lc.split(' ')
+                    orcid_first_given_name, *orcid_second_given_name = orcid_given_name_lc.split(' ')
 
-                    if author_first_given_name == member_first_given_name:
-                        return True
-                    else:
-                        return False
+                    return author_first_given_name == orcid_first_given_name
         else:
             return False
 
