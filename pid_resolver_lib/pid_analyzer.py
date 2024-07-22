@@ -493,7 +493,7 @@ def get_dois_per_orcid(cache_dir: Path) -> List[Dict]:
 
     # structure [{id, givenName, familyName, dois}]
     dois_per_orcid: List[Dict] = jq.compile(
-        '. | map({"id": ."@id", "givenName": .givenName, "familyName": .familyName, "dois": [[."@reverse".creator] | flatten[] | select(."@type" == "CreativeWork")] | [[map(.identifier)] | flatten[] | [select(.propertyID == "doi")] | map(.value)] | flatten})').input_value(
+        '. | map({"id": ."orcid-identifier".uri, "givenName": .person.name."given-names".value, "familyName": .person.name."family-name".value, "dois": [."activities-summary".works.group[]."work-summary"[]."external-ids"."external-id"[] | select(."external-id-type" == "doi") | ."external-id-value"]})').input_value(
         orcid_profiles).first()
 
     #logging.info(f'{ANALYZER} {dois_per_orcid}')

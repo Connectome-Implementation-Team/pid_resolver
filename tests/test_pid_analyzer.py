@@ -144,7 +144,7 @@ class TestPidAnalyzer(unittest.IsolatedAsyncioTestCase):
     def test_get_dois_per_orcid(self):
 
         def mock_read_from_cache_def(orcid: str, cache_dir: Path):
-            with open('tests/testdata/orcid_test.json') as f:
+            with open('tests/testdata/orcid_test2.json') as f:
                 return f.read()
 
         # https://medium.com/@durgaswaroop/writing-better-tests-in-python-with-pytest-mock-part-2-92b828e1453c
@@ -156,11 +156,13 @@ class TestPidAnalyzer(unittest.IsolatedAsyncioTestCase):
 
                 dois_per_orcid: List[Dict] = pid_resolver_lib.get_dois_per_orcid(Path())
 
+                #print(dois_per_orcid)
+
                 assert len(dois_per_orcid) > 0
                 assert dois_per_orcid[0]['id'] == 'https://orcid.org/0000-0002-3671-895X'
                 assert dois_per_orcid[0]['givenName'] == 'Irina'
                 assert dois_per_orcid[0]['familyName'] == 'Balaur'
-                assert set(dois_per_orcid[0]['dois']) == set(['10.52825/cordi.v1i.415', '10.1515/jib-2022-0030', '10.1101/2022.12.17.520865', '10.20944/preprints202212.0209.v1', '10.1038/s41598-021-01618-3', '10.1016/j.jaci.2020.11.032', '10.1038/s41585-020-0355-3', '10.1038/s41585-020-0324-x', '10.1093/bioinformatics/btz969', '10.1515/jib-2019-0022', '10.1093/bib/bby099', '10.1038/s41540-018-0059-y', '10.1186/s12918-018-0556-z', '10.1093/bioinformatics/btw731', '10.1186/s12859-016-1394-x', '10.1089/cmb.2016.0095', '10.1186/s13040-016-0102-8', '10.1007/978-1-4939-3283-2_3', '10.1049/iet-syb.2015.0078', '10.1049/iet-syb.2015.0048', '10.1109/bibm.2014.6999255', '10.1109/bibm.2014.6999256', '10.1109/bibm.2014.6999254', '10.1109/ems.2013.27', '10.1007/s12539-013-0172-y', '10.1007/978-3-319-00395-5_126'])
+                assert set(dois_per_orcid[0]['dois']) == set(['10.1101/2024.05.27.24307991', '10.52825/cordi.v1i', '10.52825/cordi.v1i.415', '10.52825/cordi.v1i.415', '10.52825/cordi.v1i', '10.1515/jib-2022-0030', '10.1101/2022.12.17.520865', '10.20944/preprints202212.0209.v1', '10.1038/s41598-021-01618-3', '10.1016/j.jaci.2020.11.032', '10.1038/s41585-020-0355-3', '10.1038/s41585-020-0324-x', '10.1093/bioinformatics/btz969', '10.1515/jib-2019-0022', '10.1093/bib/bby099', '10.1038/s41540-018-0059-y', '10.1186/s12918-018-0556-z', '10.1093/bioinformatics/btw731', '10.1186/s12859-016-1394-x', '10.1089/cmb.2016.0095', '10.1186/s13040-016-0102-8', '10.1007/978-1-4939-3283-2_3', '10.1049/iet-syb.2015.0078', '10.1049/iet-syb.2015.0048', '10.1109/bibm.2014.6999255', '10.1109/bibm.2014.6999256', '10.1109/bibm.2014.6999254', '10.1109/ems.2013.27', '10.1007/s12539-013-0172-y', '10.1007/978-3-319-00395-5_126'])
 
     def test_group_dois_per_orcid(self):
         dois_per_orcid = [
