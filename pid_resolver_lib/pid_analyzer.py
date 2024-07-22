@@ -73,24 +73,37 @@ def names_match(given_name: str, family_name: str, orcid: OrcidProfile) -> bool:
     """
 
     try:
-        if given_name == orcid.given_name and family_name == orcid.family_name:
+
+        if len(given_name) == 0 or len(family_name) == 0 or len(orcid.given_name) == 0 or len(orcid.family_name) == 0:
+            logging.error(f'Name part has zero length: {given_name}, {family_name}, {orcid}')
+            return False
+
+        given_name_lc = given_name.lower().strip()
+        family_name_lc = family_name.lower().strip()
+
+        orcid_given_name_lc = orcid.given_name.lower().strip()
+        orcid_family_name_lc = orcid.family_name.lower().strip()
+
+        if given_name_lc == orcid_given_name_lc and family_name_lc == orcid_family_name_lc:
             return True
 
         # split family name
-        author_first_surname, *author_second_surname = family_name.split(' ')
-        orcid_first_surname, *member_second_surname = orcid.family_name.split(' ')
+        author_first_surname, *author_second_surname = family_name_lc.split(' ')
+        orcid_first_surname, *member_second_surname = orcid_family_name_lc.split(' ')
 
         if author_first_surname == orcid_first_surname:
-            if given_name == orcid.given_name:
+            if given_name_lc == orcid_given_name_lc:
                 return True
             else:
 
                 # check for abbreviated given name
-                if len(given_name) > 1 and len(orcid.given_name) > 1 and given_name[0] == orcid.given_name[0] and (given_name[1] == '.' or given_name[1] == ' ') or (len(given_name) == 1 and given_name[0] == orcid.given_name[0]):
+                # TODO: check if ORCID names could also be abbreviated
+                if (len(given_name_lc) > 1 and len(orcid_given_name_lc) > 1 and given_name_lc[0] == orcid_given_name_lc[0] and (given_name_lc[1] == '.' or given_name_lc[1] == ' ')
+                        or (len(given_name_lc) == 1 and given_name_lc[0] == orcid_given_name_lc[0])):
                     return True
                 else:
-                    author_first_given_name, *author_second_given_name = given_name.split(' ')
-                    member_first_given_name, *member_second_given_name = orcid.given_name.split(' ')
+                    author_first_given_name, *author_second_given_name = given_name_lc.split(' ')
+                    member_first_given_name, *member_second_given_name = orcid_given_name_lc.split(' ')
 
                     if author_first_given_name == member_first_given_name:
                         return True

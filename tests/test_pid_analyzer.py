@@ -194,3 +194,8 @@ class TestPidAnalyzer(unittest.IsolatedAsyncioTestCase):
 
         self.assertTrue(res)
 
+    def test_names_match5(self):
+
+        res = names_match('Gianluca', 'Ruggieri', OrcidProfile(id='https://orcid.org/0000-0003-2343-8016', given_name='GIANLUCA', family_name='RUGGIERI'))
+
+        self.assertTrue(res)
