@@ -492,8 +492,10 @@ def get_dois_per_orcid(cache_dir: Path) -> List[Dict]:
     orcid_profiles = list(filter(lambda orcid_profile: orcid_profile is not None, orcid_profiles_maybe))
 
     # structure [{id, givenName, familyName, dois}]
+    # each DOI is represented as an object with its source.
+    # if the same DOI is present multiple times, the one with the highest display-index will be chosen
     dois_per_orcid: List[Dict] = jq.compile(
-        '. | map({"id": ."orcid-identifier".uri, "givenName": .person.name."given-names".value, "familyName": .person.name."family-name".value, "dois": [."activities-summary".works.group[]."work-summary"[]."external-ids"."external-id"[] | select(."external-id-type" == "doi") | ."external-id-value"]})').input_value(
+        '. | map({"id": ."orcid-identifier".uri, "givenName": .person.name."given-names".value, "familyName": .person.name."family-name".value, "dois": [."activities-summary".works.group[]."work-summary"[] | {"doi": ."external-ids"."external-id"[] | select(."external-id-type" == "doi") | ."external-id-value", "source": .source."source-name".value, "index": ."display-index"}] | group_by(.doi) | map(sort_by(.index) | reverse) | map(.[0])})').input_value(
         orcid_profiles).first()
 
     #logging.info(f'{ANALYZER} {dois_per_orcid}')
@@ -517,10 +519,10 @@ def group_orcids_per_doi(dois_per_orcid: List[Dict]) -> Dict[str, List[OrcidProf
 
     for ele in dois_per_orcid:
         for doi in ele['dois']:
-            if doi not in orcids_by_doi:
-                orcids_by_doi[doi] = [_make_entry(ele)]
+            if doi['doi'] not in orcids_by_doi:
+                orcids_by_doi[doi['doi']] = [_make_entry(ele)]
             else:
-                orcids_by_doi[doi].append(_make_entry(ele))
+                orcids_by_doi[doi['doi']].append(_make_entry(ele))
 
     return orcids_by_doi
 
