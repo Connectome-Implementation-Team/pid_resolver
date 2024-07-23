@@ -32,6 +32,7 @@ class OrcidProfile(NamedTuple):
     id: str # 0
     given_name: str # 1
     family_name: str # 2
+    source: str # 3
 
 
 class AuthorInfo(NamedTuple):
@@ -503,9 +504,9 @@ def get_dois_per_orcid(cache_dir: Path) -> List[Dict]:
     return dois_per_orcid
 
 
-def _make_entry(ele: Dict) -> OrcidProfile:
+def _make_entry(ele: Dict, source: str) -> OrcidProfile:
     # TODO: error handling for missing info (None)
-    return OrcidProfile(ele['id'], ele['givenName'], ele['familyName'])
+    return OrcidProfile(ele['id'], ele['givenName'], ele['familyName'], source)
 
 
 def group_orcids_per_doi(dois_per_orcid: List[Dict]) -> Dict[str, List[OrcidProfile]]:
@@ -520,9 +521,9 @@ def group_orcids_per_doi(dois_per_orcid: List[Dict]) -> Dict[str, List[OrcidProf
     for ele in dois_per_orcid:
         for doi in ele['dois']:
             if doi['doi'] not in orcids_by_doi:
-                orcids_by_doi[doi['doi']] = [_make_entry(ele)]
+                orcids_by_doi[doi['doi']] = [_make_entry(ele, doi['source'])]
             else:
-                orcids_by_doi[doi['doi']].append(_make_entry(ele))
+                orcids_by_doi[doi['doi']].append(_make_entry(ele, doi['source']))
 
     return orcids_by_doi
 

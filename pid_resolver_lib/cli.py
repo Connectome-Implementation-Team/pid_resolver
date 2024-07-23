@@ -73,7 +73,7 @@ async def fetch_dois(dois: List[str], ) -> List[str]:
 
     orcids = get_orcids_from_resolved_dois(resolved_dois)
 
-    await fetch_records(orcids, Path('orcid'), 'https://orcid.org', 'application/ld+json')
+    await fetch_records(orcids, Path('orcid'), 'https://orcid.org', 'application/orcid+json')
 
     dois_for_orcid = get_dois_per_orcid(Path('orcid'))
 
