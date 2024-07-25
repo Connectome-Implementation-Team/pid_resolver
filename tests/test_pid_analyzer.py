@@ -175,35 +175,35 @@ class TestPidAnalyzer(unittest.IsolatedAsyncioTestCase):
         assert set(grouped['10.52825/cordi.v1i.415']) == set([OrcidProfile(id='https://orcid.org/0000-0002-3671-895X', given_name='Irina', family_name='Balaur', source='Crossref'), OrcidProfile(id='https://orcid.org/0000-0000-0000-0000', given_name='Fictious', family_name='Person', source='self')])
 
     def test_names_match1(self):
-        res = names_match('Marc',  'Veldhoen', OrcidProfile(id='https://orcid.org/0000-0002-1478-9562', given_name='Marc', family_name='Veldhoen'))
+        res = names_match('Marc',  'Veldhoen', OrcidProfile(id='https://orcid.org/0000-0002-1478-9562', given_name='Marc', family_name='Veldhoen', source='Crossref'))
 
         self.assertTrue(res)
 
     def test_names_match2(self):
-        res = names_match('Marc',  'Veldhoen', OrcidProfile(id='https://orcid.org/0000-0002-1478-9562', given_name='Marc', family_name='Veldhoe'))
+        res = names_match('Marc',  'Veldhoen', OrcidProfile(id='https://orcid.org/0000-0002-1478-9562', given_name='Marc', family_name='Veldhoe', source='Crossref'))
 
         self.assertFalse(res)
 
     def test_names_match3(self):
 
-        res = names_match('M.', 'Caldera', OrcidProfile(id='https://orcid.org/0000-0001-8728-7961', given_name='Matteo', family_name='Caldera'))
+        res = names_match('M.', 'Caldera', OrcidProfile(id='https://orcid.org/0000-0001-8728-7961', given_name='Matteo', family_name='Caldera', source='Crossref'))
 
         self.assertTrue(res)
 
     def test_names_match4(self):
 
-        res = names_match('Maria Rosaria', 'Di Nucci', OrcidProfile(id='https://orcid.org/0000-0002-0833-8247', given_name='Maria Rosaria', family_name='Di Nucci'))
+        res = names_match('Maria Rosaria', 'Di Nucci', OrcidProfile(id='https://orcid.org/0000-0002-0833-8247', given_name='Maria Rosaria', family_name='Di Nucci', source='Crossref'))
 
         self.assertTrue(res)
 
     def test_names_match5(self):
 
-        res = names_match('Maria', 'Di Nucci', OrcidProfile(id='https://orcid.org/0000-0002-0833-8247', given_name='Maria Rosaria', family_name='Di Nucci'))
+        res = names_match('Maria', 'Di Nucci', OrcidProfile(id='https://orcid.org/0000-0002-0833-8247', given_name='Maria Rosaria', family_name='Di Nucci', source='Crossref'))
 
         self.assertTrue(res)
 
     def test_names_match6(self):
 
-        res = names_match('Gianluca', 'Ruggieri', OrcidProfile(id='https://orcid.org/0000-0003-2343-8016', given_name='GIANLUCA', family_name='RUGGIERI'))
+        res = names_match('Gianluca', 'Ruggieri', OrcidProfile(id='https://orcid.org/0000-0003-2343-8016', given_name='GIANLUCA', family_name='RUGGIERI', source='Crossref'))
 
         self.assertTrue(res)
