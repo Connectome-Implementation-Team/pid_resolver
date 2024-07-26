@@ -127,7 +127,7 @@ def _match_name_with_orcid_profile(orcid_info: List[OrcidProfile], given_name: s
         return None, None
 
     # match ORCID profiles by name
-    author_orcid = list(
+    author_orcid: List[OrcidProfile] = list(
         filter(lambda orcid: names_match(given_name, family_name, orcid), orcid_info))
 
     if len(author_orcid) == 1:
@@ -486,23 +486,28 @@ def get_dois_per_orcid(cache_dir: Path) -> List[Dict]:
     @param cache_dir: The ORCID cache directory.
     """
 
-    orcids = list(get_keys(cache_dir))
+    try:
 
-    orcid_profiles_maybe: List[Optional[Dict]] = list(map(lambda orcid: _parse_orcid_json(read_from_cache(orcid, cache_dir), orcid), orcids))
+        orcids = list(get_keys(cache_dir))
 
-    orcid_profiles = list(filter(lambda orcid_profile: orcid_profile is not None, orcid_profiles_maybe))
+        orcid_profiles_maybe: List[Optional[Dict]] = list(map(lambda orcid: _parse_orcid_json(read_from_cache(orcid, cache_dir), orcid), orcids))
 
-    # structure [{id, givenName, familyName, dois}]
-    # each DOI is represented as an object with its source.
-    # if the same DOI is present multiple times, the one with the highest display-index will be chosen
-    dois_per_orcid: List[Dict] = jq.compile(
-        '. | map({"id": ."orcid-identifier".uri, "givenName": .person.name."given-names".value, "familyName": .person.name."family-name".value, "dois": [."activities-summary".works.group[]."work-summary"[] | {"doi": ."external-ids"."external-id"[] | select(."external-id-type" == "doi") | ."external-id-value", "source": .source."source-name".value, "index": ."display-index"}] | group_by(.doi) | map(sort_by(.index) | reverse) | map(.[0])})').input_value(
-        orcid_profiles).first()
+        orcid_profiles = list(filter(lambda orcid_profile: orcid_profile is not None, orcid_profiles_maybe))
 
-    #logging.info(f'{ANALYZER} {dois_per_orcid}')
+        # structure [{id, givenName, familyName, dois}]
+        # each DOI is represented as an object with its source.
+        # if the same DOI is present multiple times, the one with the highest display-index will be chosen
+        dois_per_orcid: List[Dict] = jq.compile(
+            '. | map({"id": ."orcid-identifier".uri, "givenName": .person.name."given-names".value, "familyName": .person.name."family-name".value, "dois": [."activities-summary".works.group[]."work-summary"[] | {"doi": ."external-ids" | select(."external-id" != null) | ."external-id"[] | select(."external-id-type" == "doi") | ."external-id-value", "source": .source."source-name".value, "index": ."display-index"}] | group_by(.doi) | map(sort_by(.index) | reverse) | map(.[0])})').input_value(
+            orcid_profiles).first()
 
-    return dois_per_orcid
+        #logging.info(f'{ANALYZER} {dois_per_orcid}')
 
+        return dois_per_orcid
+
+    except Exception as e:
+        logging.error(f'{ANALYZER} An error occurred when extracting DOIs from ORCID profiles: {e}')
+        raise e
 
 def _make_entry(ele: Dict, source: str) -> OrcidProfile:
     # TODO: error handling for missing info (None)

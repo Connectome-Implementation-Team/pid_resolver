@@ -35,9 +35,9 @@ logging.basicConfig(filename='pid_resolver.log',
 logger = logging.getLogger(__name__)
 
 
-def normalize_doi(doi: str) -> str:
+def normalize_doi(doi: Dict) -> str:
     # remove backslashes
-    return doi.replace('\\', '')
+    return doi['doi'].replace('\\', '')
 
 
 async def fetch_dois(dois: List[str], ) -> List[str]:
