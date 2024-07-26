@@ -1,0 +1,4868 @@
+{
+  "orcid-identifier" : {
+    "uri" : "https://orcid.org/0000-0002-3671-895X",
+    "path" : "0000-0002-3671-895X",
+    "host" : "orcid.org"
+  },
+  "preferences" : {
+    "locale" : "en"
+  },
+  "history" : {
+    "creation-method" : "MEMBER_REFERRED",
+    "completion-date" : null,
+    "submission-date" : {
+      "value" : 1399049925172
+    },
+    "last-modified-date" : {
+      "value" : 1720173371709
+    },
+    "claimed" : true,
+    "source" : null,
+    "deactivation-date" : null,
+    "verified-email" : true,
+    "verified-primary-email" : true
+  },
+  "person" : {
+    "last-modified-date" : {
+      "value" : 1711026765382
+    },
+    "name" : {
+      "created-date" : {
+        "value" : 1460758767741
+      },
+      "last-modified-date" : {
+        "value" : 1665499301345
+      },
+      "given-names" : {
+        "value" : "Irina"
+      },
+      "family-name" : {
+        "value" : "Balaur"
+      },
+      "credit-name" : null,
+      "source" : null,
+      "visibility" : "public",
+      "path" : "0000-0002-3671-895X"
+    },
+    "other-names" : {
+      "last-modified-date" : {
+        "value" : 1665499301520
+      },
+      "other-name" : [ {
+        "created-date" : {
+          "value" : 1452524029381
+        },
+        "last-modified-date" : {
+          "value" : 1665499301520
+        },
+        "source" : {
+          "source-orcid" : {
+            "uri" : "https://orcid.org/0000-0002-3671-895X",
+            "path" : "0000-0002-3671-895X",
+            "host" : "orcid.org"
+          },
+          "source-client-id" : null,
+          "source-name" : {
+            "value" : "Irina Balaur"
+          },
+          "assertion-origin-orcid" : null,
+          "assertion-origin-client-id" : null,
+          "assertion-origin-name" : null
+        },
+        "content" : "Irina Roznovat",
+        "visibility" : "public",
+        "path" : "/0000-0002-3671-895X/other-names/620923",
+        "put-code" : 620923,
+        "display-index" : 4
+      }, {
+        "created-date" : {
+          "value" : 1665499265397
+        },
+        "last-modified-date" : {
+          "value" : 1665499301520
+        },
+        "source" : {
+          "source-orcid" : {
+            "uri" : "https://orcid.org/0000-0002-3671-895X",
+            "path" : "0000-0002-3671-895X",
+            "host" : "orcid.org"
+          },
+          "source-client-id" : null,
+          "source-name" : {
+            "value" : "Irina Balaur"
+          },
+          "assertion-origin-orcid" : null,
+          "assertion-origin-client-id" : null,
+          "assertion-origin-name" : null
+        },
+        "content" : "Irina A Roznovat",
+        "visibility" : "public",
+        "path" : "/0000-0002-3671-895X/other-names/1802178",
+        "put-code" : 1802178,
+        "display-index" : 3
+      }, {
+        "created-date" : {
+          "value" : 1665499265395
+        },
+        "last-modified-date" : {
+          "value" : 1665499301520
+        },
+        "source" : {
+          "source-orcid" : {
+            "uri" : "https://orcid.org/0000-0002-3671-895X",
+            "path" : "0000-0002-3671-895X",
+            "host" : "orcid.org"
+          },
+          "source-client-id" : null,
+          "source-name" : {
+            "value" : "Irina Balaur"
+          },
+          "assertion-origin-orcid" : null,
+          "assertion-origin-client-id" : null,
+          "assertion-origin-name" : null
+        },
+        "content" : "Irina-Afrodita Balaur",
+        "visibility" : "public",
+        "path" : "/0000-0002-3671-895X/other-names/1802177",
+        "put-code" : 1802177,
+        "display-index" : 2
+      }, {
+        "created-date" : {
+          "value" : 1665499301515
+        },
+        "last-modified-date" : {
+          "value" : 1665499301515
+        },
+        "source" : {
+          "source-orcid" : {
+            "uri" : "https://orcid.org/0000-0002-3671-895X",
+            "path" : "0000-0002-3671-895X",
+            "host" : "orcid.org"
+          },
+          "source-client-id" : null,
+          "source-name" : {
+            "value" : "Irina Balaur"
+          },
+          "assertion-origin-orcid" : null,
+          "assertion-origin-client-id" : null,
+          "assertion-origin-name" : null
+        },
+        "content" : "Irina Balaur (Roznovat)",
+        "visibility" : "public",
+        "path" : "/0000-0002-3671-895X/other-names/1802179",
+        "put-code" : 1802179,
+        "display-index" : 1
+      } ],
+      "path" : "/0000-0002-3671-895X/other-names"
+    },
+    "biography" : {
+      "created-date" : {
+        "value" : 1657009700682
+      },
+      "last-modified-date" : {
+        "value" : 1665500387062
+      },
+      "content" : "I am a computational biomedicine researcher, with a solid computer science and biomedical engineering research background I acquired in academy and industry over 10 years in Romania, Ireland (where I obtained my PhD in 2014), France and Luxembourg. I have experience in translational projects including the Cardiovascular HeartMed ERA-Net Cofund in Personalised Medicine project, the large-scale IMI eTRIKS translational research project and the Cancer Epigenetics-focused CIESCI ERA-Net Complexity project. I was awarded with an IMI FAIRplus Fellowship (June 2021- May 2022), where I focused on using RDA indicators for assessing FAIRness (FAIR principles: Findable, Accessible, Interoperable, Reusable) in several translational projects and for the Molecular Interaction NEtwoRk VisuAlization (MINERVA) platform. \n\nI am a coordinator of the ISCB Translational Medicine Informatics community and of the Metabolism Regulation Maps community project. I am appointed as an editor for the Systems Biology Graphical Notation (SBGN) standard (2021-2023), which is one of the core COmputational Modeling in BIology NEtwork (COMBINE) standards. I am committed to promote open science and open code as well as reproducible research. I am currently a coordinator an European Open Science Cloud (EOSC) Future - funded project on using FAIR indicators for COMBINE models (October 2022 - March 2023). I am also an alumni of the University of Luxembourg Leadership Academy (ULLA) training (October 2021 - December 2021) on key leadership principles.\n\nParticular areas of expertise include computational modelling of biomedical complex systems, large-scale data management (FAIRification, integration, analysis), development of multiscale models in cancer, exploration of the role of epigenetics in cancer, use of machine learning techniques in biomedical networks, use of systems biology standards.",
+      "visibility" : "public",
+      "path" : "/0000-0002-3671-895X/biography"
+    },
+    "researcher-urls" : {
+      "last-modified-date" : {
+        "value" : 1561018633205
+      },
+      "researcher-url" : [ {
+        "created-date" : {
+          "value" : 1535714507817
+        },
+        "last-modified-date" : {
+          "value" : 1561018633205
+        },
+        "source" : {
+          "source-orcid" : {
+            "uri" : "https://orcid.org/0000-0002-3671-895X",
+            "path" : "0000-0002-3671-895X",
+            "host" : "orcid.org"
+          },
+          "source-client-id" : null,
+          "source-name" : {
+            "value" : "Irina Balaur"
+          },
+          "assertion-origin-orcid" : null,
+          "assertion-origin-client-id" : null,
+          "assertion-origin-name" : null
+        },
+        "url-name" : "Irina Balaur - Scholar google",
+        "url" : {
+          "value" : "https://scholar.google.it/citations?hl=en&user=qz9GnEwAAAAJ&view_op=list_works&gmla=AJsN-F6NI9b0D8syW0_XY1xa6aRaMDStJvEpAQqDHq-rMiuDk5_rW67I7_l0DDuyXh6B-puKYRKXnKb6KZ3_UD6aIM0mZQgbog"
+        },
+        "visibility" : "public",
+        "path" : "/0000-0002-3671-895X/researcher-urls/1525220",
+        "put-code" : 1525220,
+        "display-index" : 2
+      }, {
+        "created-date" : {
+          "value" : 1561018633203
+        },
+        "last-modified-date" : {
+          "value" : 1561018633203
+        },
+        "source" : {
+          "source-orcid" : {
+            "uri" : "https://orcid.org/0000-0002-3671-895X",
+            "path" : "0000-0002-3671-895X",
+            "host" : "orcid.org"
+          },
+          "source-client-id" : null,
+          "source-name" : {
+            "value" : "Irina Balaur"
+          },
+          "assertion-origin-orcid" : null,
+          "assertion-origin-client-id" : null,
+          "assertion-origin-name" : null
+        },
+        "url-name" : "Irina Balaur, PhD. ",
+        "url" : {
+          "value" : "https://sites.google.com/view/irinabalaur"
+        },
+        "visibility" : "public",
+        "path" : "/0000-0002-3671-895X/researcher-urls/1758606",
+        "put-code" : 1758606,
+        "display-index" : 1
+      } ],
+      "path" : "/0000-0002-3671-895X/researcher-urls"
+    },
+    "emails" : {
+      "last-modified-date" : null,
+      "email" : [ ],
+      "path" : "/0000-0002-3671-895X/email"
+    },
+    "addresses" : {
+      "last-modified-date" : {
+        "value" : 1665572444180
+      },
+      "address" : [ {
+        "created-date" : {
+          "value" : 1665572444180
+        },
+        "last-modified-date" : {
+          "value" : 1665572444180
+        },
+        "source" : {
+          "source-orcid" : {
+            "uri" : "https://orcid.org/0000-0002-3671-895X",
+            "path" : "0000-0002-3671-895X",
+            "host" : "orcid.org"
+          },
+          "source-client-id" : null,
+          "source-name" : {
+            "value" : "Irina Balaur"
+          },
+          "assertion-origin-orcid" : null,
+          "assertion-origin-client-id" : null,
+          "assertion-origin-name" : null
+        },
+        "country" : {
+          "value" : "LU"
+        },
+        "visibility" : "public",
+        "path" : "/0000-0002-3671-895X/address/2706670",
+        "put-code" : 2706670,
+        "display-index" : 4
+      }, {
+        "created-date" : {
+          "value" : 1665572444175
+        },
+        "last-modified-date" : {
+          "value" : 1665572444175
+        },
+        "source" : {
+          "source-orcid" : {
+            "uri" : "https://orcid.org/0000-0002-3671-895X",
+            "path" : "0000-0002-3671-895X",
+            "host" : "orcid.org"
+          },
+          "source-client-id" : null,
+          "source-name" : {
+            "value" : "Irina Balaur"
+          },
+          "assertion-origin-orcid" : null,
+          "assertion-origin-client-id" : null,
+          "assertion-origin-name" : null
+        },
+        "country" : {
+          "value" : "FR"
+        },
+        "visibility" : "public",
+        "path" : "/0000-0002-3671-895X/address/2706669",
+        "put-code" : 2706669,
+        "display-index" : 3
+      }, {
+        "created-date" : {
+          "value" : 1665572444171
+        },
+        "last-modified-date" : {
+          "value" : 1665572444171
+        },
+        "source" : {
+          "source-orcid" : {
+            "uri" : "https://orcid.org/0000-0002-3671-895X",
+            "path" : "0000-0002-3671-895X",
+            "host" : "orcid.org"
+          },
+          "source-client-id" : null,
+          "source-name" : {
+            "value" : "Irina Balaur"
+          },
+          "assertion-origin-orcid" : null,
+          "assertion-origin-client-id" : null,
+          "assertion-origin-name" : null
+        },
+        "country" : {
+          "value" : "IE"
+        },
+        "visibility" : "public",
+        "path" : "/0000-0002-3671-895X/address/2706668",
+        "put-code" : 2706668,
+        "display-index" : 2
+      }, {
+        "created-date" : {
+          "value" : 1665572444166
+        },
+        "last-modified-date" : {
+          "value" : 1665572444166
+        },
+        "source" : {
+          "source-orcid" : {
+            "uri" : "https://orcid.org/0000-0002-3671-895X",
+            "path" : "0000-0002-3671-895X",
+            "host" : "orcid.org"
+          },
+          "source-client-id" : null,
+          "source-name" : {
+            "value" : "Irina Balaur"
+          },
+          "assertion-origin-orcid" : null,
+          "assertion-origin-client-id" : null,
+          "assertion-origin-name" : null
+        },
+        "country" : {
+          "value" : "RO"
+        },
+        "visibility" : "public",
+        "path" : "/0000-0002-3671-895X/address/2706667",
+        "put-code" : 2706667,
+        "display-index" : 1
+      } ],
+      "path" : "/0000-0002-3671-895X/address"
+    },
+    "keywords" : {
+      "last-modified-date" : null,
+      "keyword" : [ ],
+      "path" : "/0000-0002-3671-895X/keywords"
+    },
+    "external-identifiers" : {
+      "last-modified-date" : {
+        "value" : 1711026765382
+      },
+      "external-identifier" : [ {
+        "created-date" : {
+          "value" : 1711026765382
+        },
+        "last-modified-date" : {
+          "value" : 1711026765382
+        },
+        "source" : {
+          "source-orcid" : null,
+          "source-client-id" : {
+            "uri" : "https://orcid.org/client/APP-WRQOUAK78G5F7GMD",
+            "path" : "APP-WRQOUAK78G5F7GMD",
+            "host" : "orcid.org"
+          },
+          "source-name" : {
+            "value" : "Multidisciplinary Digital Publishing Institute"
+          },
+          "assertion-origin-orcid" : null,
+          "assertion-origin-client-id" : null,
+          "assertion-origin-name" : null
+        },
+        "external-id-type" : "SciProfiles",
+        "external-id-value" : "530089",
+        "external-id-url" : {
+          "value" : "https://sciprofiles.com/profile/530089"
+        },
+        "external-id-relationship" : "self",
+        "visibility" : "public",
+        "path" : "/0000-0002-3671-895X/external-identifiers/3441496",
+        "put-code" : 3441496,
+        "display-index" : 0
+      } ],
+      "path" : "/0000-0002-3671-895X/external-identifiers"
+    },
+    "path" : "/0000-0002-3671-895X/person"
+  },
+  "activities-summary" : {
+    "last-modified-date" : {
+      "value" : 1717169113922
+    },
+    "distinctions" : {
+      "last-modified-date" : null,
+      "affiliation-group" : [ ],
+      "path" : "/0000-0002-3671-895X/distinctions"
+    },
+    "educations" : {
+      "last-modified-date" : {
+        "value" : 1665571347968
+      },
+      "affiliation-group" : [ {
+        "last-modified-date" : {
+          "value" : 1665571347968
+        },
+        "external-ids" : {
+          "external-id" : [ ]
+        },
+        "summaries" : [ {
+          "education-summary" : {
+            "created-date" : {
+              "value" : 1665571274006
+            },
+            "last-modified-date" : {
+              "value" : 1665571347968
+            },
+            "source" : {
+              "source-orcid" : {
+                "uri" : "https://orcid.org/0000-0002-3671-895X",
+                "path" : "0000-0002-3671-895X",
+                "host" : "orcid.org"
+              },
+              "source-client-id" : null,
+              "source-name" : {
+                "value" : "Irina Balaur"
+              },
+              "assertion-origin-orcid" : null,
+              "assertion-origin-client-id" : null,
+              "assertion-origin-name" : null
+            },
+            "put-code" : 18677574,
+            "department-name" : "School of Computing ",
+            "role-title" : "PhD. Computer Science (Computational Biology)",
+            "start-date" : {
+              "year" : {
+                "value" : "2011"
+              },
+              "month" : {
+                "value" : "07"
+              },
+              "day" : {
+                "value" : "01"
+              }
+            },
+            "end-date" : {
+              "year" : {
+                "value" : "2014"
+              },
+              "month" : {
+                "value" : "11"
+              },
+              "day" : {
+                "value" : "05"
+              }
+            },
+            "organization" : {
+              "name" : "Dublin City University School of Computing",
+              "address" : {
+                "city" : "Dublin",
+                "region" : null,
+                "country" : "IE"
+              },
+              "disambiguated-organization" : {
+                "disambiguated-organization-identifier" : "315685",
+                "disambiguation-source" : "RINGGOLD"
+              }
+            },
+            "url" : null,
+            "external-ids" : null,
+            "display-index" : "1",
+            "visibility" : "public",
+            "path" : "/0000-0002-3671-895X/education/18677574"
+          }
+        } ]
+      }, {
+        "last-modified-date" : {
+          "value" : 1665571339858
+        },
+        "external-ids" : {
+          "external-id" : [ ]
+        },
+        "summaries" : [ {
+          "education-summary" : {
+            "created-date" : {
+              "value" : 1665500767444
+            },
+            "last-modified-date" : {
+              "value" : 1665571339858
+            },
+            "source" : {
+              "source-orcid" : {
+                "uri" : "https://orcid.org/0000-0002-3671-895X",
+                "path" : "0000-0002-3671-895X",
+                "host" : "orcid.org"
+              },
+              "source-client-id" : null,
+              "source-name" : {
+                "value" : "Irina Balaur"
+              },
+              "assertion-origin-orcid" : null,
+              "assertion-origin-client-id" : null,
+              "assertion-origin-name" : null
+            },
+            "put-code" : 18671217,
+            "department-name" : "Computer Science Faculty",
+            "role-title" : "BSc. Computer Science",
+            "start-date" : {
+              "year" : {
+                "value" : "2004"
+              },
+              "month" : {
+                "value" : "10"
+              },
+              "day" : {
+                "value" : "01"
+              }
+            },
+            "end-date" : {
+              "year" : {
+                "value" : "2008"
+              },
+              "month" : {
+                "value" : "06"
+              },
+              "day" : {
+                "value" : "30"
+              }
+            },
+            "organization" : {
+              "name" : "Alexandru Ioan Cuza University",
+              "address" : {
+                "city" : "Iasi",
+                "region" : null,
+                "country" : "RO"
+              },
+              "disambiguated-organization" : {
+                "disambiguated-organization-identifier" : "https://ror.org/022kvet57",
+                "disambiguation-source" : "ROR"
+              }
+            },
+            "url" : null,
+            "external-ids" : null,
+            "display-index" : "1",
+            "visibility" : "public",
+            "path" : "/0000-0002-3671-895X/education/18671217"
+          }
+        } ]
+      } ],
+      "path" : "/0000-0002-3671-895X/educations"
+    },
+    "employments" : {
+      "last-modified-date" : {
+        "value" : 1665571653142
+      },
+      "affiliation-group" : [ {
+        "last-modified-date" : {
+          "value" : 1665571075522
+        },
+        "external-ids" : {
+          "external-id" : [ ]
+        },
+        "summaries" : [ {
+          "employment-summary" : {
+            "created-date" : {
+              "value" : 1665571075522
+            },
+            "last-modified-date" : {
+              "value" : 1665571075522
+            },
+            "source" : {
+              "source-orcid" : {
+                "uri" : "https://orcid.org/0000-0002-3671-895X",
+                "path" : "0000-0002-3671-895X",
+                "host" : "orcid.org"
+              },
+              "source-client-id" : null,
+              "source-name" : {
+                "value" : "Irina Balaur"
+              },
+              "assertion-origin-orcid" : null,
+              "assertion-origin-client-id" : null,
+              "assertion-origin-name" : null
+            },
+            "put-code" : 18677550,
+            "department-name" : "Bioinformatics Core",
+            "role-title" : "Postdoctoral researcher",
+            "start-date" : {
+              "year" : {
+                "value" : "2020"
+              },
+              "month" : {
+                "value" : "09"
+              },
+              "day" : {
+                "value" : "01"
+              }
+            },
+            "end-date" : null,
+            "organization" : {
+              "name" : "Université du Luxembourg Luxembourg Centre for Systems Biomedicine",
+              "address" : {
+                "city" : "Esch-sur-Alzette",
+                "region" : null,
+                "country" : "LU"
+              },
+              "disambiguated-organization" : {
+                "disambiguated-organization-identifier" : "549046",
+                "disambiguation-source" : "RINGGOLD"
+              }
+            },
+            "url" : {
+              "value" : "https://wwwfr.uni.lu/lcsb"
+            },
+            "external-ids" : null,
+            "display-index" : "1",
+            "visibility" : "public",
+            "path" : "/0000-0002-3671-895X/employment/18677550"
+          }
+        } ]
+      }, {
+        "last-modified-date" : {
+          "value" : 1665571653142
+        },
+        "external-ids" : {
+          "external-id" : [ ]
+        },
+        "summaries" : [ {
+          "employment-summary" : {
+            "created-date" : {
+              "value" : 1452532363936
+            },
+            "last-modified-date" : {
+              "value" : 1665571653142
+            },
+            "source" : {
+              "source-orcid" : {
+                "uri" : "https://orcid.org/0000-0002-3671-895X",
+                "path" : "0000-0002-3671-895X",
+                "host" : "orcid.org"
+              },
+              "source-client-id" : null,
+              "source-name" : {
+                "value" : "Irina Balaur"
+              },
+              "assertion-origin-orcid" : null,
+              "assertion-origin-client-id" : null,
+              "assertion-origin-name" : null
+            },
+            "put-code" : 1460598,
+            "department-name" : "European Institute for Systems Biology and Medicine",
+            "role-title" : "Researcher",
+            "start-date" : {
+              "year" : {
+                "value" : "2017"
+              },
+              "month" : {
+                "value" : "10"
+              },
+              "day" : {
+                "value" : "01"
+              }
+            },
+            "end-date" : {
+              "year" : {
+                "value" : "2018"
+              },
+              "month" : {
+                "value" : "09"
+              },
+              "day" : {
+                "value" : "30"
+              }
+            },
+            "organization" : {
+              "name" : "ASSOCIATION EISBM ",
+              "address" : {
+                "city" : "Vourles",
+                "region" : null,
+                "country" : "FR"
+              },
+              "disambiguated-organization" : null
+            },
+            "url" : {
+              "value" : "http://www.eisbm.org/"
+            },
+            "external-ids" : null,
+            "display-index" : "1",
+            "visibility" : "public",
+            "path" : "/0000-0002-3671-895X/employment/1460598"
+          }
+        } ]
+      }, {
+        "last-modified-date" : {
+          "value" : 1665571580768
+        },
+        "external-ids" : {
+          "external-id" : [ ]
+        },
+        "summaries" : [ {
+          "employment-summary" : {
+            "created-date" : {
+              "value" : 1665571580768
+            },
+            "last-modified-date" : {
+              "value" : 1665571580768
+            },
+            "source" : {
+              "source-orcid" : {
+                "uri" : "https://orcid.org/0000-0002-3671-895X",
+                "path" : "0000-0002-3671-895X",
+                "host" : "orcid.org"
+              },
+              "source-client-id" : null,
+              "source-name" : {
+                "value" : "Irina Balaur"
+              },
+              "assertion-origin-orcid" : null,
+              "assertion-origin-client-id" : null,
+              "assertion-origin-name" : null
+            },
+            "put-code" : 18677600,
+            "department-name" : "European Institute for Systems Biology and Medicine (CNRS - EISBM)",
+            "role-title" : "Researcher",
+            "start-date" : {
+              "year" : {
+                "value" : "2015"
+              },
+              "month" : {
+                "value" : "11"
+              },
+              "day" : {
+                "value" : "17"
+              }
+            },
+            "end-date" : {
+              "year" : {
+                "value" : "2017"
+              },
+              "month" : {
+                "value" : "09"
+              },
+              "day" : {
+                "value" : "30"
+              }
+            },
+            "organization" : {
+              "name" : "Centre National de la Recherche Scientifique",
+              "address" : {
+                "city" : "Lyon",
+                "region" : null,
+                "country" : "FR"
+              },
+              "disambiguated-organization" : {
+                "disambiguated-organization-identifier" : "http://dx.doi.org/10.13039/501100004794",
+                "disambiguation-source" : "FUNDREF"
+              }
+            },
+            "url" : {
+              "value" : "http://www.eisbm.org/"
+            },
+            "external-ids" : null,
+            "display-index" : "1",
+            "visibility" : "public",
+            "path" : "/0000-0002-3671-895X/employment/18677600"
+          }
+        } ]
+      }, {
+        "last-modified-date" : {
+          "value" : 1665571489848
+        },
+        "external-ids" : {
+          "external-id" : [ ]
+        },
+        "summaries" : [ {
+          "employment-summary" : {
+            "created-date" : {
+              "value" : 1665571489848
+            },
+            "last-modified-date" : {
+              "value" : 1665571489848
+            },
+            "source" : {
+              "source-orcid" : {
+                "uri" : "https://orcid.org/0000-0002-3671-895X",
+                "path" : "0000-0002-3671-895X",
+                "host" : "orcid.org"
+              },
+              "source-client-id" : null,
+              "source-name" : {
+                "value" : "Irina Balaur"
+              },
+              "assertion-origin-orcid" : null,
+              "assertion-origin-client-id" : null,
+              "assertion-origin-name" : null
+            },
+            "put-code" : 18677587,
+            "department-name" : "European Institute for Systems Biology and Medicine (CNRS - EISBM)",
+            "role-title" : "Postdoctoral researcher",
+            "start-date" : {
+              "year" : {
+                "value" : "2014"
+              },
+              "month" : {
+                "value" : "11"
+              },
+              "day" : {
+                "value" : "17"
+              }
+            },
+            "end-date" : {
+              "year" : {
+                "value" : "2015"
+              },
+              "month" : {
+                "value" : "11"
+              },
+              "day" : {
+                "value" : "16"
+              }
+            },
+            "organization" : {
+              "name" : "Centre National de la Recherche Scientifique",
+              "address" : {
+                "city" : "Lyon",
+                "region" : null,
+                "country" : "FR"
+              },
+              "disambiguated-organization" : {
+                "disambiguated-organization-identifier" : "http://dx.doi.org/10.13039/501100004794",
+                "disambiguation-source" : "FUNDREF"
+              }
+            },
+            "url" : {
+              "value" : "http://www.eisbm.org/"
+            },
+            "external-ids" : null,
+            "display-index" : "1",
+            "visibility" : "public",
+            "path" : "/0000-0002-3671-895X/employment/18677587"
+          }
+        } ]
+      }, {
+        "last-modified-date" : {
+          "value" : 1665500657863
+        },
+        "external-ids" : {
+          "external-id" : [ ]
+        },
+        "summaries" : [ {
+          "employment-summary" : {
+            "created-date" : {
+              "value" : 1665500657863
+            },
+            "last-modified-date" : {
+              "value" : 1665500657863
+            },
+            "source" : {
+              "source-orcid" : {
+                "uri" : "https://orcid.org/0000-0002-3671-895X",
+                "path" : "0000-0002-3671-895X",
+                "host" : "orcid.org"
+              },
+              "source-client-id" : null,
+              "source-name" : {
+                "value" : "Irina Balaur"
+              },
+              "assertion-origin-orcid" : null,
+              "assertion-origin-client-id" : null,
+              "assertion-origin-name" : null
+            },
+            "put-code" : 18671199,
+            "department-name" : "Human-Machine Interface Research",
+            "role-title" : "Software developer",
+            "start-date" : {
+              "year" : {
+                "value" : "2008"
+              },
+              "month" : {
+                "value" : "07"
+              },
+              "day" : {
+                "value" : "17"
+              }
+            },
+            "end-date" : {
+              "year" : {
+                "value" : "2011"
+              },
+              "month" : {
+                "value" : "06"
+              },
+              "day" : {
+                "value" : "30"
+              }
+            },
+            "organization" : {
+              "name" : "Continental Automotive Romania SRL",
+              "address" : {
+                "city" : "Iasi",
+                "region" : null,
+                "country" : "RO"
+              },
+              "disambiguated-organization" : {
+                "disambiguated-organization-identifier" : "508442",
+                "disambiguation-source" : "RINGGOLD"
+              }
+            },
+            "url" : null,
+            "external-ids" : null,
+            "display-index" : "1",
+            "visibility" : "public",
+            "path" : "/0000-0002-3671-895X/employment/18671199"
+          }
+        } ]
+      } ],
+      "path" : "/0000-0002-3671-895X/employments"
+    },
+    "fundings" : {
+      "last-modified-date" : {
+        "value" : 1665572133440
+      },
+      "group" : [ {
+        "last-modified-date" : {
+          "value" : 1665572133440
+        },
+        "external-ids" : {
+          "external-id" : [ ]
+        },
+        "funding-summary" : [ {
+          "created-date" : {
+            "value" : 1665572133440
+          },
+          "last-modified-date" : {
+            "value" : 1665572133440
+          },
+          "source" : {
+            "source-orcid" : {
+              "uri" : "https://orcid.org/0000-0002-3671-895X",
+              "path" : "0000-0002-3671-895X",
+              "host" : "orcid.org"
+            },
+            "source-client-id" : null,
+            "source-name" : {
+              "value" : "Irina Balaur"
+            },
+            "assertion-origin-orcid" : null,
+            "assertion-origin-client-id" : null,
+            "assertion-origin-name" : null
+          },
+          "title" : {
+            "title" : {
+              "value" : "Fostering the uptake of RDA indicators in Systems Biomedicine as a measure for model quality and FAIRness within the COMBINE community"
+            },
+            "translated-title" : null
+          },
+          "external-ids" : null,
+          "url" : {
+            "value" : "https://fair-ca-indicators.github.io/"
+          },
+          "type" : "grant",
+          "start-date" : {
+            "year" : {
+              "value" : "2022"
+            },
+            "month" : {
+              "value" : "10"
+            },
+            "day" : null
+          },
+          "end-date" : {
+            "year" : {
+              "value" : "2023"
+            },
+            "month" : {
+              "value" : "06"
+            },
+            "day" : null
+          },
+          "organization" : {
+            "name" : "RDA/EOSC Future Cross-disciplinary Science Adoption",
+            "address" : {
+              "city" : "Esch-sur-Alzette",
+              "region" : null,
+              "country" : "LU"
+            },
+            "disambiguated-organization" : null
+          },
+          "visibility" : "public",
+          "put-code" : 1432208,
+          "path" : "/0000-0002-3671-895X/funding/1432208",
+          "display-index" : "1"
+        } ]
+      } ],
+      "path" : "/0000-0002-3671-895X/fundings"
+    },
+    "invited-positions" : {
+      "last-modified-date" : {
+        "value" : 1671270521325
+      },
+      "affiliation-group" : [ {
+        "last-modified-date" : {
+          "value" : 1671270521325
+        },
+        "external-ids" : {
+          "external-id" : [ ]
+        },
+        "summaries" : [ {
+          "invited-position-summary" : {
+            "created-date" : {
+              "value" : 1665570815592
+            },
+            "last-modified-date" : {
+              "value" : 1671270521325
+            },
+            "source" : {
+              "source-orcid" : {
+                "uri" : "https://orcid.org/0000-0002-3671-895X",
+                "path" : "0000-0002-3671-895X",
+                "host" : "orcid.org"
+              },
+              "source-client-id" : null,
+              "source-name" : {
+                "value" : "Irina Balaur"
+              },
+              "assertion-origin-orcid" : null,
+              "assertion-origin-client-id" : null,
+              "assertion-origin-name" : null
+            },
+            "put-code" : 18677515,
+            "department-name" : null,
+            "role-title" : "IMI FAIRplus Fellowship",
+            "start-date" : {
+              "year" : {
+                "value" : "2021"
+              },
+              "month" : {
+                "value" : "05"
+              },
+              "day" : {
+                "value" : "01"
+              }
+            },
+            "end-date" : {
+              "year" : {
+                "value" : "2022"
+              },
+              "month" : {
+                "value" : "04"
+              },
+              "day" : {
+                "value" : "30"
+              }
+            },
+            "organization" : {
+              "name" : "Université du Luxembourg Luxembourg Centre for Systems Biomedicine",
+              "address" : {
+                "city" : "Esch-sur-Alzette",
+                "region" : null,
+                "country" : "LU"
+              },
+              "disambiguated-organization" : {
+                "disambiguated-organization-identifier" : "549046",
+                "disambiguation-source" : "RINGGOLD"
+              }
+            },
+            "url" : null,
+            "external-ids" : null,
+            "display-index" : "1",
+            "visibility" : "public",
+            "path" : "/0000-0002-3671-895X/invited-position/18677515"
+          }
+        } ]
+      }, {
+        "last-modified-date" : {
+          "value" : 1665570966585
+        },
+        "external-ids" : {
+          "external-id" : [ ]
+        },
+        "summaries" : [ {
+          "invited-position-summary" : {
+            "created-date" : {
+              "value" : 1665570966585
+            },
+            "last-modified-date" : {
+              "value" : 1665570966585
+            },
+            "source" : {
+              "source-orcid" : {
+                "uri" : "https://orcid.org/0000-0002-3671-895X",
+                "path" : "0000-0002-3671-895X",
+                "host" : "orcid.org"
+              },
+              "source-client-id" : null,
+              "source-name" : {
+                "value" : "Irina Balaur"
+              },
+              "assertion-origin-orcid" : null,
+              "assertion-origin-client-id" : null,
+              "assertion-origin-name" : null
+            },
+            "put-code" : 18677534,
+            "department-name" : "University of Luxembourg Leadership Academy - ULLA",
+            "role-title" : "ULLA Fellowship ",
+            "start-date" : {
+              "year" : {
+                "value" : "2021"
+              },
+              "month" : {
+                "value" : "09"
+              },
+              "day" : {
+                "value" : "20"
+              }
+            },
+            "end-date" : {
+              "year" : {
+                "value" : "2021"
+              },
+              "month" : {
+                "value" : "11"
+              },
+              "day" : {
+                "value" : "28"
+              }
+            },
+            "organization" : {
+              "name" : "Université du Luxembourg Luxembourg Centre for Systems Biomedicine",
+              "address" : {
+                "city" : "Esch-sur-Alzette",
+                "region" : null,
+                "country" : "LU"
+              },
+              "disambiguated-organization" : {
+                "disambiguated-organization-identifier" : "549046",
+                "disambiguation-source" : "RINGGOLD"
+              }
+            },
+            "url" : {
+              "value" : "https://wwwen.uni.lu/university/about_the_university/organisation_charts/organisation_chart_rectorate_central_administration/research_support_department"
+            },
+            "external-ids" : null,
+            "display-index" : "1",
+            "visibility" : "public",
+            "path" : "/0000-0002-3671-895X/invited-position/18677534"
+          }
+        } ]
+      }, {
+        "last-modified-date" : {
+          "value" : 1665571192252
+        },
+        "external-ids" : {
+          "external-id" : [ ]
+        },
+        "summaries" : [ {
+          "invited-position-summary" : {
+            "created-date" : {
+              "value" : 1665571192252
+            },
+            "last-modified-date" : {
+              "value" : 1665571192252
+            },
+            "source" : {
+              "source-orcid" : {
+                "uri" : "https://orcid.org/0000-0002-3671-895X",
+                "path" : "0000-0002-3671-895X",
+                "host" : "orcid.org"
+              },
+              "source-client-id" : null,
+              "source-name" : {
+                "value" : "Irina Balaur"
+              },
+              "assertion-origin-orcid" : null,
+              "assertion-origin-client-id" : null,
+              "assertion-origin-name" : null
+            },
+            "put-code" : 18677563,
+            "department-name" : "PhD Scholarship through European Complexity/Irish Research 2011 - 2014 Council (IRC) ERA-Net (2011 - 2013) + final year IRC scholarship award (2013 - 2014)",
+            "role-title" : "PhD Scholarship",
+            "start-date" : {
+              "year" : {
+                "value" : "2011"
+              },
+              "month" : {
+                "value" : "07"
+              },
+              "day" : {
+                "value" : "01"
+              }
+            },
+            "end-date" : {
+              "year" : {
+                "value" : "2014"
+              },
+              "month" : {
+                "value" : "11"
+              },
+              "day" : {
+                "value" : "05"
+              }
+            },
+            "organization" : {
+              "name" : "Dublin City University School of Computing",
+              "address" : {
+                "city" : "Dublin",
+                "region" : null,
+                "country" : "IE"
+              },
+              "disambiguated-organization" : {
+                "disambiguated-organization-identifier" : "315685",
+                "disambiguation-source" : "RINGGOLD"
+              }
+            },
+            "url" : {
+              "value" : "https://www.dcu.ie/computing"
+            },
+            "external-ids" : null,
+            "display-index" : "1",
+            "visibility" : "public",
+            "path" : "/0000-0002-3671-895X/invited-position/18677563"
+          }
+        } ]
+      } ],
+      "path" : "/0000-0002-3671-895X/invited-positions"
+    },
+    "memberships" : {
+      "last-modified-date" : null,
+      "affiliation-group" : [ ],
+      "path" : "/0000-0002-3671-895X/memberships"
+    },
+    "peer-reviews" : {
+      "last-modified-date" : null,
+      "group" : [ ],
+      "path" : "/0000-0002-3671-895X/peer-reviews"
+    },
+    "qualifications" : {
+      "last-modified-date" : null,
+      "affiliation-group" : [ ],
+      "path" : "/0000-0002-3671-895X/qualifications"
+    },
+    "research-resources" : {
+      "last-modified-date" : null,
+      "group" : [ ],
+      "path" : "/0000-0002-3671-895X/research-resources"
+    },
+    "services" : {
+      "last-modified-date" : {
+        "value" : 1665576421469
+      },
+      "affiliation-group" : [ {
+        "last-modified-date" : {
+          "value" : 1665574927579
+        },
+        "external-ids" : {
+          "external-id" : [ ]
+        },
+        "summaries" : [ {
+          "service-summary" : {
+            "created-date" : {
+              "value" : 1665574419849
+            },
+            "last-modified-date" : {
+              "value" : 1665574927579
+            },
+            "source" : {
+              "source-orcid" : {
+                "uri" : "https://orcid.org/0000-0002-3671-895X",
+                "path" : "0000-0002-3671-895X",
+                "host" : "orcid.org"
+              },
+              "source-client-id" : null,
+              "source-name" : {
+                "value" : "Irina Balaur"
+              },
+              "assertion-origin-orcid" : null,
+              "assertion-origin-client-id" : null,
+              "assertion-origin-name" : null
+            },
+            "put-code" : 18677911,
+            "department-name" : null,
+            "role-title" : "Coordinator of the Translational Medicine Informatics community (TransMed COSI)",
+            "start-date" : {
+              "year" : {
+                "value" : "2016"
+              },
+              "month" : {
+                "value" : "07"
+              },
+              "day" : {
+                "value" : "01"
+              }
+            },
+            "end-date" : null,
+            "organization" : {
+              "name" : "International Society for Computational Biology",
+              "address" : {
+                "city" : "Bethesda",
+                "region" : "Maryland",
+                "country" : "US"
+              },
+              "disambiguated-organization" : {
+                "disambiguated-organization-identifier" : "https://ror.org/01jv71z12",
+                "disambiguation-source" : "ROR"
+              }
+            },
+            "url" : null,
+            "external-ids" : null,
+            "display-index" : "1",
+            "visibility" : "public",
+            "path" : "/0000-0002-3671-895X/service/18677911"
+          }
+        } ]
+      }, {
+        "last-modified-date" : {
+          "value" : 1665576011270
+        },
+        "external-ids" : {
+          "external-id" : [ ]
+        },
+        "summaries" : [ {
+          "service-summary" : {
+            "created-date" : {
+              "value" : 1665575907864
+            },
+            "last-modified-date" : {
+              "value" : 1665576011270
+            },
+            "source" : {
+              "source-orcid" : {
+                "uri" : "https://orcid.org/0000-0002-3671-895X",
+                "path" : "0000-0002-3671-895X",
+                "host" : "orcid.org"
+              },
+              "source-client-id" : null,
+              "source-name" : {
+                "value" : "Irina Balaur"
+              },
+              "assertion-origin-orcid" : null,
+              "assertion-origin-client-id" : null,
+              "assertion-origin-name" : null
+            },
+            "put-code" : 18678080,
+            "department-name" : null,
+            "role-title" : "Organizer of the FAIR assessment of COMBINE models Workshop",
+            "start-date" : {
+              "year" : {
+                "value" : "2022"
+              },
+              "month" : {
+                "value" : "10"
+              },
+              "day" : {
+                "value" : "07"
+              }
+            },
+            "end-date" : {
+              "year" : {
+                "value" : "2022"
+              },
+              "month" : {
+                "value" : "10"
+              },
+              "day" : {
+                "value" : "07"
+              }
+            },
+            "organization" : {
+              "name" : "\"Computational Modeling in Biology” Network (COMBINE) community - COMBINE 2022",
+              "address" : {
+                "city" : "Berlin",
+                "region" : null,
+                "country" : "DE"
+              },
+              "disambiguated-organization" : null
+            },
+            "url" : {
+              "value" : "https://combine-org.github.io/events/"
+            },
+            "external-ids" : null,
+            "display-index" : "1",
+            "visibility" : "public",
+            "path" : "/0000-0002-3671-895X/service/18678080"
+          }
+        } ]
+      }, {
+        "last-modified-date" : {
+          "value" : 1665576041526
+        },
+        "external-ids" : {
+          "external-id" : [ ]
+        },
+        "summaries" : [ {
+          "service-summary" : {
+            "created-date" : {
+              "value" : 1665575396041
+            },
+            "last-modified-date" : {
+              "value" : 1665576041526
+            },
+            "source" : {
+              "source-orcid" : {
+                "uri" : "https://orcid.org/0000-0002-3671-895X",
+                "path" : "0000-0002-3671-895X",
+                "host" : "orcid.org"
+              },
+              "source-client-id" : null,
+              "source-name" : {
+                "value" : "Irina Balaur"
+              },
+              "assertion-origin-orcid" : null,
+              "assertion-origin-client-id" : null,
+              "assertion-origin-name" : null
+            },
+            "put-code" : 18678013,
+            "department-name" : null,
+            "role-title" : "Organizer of the FAIR model Workshop ",
+            "start-date" : {
+              "year" : {
+                "value" : "2022"
+              },
+              "month" : {
+                "value" : "04"
+              },
+              "day" : {
+                "value" : "28"
+              }
+            },
+            "end-date" : {
+              "year" : {
+                "value" : "2022"
+              },
+              "month" : {
+                "value" : "04"
+              },
+              "day" : {
+                "value" : "30"
+              }
+            },
+            "organization" : {
+              "name" : "\"Computational Modeling in Biology” Network (COMBINE) community - HARMONY 2022",
+              "address" : {
+                "city" : "Virtual",
+                "region" : null,
+                "country" : "LU"
+              },
+              "disambiguated-organization" : null
+            },
+            "url" : null,
+            "external-ids" : null,
+            "display-index" : "1",
+            "visibility" : "public",
+            "path" : "/0000-0002-3671-895X/service/18678013"
+          }
+        } ]
+      }, {
+        "last-modified-date" : {
+          "value" : 1665575669043
+        },
+        "external-ids" : {
+          "external-id" : [ ]
+        },
+        "summaries" : [ {
+          "service-summary" : {
+            "created-date" : {
+              "value" : 1665575160761
+            },
+            "last-modified-date" : {
+              "value" : 1665575669043
+            },
+            "source" : {
+              "source-orcid" : {
+                "uri" : "https://orcid.org/0000-0002-3671-895X",
+                "path" : "0000-0002-3671-895X",
+                "host" : "orcid.org"
+              },
+              "source-client-id" : null,
+              "source-name" : {
+                "value" : "Irina Balaur"
+              },
+              "assertion-origin-orcid" : null,
+              "assertion-origin-client-id" : null,
+              "assertion-origin-name" : null
+            },
+            "put-code" : 18677991,
+            "department-name" : null,
+            "role-title" : "Organizer of the Machine Learning for Medicine and Healthcare Workshop",
+            "start-date" : {
+              "year" : {
+                "value" : "2018"
+              },
+              "month" : {
+                "value" : "08"
+              },
+              "day" : {
+                "value" : "20"
+              }
+            },
+            "end-date" : {
+              "year" : {
+                "value" : "2018"
+              },
+              "month" : {
+                "value" : "08"
+              },
+              "day" : {
+                "value" : "20"
+              }
+            },
+            "organization" : {
+              "name" : "24th ACM SIGKDD Conference on Knowledge Discovery and Data Mining",
+              "address" : {
+                "city" : "London",
+                "region" : null,
+                "country" : "GB"
+              },
+              "disambiguated-organization" : null
+            },
+            "url" : null,
+            "external-ids" : null,
+            "display-index" : "1",
+            "visibility" : "public",
+            "path" : "/0000-0002-3671-895X/service/18677991"
+          }
+        } ]
+      }, {
+        "last-modified-date" : {
+          "value" : 1665575646254
+        },
+        "external-ids" : {
+          "external-id" : [ ]
+        },
+        "summaries" : [ {
+          "service-summary" : {
+            "created-date" : {
+              "value" : 1665574736177
+            },
+            "last-modified-date" : {
+              "value" : 1665575646254
+            },
+            "source" : {
+              "source-orcid" : {
+                "uri" : "https://orcid.org/0000-0002-3671-895X",
+                "path" : "0000-0002-3671-895X",
+                "host" : "orcid.org"
+              },
+              "source-client-id" : null,
+              "source-name" : {
+                "value" : "Irina Balaur"
+              },
+              "assertion-origin-orcid" : null,
+              "assertion-origin-client-id" : null,
+              "assertion-origin-name" : null
+            },
+            "put-code" : 18677949,
+            "department-name" : null,
+            "role-title" : "Organizer of the DMCM 2018 ",
+            "start-date" : {
+              "year" : {
+                "value" : "2018"
+              },
+              "month" : {
+                "value" : "06"
+              },
+              "day" : {
+                "value" : "21"
+              }
+            },
+            "end-date" : {
+              "year" : {
+                "value" : "2018"
+              },
+              "month" : {
+                "value" : "06"
+              },
+              "day" : {
+                "value" : "22"
+              }
+            },
+            "organization" : {
+              "name" : "3rd Disease Maps Community Meeting (DMCM2018)",
+              "address" : {
+                "city" : "Paris",
+                "region" : null,
+                "country" : "FR"
+              },
+              "disambiguated-organization" : null
+            },
+            "url" : null,
+            "external-ids" : null,
+            "display-index" : "1",
+            "visibility" : "public",
+            "path" : "/0000-0002-3671-895X/service/18677949"
+          }
+        } ]
+      }, {
+        "last-modified-date" : {
+          "value" : 1665576253287
+        },
+        "external-ids" : {
+          "external-id" : [ ]
+        },
+        "summaries" : [ {
+          "service-summary" : {
+            "created-date" : {
+              "value" : 1665576253287
+            },
+            "last-modified-date" : {
+              "value" : 1665576253287
+            },
+            "source" : {
+              "source-orcid" : {
+                "uri" : "https://orcid.org/0000-0002-3671-895X",
+                "path" : "0000-0002-3671-895X",
+                "host" : "orcid.org"
+              },
+              "source-client-id" : null,
+              "source-name" : {
+                "value" : "Irina Balaur"
+              },
+              "assertion-origin-orcid" : null,
+              "assertion-origin-client-id" : null,
+              "assertion-origin-name" : null
+            },
+            "put-code" : 18678114,
+            "department-name" : null,
+            "role-title" : "Guest Editor for the Computational Models & Methods in Systems Biology & Medicine Special Issue (with Prof. H.J. Ruskin, DCU, Ireland) ",
+            "start-date" : {
+              "year" : {
+                "value" : "2014"
+              },
+              "month" : {
+                "value" : "11"
+              },
+              "day" : {
+                "value" : "15"
+              }
+            },
+            "end-date" : {
+              "year" : {
+                "value" : "2015"
+              },
+              "month" : {
+                "value" : "11"
+              },
+              "day" : {
+                "value" : "14"
+              }
+            },
+            "organization" : {
+              "name" : "IET Systems Biology Journal",
+              "address" : {
+                "city" : "Lyon",
+                "region" : null,
+                "country" : "FR"
+              },
+              "disambiguated-organization" : null
+            },
+            "url" : {
+              "value" : "https://ietresearch.onlinelibrary.wiley.com/doi/full/10.1049/iet-syb.2015.0078"
+            },
+            "external-ids" : null,
+            "display-index" : "1",
+            "visibility" : "public",
+            "path" : "/0000-0002-3671-895X/service/18678114"
+          }
+        } ]
+      }, {
+        "last-modified-date" : {
+          "value" : 1665575609792
+        },
+        "external-ids" : {
+          "external-id" : [ ]
+        },
+        "summaries" : [ {
+          "service-summary" : {
+            "created-date" : {
+              "value" : 1665575567451
+            },
+            "last-modified-date" : {
+              "value" : 1665575609792
+            },
+            "source" : {
+              "source-orcid" : {
+                "uri" : "https://orcid.org/0000-0002-3671-895X",
+                "path" : "0000-0002-3671-895X",
+                "host" : "orcid.org"
+              },
+              "source-client-id" : null,
+              "source-name" : {
+                "value" : "Irina Balaur"
+              },
+              "assertion-origin-orcid" : null,
+              "assertion-origin-client-id" : null,
+              "assertion-origin-name" : null
+            },
+            "put-code" : 18678040,
+            "department-name" : null,
+            "role-title" : "Organizer of the Empowering Systems Medicine through optimal design of experimentation and computational modeling (EMS) Workshop",
+            "start-date" : {
+              "year" : {
+                "value" : "2014"
+              },
+              "month" : {
+                "value" : "11"
+              },
+              "day" : {
+                "value" : "04"
+              }
+            },
+            "end-date" : {
+              "year" : {
+                "value" : "2014"
+              },
+              "month" : {
+                "value" : "11"
+              },
+              "day" : {
+                "value" : "04"
+              }
+            },
+            "organization" : {
+              "name" : "IEEE International Conference on Bioinformatics and Biomedicine 2014 (BIBM2014)",
+              "address" : {
+                "city" : "Belfast",
+                "region" : null,
+                "country" : "GB"
+              },
+              "disambiguated-organization" : null
+            },
+            "url" : null,
+            "external-ids" : null,
+            "display-index" : "1",
+            "visibility" : "public",
+            "path" : "/0000-0002-3671-895X/service/18678040"
+          }
+        } ]
+      }, {
+        "last-modified-date" : {
+          "value" : 1665576421469
+        },
+        "external-ids" : {
+          "external-id" : [ ]
+        },
+        "summaries" : [ {
+          "service-summary" : {
+            "created-date" : {
+              "value" : 1665576421469
+            },
+            "last-modified-date" : {
+              "value" : 1665576421469
+            },
+            "source" : {
+              "source-orcid" : {
+                "uri" : "https://orcid.org/0000-0002-3671-895X",
+                "path" : "0000-0002-3671-895X",
+                "host" : "orcid.org"
+              },
+              "source-client-id" : null,
+              "source-name" : {
+                "value" : "Irina Balaur"
+              },
+              "assertion-origin-orcid" : null,
+              "assertion-origin-client-id" : null,
+              "assertion-origin-name" : null
+            },
+            "put-code" : 18678129,
+            "department-name" : null,
+            "role-title" : "Chair of scientific session during the conference",
+            "start-date" : {
+              "year" : {
+                "value" : "2013"
+              },
+              "month" : {
+                "value" : "11"
+              },
+              "day" : {
+                "value" : "20"
+              }
+            },
+            "end-date" : {
+              "year" : {
+                "value" : "2013"
+              },
+              "month" : {
+                "value" : "11"
+              },
+              "day" : {
+                "value" : "22"
+              }
+            },
+            "organization" : {
+              "name" : "UKSim/AMSS 7th European Modelling Symposium",
+              "address" : {
+                "city" : "Manchester",
+                "region" : null,
+                "country" : "GB"
+              },
+              "disambiguated-organization" : null
+            },
+            "url" : {
+              "value" : "https://ieeexplore.ieee.org/xpl/conhome/6777804/proceeding"
+            },
+            "external-ids" : null,
+            "display-index" : "1",
+            "visibility" : "public",
+            "path" : "/0000-0002-3671-895X/service/18678129"
+          }
+        } ]
+      } ],
+      "path" : "/0000-0002-3671-895X/services"
+    },
+    "works" : {
+      "last-modified-date" : {
+        "value" : 1717169113922
+      },
+      "group" : [ {
+        "last-modified-date" : {
+          "value" : 1717169113922
+        },
+        "external-ids" : {
+          "external-id" : [ {
+            "external-id-type" : "doi",
+            "external-id-value" : "10.1101/2024.05.27.24307991",
+            "external-id-normalized" : {
+              "value" : "10.1101/2024.05.27.24307991",
+              "transient" : true
+            },
+            "external-id-normalized-error" : null,
+            "external-id-url" : {
+              "value" : "https://doi.org/10.1101/2024.05.27.24307991"
+            },
+            "external-id-relationship" : "self"
+          } ]
+        },
+        "work-summary" : [ {
+          "put-code" : 160493488,
+          "created-date" : {
+            "value" : 1716966836452
+          },
+          "last-modified-date" : {
+            "value" : 1717169113922
+          },
+          "source" : {
+            "source-orcid" : null,
+            "source-client-id" : {
+              "uri" : "https://orcid.org/client/0000-0001-9884-1913",
+              "path" : "0000-0001-9884-1913",
+              "host" : "orcid.org"
+            },
+            "source-name" : {
+              "value" : "Crossref"
+            },
+            "assertion-origin-orcid" : null,
+            "assertion-origin-client-id" : null,
+            "assertion-origin-name" : null
+          },
+          "title" : {
+            "title" : {
+              "value" : "Guidelines and Standard Frameworks for Artificial Intelligence in Medicine: A Systematic Review"
+            },
+            "subtitle" : null,
+            "translated-title" : null
+          },
+          "external-ids" : {
+            "external-id" : [ {
+              "external-id-type" : "doi",
+              "external-id-value" : "10.1101/2024.05.27.24307991",
+              "external-id-normalized" : {
+                "value" : "10.1101/2024.05.27.24307991",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://doi.org/10.1101/2024.05.27.24307991"
+              },
+              "external-id-relationship" : "self"
+            } ]
+          },
+          "url" : {
+            "value" : "https://doi.org/10.1101/2024.05.27.24307991"
+          },
+          "type" : "preprint",
+          "publication-date" : {
+            "year" : {
+              "value" : "2024"
+            },
+            "month" : {
+              "value" : "05"
+            },
+            "day" : {
+              "value" : "28"
+            }
+          },
+          "journal-title" : null,
+          "visibility" : "public",
+          "path" : "/0000-0002-3671-895X/work/160493488",
+          "display-index" : "0"
+        } ]
+      }, {
+        "last-modified-date" : {
+          "value" : 1711362151616
+        },
+        "external-ids" : {
+          "external-id" : [ {
+            "external-id-type" : "uri",
+            "external-id-value" : "https://www.tib-op.org/ojs/index.php/CoRDI/article/view/415",
+            "external-id-normalized" : {
+              "value" : "https://www.tib-op.org/ojs/index.php/CoRDI/article/view/415",
+              "transient" : true
+            },
+            "external-id-normalized-error" : null,
+            "external-id-url" : null,
+            "external-id-relationship" : "self"
+          }, {
+            "external-id-type" : "doi",
+            "external-id-value" : "10.52825/cordi.v1i.415",
+            "external-id-normalized" : {
+              "value" : "10.52825/cordi.v1i.415",
+              "transient" : true
+            },
+            "external-id-normalized-error" : null,
+            "external-id-url" : {
+              "value" : "https://doi.org/10.52825/cordi.v1i.415"
+            },
+            "external-id-relationship" : "self"
+          } ]
+        },
+        "work-summary" : [ {
+          "put-code" : 141753243,
+          "created-date" : {
+            "value" : 1693903650008
+          },
+          "last-modified-date" : {
+            "value" : 1694092616368
+          },
+          "source" : {
+            "source-orcid" : null,
+            "source-client-id" : {
+              "uri" : "https://orcid.org/client/APP-8PQQW0T6XUBZF7TB",
+              "path" : "APP-8PQQW0T6XUBZF7TB",
+              "host" : "orcid.org"
+            },
+            "source-name" : {
+              "value" : "TIB Open Publishing"
+            },
+            "assertion-origin-orcid" : null,
+            "assertion-origin-client-id" : null,
+            "assertion-origin-name" : null
+          },
+          "title" : {
+            "title" : {
+              "value" : "Experiences From FAIRifying Community Data and FAIR Infrastructure in Biomedical Research Domains"
+            },
+            "subtitle" : null,
+            "translated-title" : null
+          },
+          "external-ids" : {
+            "external-id" : [ {
+              "external-id-type" : "doi",
+              "external-id-value" : "10.52825/cordi.v1i",
+              "external-id-normalized" : {
+                "value" : "10.52825/cordi.v1i",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://doi.org/10.52825/cordi.v1i"
+              },
+              "external-id-relationship" : "part-of"
+            }, {
+              "external-id-type" : "uri",
+              "external-id-value" : "https://www.tib-op.org/ojs/index.php/CoRDI/article/view/415",
+              "external-id-normalized" : {
+                "value" : "https://www.tib-op.org/ojs/index.php/CoRDI/article/view/415",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : null,
+              "external-id-relationship" : "self"
+            }, {
+              "external-id-type" : "issn",
+              "external-id-value" : "2941-296X",
+              "external-id-normalized" : {
+                "value" : "2941-296X",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : null,
+              "external-id-relationship" : "part-of"
+            } ]
+          },
+          "url" : {
+            "value" : "https://www.tib-op.org/ojs/index.php/CoRDI/article/view/415"
+          },
+          "type" : "journal-article",
+          "publication-date" : {
+            "year" : {
+              "value" : "2023"
+            },
+            "month" : {
+              "value" : "09"
+            },
+            "day" : {
+              "value" : "07"
+            }
+          },
+          "journal-title" : {
+            "value" : "Proceedings of the Conference on Research Data Infrastructure "
+          },
+          "visibility" : "public",
+          "path" : "/0000-0002-3671-895X/work/141753243",
+          "display-index" : "0"
+        }, {
+          "put-code" : 141963806,
+          "created-date" : {
+            "value" : 1694164503291
+          },
+          "last-modified-date" : {
+            "value" : 1694164503291
+          },
+          "source" : {
+            "source-orcid" : null,
+            "source-client-id" : {
+              "uri" : "https://orcid.org/client/0000-0001-9884-1913",
+              "path" : "0000-0001-9884-1913",
+              "host" : "orcid.org"
+            },
+            "source-name" : {
+              "value" : "Crossref"
+            },
+            "assertion-origin-orcid" : null,
+            "assertion-origin-client-id" : null,
+            "assertion-origin-name" : null
+          },
+          "title" : {
+            "title" : {
+              "value" : "Experiences From FAIRifying Community Data and FAIR Infrastructure in Biomedical Research Domains"
+            },
+            "subtitle" : null,
+            "translated-title" : null
+          },
+          "external-ids" : {
+            "external-id" : [ {
+              "external-id-type" : "doi",
+              "external-id-value" : "10.52825/cordi.v1i.415",
+              "external-id-normalized" : {
+                "value" : "10.52825/cordi.v1i.415",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://doi.org/10.52825/cordi.v1i.415"
+              },
+              "external-id-relationship" : "self"
+            } ]
+          },
+          "url" : {
+            "value" : "https://doi.org/10.52825/cordi.v1i.415"
+          },
+          "type" : "journal-article",
+          "publication-date" : {
+            "year" : {
+              "value" : "2023"
+            },
+            "month" : {
+              "value" : "09"
+            },
+            "day" : {
+              "value" : "07"
+            }
+          },
+          "journal-title" : {
+            "value" : "Proceedings of the Conference on Research Data Infrastructure"
+          },
+          "visibility" : "public",
+          "path" : "/0000-0002-3671-895X/work/141963806",
+          "display-index" : "0"
+        }, {
+          "put-code" : 156182349,
+          "created-date" : {
+            "value" : 1711362151616
+          },
+          "last-modified-date" : {
+            "value" : 1711362151616
+          },
+          "source" : {
+            "source-orcid" : {
+              "uri" : "https://orcid.org/0000-0002-3671-895X",
+              "path" : "0000-0002-3671-895X",
+              "host" : "orcid.org"
+            },
+            "source-client-id" : null,
+            "source-name" : {
+              "value" : "Irina Balaur"
+            },
+            "assertion-origin-orcid" : null,
+            "assertion-origin-client-id" : null,
+            "assertion-origin-name" : null
+          },
+          "title" : {
+            "title" : {
+              "value" : "Experiences From FAIRifying Community Data and FAIR Infrastructure in Biomedical Research Domains"
+            },
+            "subtitle" : null,
+            "translated-title" : null
+          },
+          "external-ids" : {
+            "external-id" : [ {
+              "external-id-type" : "doi",
+              "external-id-value" : "10.52825/cordi.v1i.415",
+              "external-id-normalized" : {
+                "value" : "10.52825/cordi.v1i.415",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://doi.org/10.52825/cordi.v1i.415"
+              },
+              "external-id-relationship" : "self"
+            }, {
+              "external-id-type" : "doi",
+              "external-id-value" : "10.52825/cordi.v1i",
+              "external-id-normalized" : {
+                "value" : "10.52825/cordi.v1i",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://doi.org/10.52825/cordi.v1i"
+              },
+              "external-id-relationship" : "part-of"
+            }, {
+              "external-id-type" : "uri",
+              "external-id-value" : "https://www.tib-op.org/ojs/index.php/CoRDI/article/view/415",
+              "external-id-normalized" : {
+                "value" : "https://www.tib-op.org/ojs/index.php/CoRDI/article/view/415",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : null,
+              "external-id-relationship" : "self"
+            }, {
+              "external-id-type" : "issn",
+              "external-id-value" : "2941-296X",
+              "external-id-normalized" : {
+                "value" : "2941-296X",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : null,
+              "external-id-relationship" : "part-of"
+            } ]
+          },
+          "url" : {
+            "value" : "https://doi.org/10.52825/cordi.v1i.415"
+          },
+          "type" : "journal-article",
+          "publication-date" : {
+            "year" : {
+              "value" : "2023"
+            },
+            "month" : {
+              "value" : "09"
+            },
+            "day" : {
+              "value" : "07"
+            }
+          },
+          "journal-title" : {
+            "value" : "Proceedings of the Conference on Research Data Infrastructure"
+          },
+          "visibility" : "public",
+          "path" : "/0000-0002-3671-895X/work/156182349",
+          "display-index" : "-1"
+        } ]
+      }, {
+        "last-modified-date" : {
+          "value" : 1672355501135
+        },
+        "external-ids" : {
+          "external-id" : [ {
+            "external-id-type" : "doi",
+            "external-id-value" : "10.1515/jib-2022-0030",
+            "external-id-normalized" : {
+              "value" : "10.1515/jib-2022-0030",
+              "transient" : true
+            },
+            "external-id-normalized-error" : null,
+            "external-id-url" : {
+              "value" : "https://doi.org/10.1515/jib-2022-0030"
+            },
+            "external-id-relationship" : "self"
+          } ]
+        },
+        "work-summary" : [ {
+          "put-code" : 125251307,
+          "created-date" : {
+            "value" : 1671835090255
+          },
+          "last-modified-date" : {
+            "value" : 1672355501135
+          },
+          "source" : {
+            "source-orcid" : null,
+            "source-client-id" : {
+              "uri" : "https://orcid.org/client/0000-0001-9884-1913",
+              "path" : "0000-0001-9884-1913",
+              "host" : "orcid.org"
+            },
+            "source-name" : {
+              "value" : "Crossref"
+            },
+            "assertion-origin-orcid" : null,
+            "assertion-origin-client-id" : null,
+            "assertion-origin-name" : null
+          },
+          "title" : {
+            "title" : {
+              "value" : "GraphML-SBGN bidirectional converter for metabolic networks"
+            },
+            "subtitle" : null,
+            "translated-title" : null
+          },
+          "external-ids" : {
+            "external-id" : [ {
+              "external-id-type" : "doi",
+              "external-id-value" : "10.1515/jib-2022-0030",
+              "external-id-normalized" : {
+                "value" : "10.1515/jib-2022-0030",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://doi.org/10.1515/jib-2022-0030"
+              },
+              "external-id-relationship" : "self"
+            } ]
+          },
+          "url" : {
+            "value" : "https://doi.org/10.1515/jib-2022-0030"
+          },
+          "type" : "journal-article",
+          "publication-date" : {
+            "year" : {
+              "value" : "2022"
+            },
+            "month" : {
+              "value" : "12"
+            },
+            "day" : {
+              "value" : "30"
+            }
+          },
+          "journal-title" : {
+            "value" : "Journal of Integrative Bioinformatics"
+          },
+          "visibility" : "public",
+          "path" : "/0000-0002-3671-895X/work/125251307",
+          "display-index" : "0"
+        } ]
+      }, {
+        "last-modified-date" : {
+          "value" : 1671615612509
+        },
+        "external-ids" : {
+          "external-id" : [ {
+            "external-id-type" : "doi",
+            "external-id-value" : "10.1101/2022.12.17.520865",
+            "external-id-normalized" : {
+              "value" : "10.1101/2022.12.17.520865",
+              "transient" : true
+            },
+            "external-id-normalized-error" : null,
+            "external-id-url" : {
+              "value" : "https://doi.org/10.1101/2022.12.17.520865"
+            },
+            "external-id-relationship" : "self"
+          } ]
+        },
+        "work-summary" : [ {
+          "put-code" : 125082308,
+          "created-date" : {
+            "value" : 1671615612509
+          },
+          "last-modified-date" : {
+            "value" : 1671615612509
+          },
+          "source" : {
+            "source-orcid" : {
+              "uri" : "https://orcid.org/0000-0002-3671-895X",
+              "path" : "0000-0002-3671-895X",
+              "host" : "orcid.org"
+            },
+            "source-client-id" : null,
+            "source-name" : {
+              "value" : "Irina Balaur"
+            },
+            "assertion-origin-orcid" : null,
+            "assertion-origin-client-id" : null,
+            "assertion-origin-name" : null
+          },
+          "title" : {
+            "title" : {
+              "value" : "A versatile and interoperable computational framework for the analysis and modeling of COVID-19 disease mechanisms"
+            },
+            "subtitle" : null,
+            "translated-title" : null
+          },
+          "external-ids" : {
+            "external-id" : [ {
+              "external-id-type" : "doi",
+              "external-id-value" : "10.1101/2022.12.17.520865",
+              "external-id-normalized" : {
+                "value" : "10.1101/2022.12.17.520865",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://doi.org/10.1101/2022.12.17.520865"
+              },
+              "external-id-relationship" : "self"
+            } ]
+          },
+          "url" : {
+            "value" : "http://dx.doi.org/10.1101/2022.12.17.520865"
+          },
+          "type" : "preprint",
+          "publication-date" : {
+            "year" : {
+              "value" : "2022"
+            },
+            "month" : {
+              "value" : "12"
+            },
+            "day" : {
+              "value" : "19"
+            }
+          },
+          "journal-title" : {
+            "value" : "[]"
+          },
+          "visibility" : "public",
+          "path" : "/0000-0002-3671-895X/work/125082308",
+          "display-index" : "1"
+        } ]
+      }, {
+        "last-modified-date" : {
+          "value" : 1671959970575
+        },
+        "external-ids" : {
+          "external-id" : [ {
+            "external-id-type" : "doi",
+            "external-id-value" : "10.20944/preprints202212.0209.v1",
+            "external-id-normalized" : {
+              "value" : "10.20944/preprints202212.0209.v1",
+              "transient" : true
+            },
+            "external-id-normalized-error" : null,
+            "external-id-url" : {
+              "value" : "https://doi.org/10.20944/preprints202212.0209.v1"
+            },
+            "external-id-relationship" : "self"
+          } ]
+        },
+        "work-summary" : [ {
+          "put-code" : 125298300,
+          "created-date" : {
+            "value" : 1671959970575
+          },
+          "last-modified-date" : {
+            "value" : 1671959970575
+          },
+          "source" : {
+            "source-orcid" : {
+              "uri" : "https://orcid.org/0000-0002-3671-895X",
+              "path" : "0000-0002-3671-895X",
+              "host" : "orcid.org"
+            },
+            "source-client-id" : null,
+            "source-name" : {
+              "value" : "Irina Balaur"
+            },
+            "assertion-origin-orcid" : null,
+            "assertion-origin-client-id" : null,
+            "assertion-origin-name" : null
+          },
+          "title" : {
+            "title" : {
+              "value" : "High-quality Reconstruction of Disease Mechanisms: Planning, Development and Maintenance"
+            },
+            "subtitle" : null,
+            "translated-title" : null
+          },
+          "external-ids" : {
+            "external-id" : [ {
+              "external-id-type" : "doi",
+              "external-id-value" : "10.20944/preprints202212.0209.v1",
+              "external-id-normalized" : {
+                "value" : "10.20944/preprints202212.0209.v1",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://doi.org/10.20944/preprints202212.0209.v1"
+              },
+              "external-id-relationship" : "self"
+            } ]
+          },
+          "url" : {
+            "value" : "http://dx.doi.org/10.20944/preprints202212.0209.v1"
+          },
+          "type" : "preprint",
+          "publication-date" : {
+            "year" : {
+              "value" : "2022"
+            },
+            "month" : {
+              "value" : "12"
+            },
+            "day" : {
+              "value" : "13"
+            }
+          },
+          "journal-title" : {
+            "value" : "[]"
+          },
+          "visibility" : "public",
+          "path" : "/0000-0002-3671-895X/work/125298300",
+          "display-index" : "1"
+        } ]
+      }, {
+        "last-modified-date" : {
+          "value" : 1665573156721
+        },
+        "external-ids" : {
+          "external-id" : [ {
+            "external-id-type" : "doi",
+            "external-id-value" : "10.1038/s41598-021-01618-3",
+            "external-id-normalized" : {
+              "value" : "10.1038/s41598-021-01618-3",
+              "transient" : true
+            },
+            "external-id-normalized-error" : null,
+            "external-id-url" : {
+              "value" : "https://doi.org/10.1038/s41598-021-01618-3"
+            },
+            "external-id-relationship" : "self"
+          }, {
+            "external-id-type" : "pmid",
+            "external-id-value" : "34782688",
+            "external-id-normalized" : {
+              "value" : "34782688",
+              "transient" : true
+            },
+            "external-id-normalized-error" : null,
+            "external-id-url" : {
+              "value" : "https://pubmed.ncbi.nlm.nih.gov/34782688"
+            },
+            "external-id-relationship" : "self"
+          }, {
+            "external-id-type" : "pmc",
+            "external-id-value" : "PMC8592983",
+            "external-id-normalized" : {
+              "value" : "8592983",
+              "transient" : true
+            },
+            "external-id-normalized-error" : null,
+            "external-id-url" : {
+              "value" : "https://europepmc.org/article/pmc/8592983"
+            },
+            "external-id-relationship" : "self"
+          } ]
+        },
+        "work-summary" : [ {
+          "put-code" : 120616965,
+          "created-date" : {
+            "value" : 1665573156721
+          },
+          "last-modified-date" : {
+            "value" : 1665573156721
+          },
+          "source" : {
+            "source-orcid" : {
+              "uri" : "https://orcid.org/0000-0002-3671-895X",
+              "path" : "0000-0002-3671-895X",
+              "host" : "orcid.org"
+            },
+            "source-client-id" : null,
+            "source-name" : {
+              "value" : "Irina Balaur"
+            },
+            "assertion-origin-orcid" : null,
+            "assertion-origin-client-id" : null,
+            "assertion-origin-name" : null
+          },
+          "title" : {
+            "title" : {
+              "value" : "CyFi-MAP: an interactive pathway-based resource for cystic fibrosis."
+            },
+            "subtitle" : null,
+            "translated-title" : null
+          },
+          "external-ids" : {
+            "external-id" : [ {
+              "external-id-type" : "pmid",
+              "external-id-value" : "34782688",
+              "external-id-normalized" : {
+                "value" : "34782688",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://pubmed.ncbi.nlm.nih.gov/34782688"
+              },
+              "external-id-relationship" : "self"
+            }, {
+              "external-id-type" : "pmc",
+              "external-id-value" : "PMC8592983",
+              "external-id-normalized" : {
+                "value" : "8592983",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://europepmc.org/article/pmc/8592983"
+              },
+              "external-id-relationship" : "self"
+            }, {
+              "external-id-type" : "doi",
+              "external-id-value" : "10.1038/s41598-021-01618-3",
+              "external-id-normalized" : {
+                "value" : "10.1038/s41598-021-01618-3",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://doi.org/10.1038/s41598-021-01618-3"
+              },
+              "external-id-relationship" : "self"
+            } ]
+          },
+          "url" : {
+            "value" : "https://europepmc.org/articles/PMC8592983"
+          },
+          "type" : "journal-article",
+          "publication-date" : {
+            "year" : {
+              "value" : "2021"
+            },
+            "month" : {
+              "value" : "11"
+            },
+            "day" : {
+              "value" : "15"
+            }
+          },
+          "journal-title" : {
+            "value" : "Scientific reports"
+          },
+          "visibility" : "public",
+          "path" : "/0000-0002-3671-895X/work/120616965",
+          "display-index" : "1"
+        } ]
+      }, {
+        "last-modified-date" : {
+          "value" : 1665573183484
+        },
+        "external-ids" : {
+          "external-id" : [ {
+            "external-id-type" : "doi",
+            "external-id-value" : "10.1016/j.jaci.2020.11.032",
+            "external-id-normalized" : {
+              "value" : "10.1016/j.jaci.2020.11.032",
+              "transient" : true
+            },
+            "external-id-normalized-error" : null,
+            "external-id-url" : {
+              "value" : "https://doi.org/10.1016/j.jaci.2020.11.032"
+            },
+            "external-id-relationship" : "self"
+          }, {
+            "external-id-type" : "pmid",
+            "external-id-value" : "33309742",
+            "external-id-normalized" : {
+              "value" : "33309742",
+              "transient" : true
+            },
+            "external-id-normalized-error" : null,
+            "external-id-url" : {
+              "value" : "https://pubmed.ncbi.nlm.nih.gov/33309742"
+            },
+            "external-id-relationship" : "self"
+          } ]
+        },
+        "work-summary" : [ {
+          "put-code" : 120616989,
+          "created-date" : {
+            "value" : 1665573183484
+          },
+          "last-modified-date" : {
+            "value" : 1665573183484
+          },
+          "source" : {
+            "source-orcid" : {
+              "uri" : "https://orcid.org/0000-0002-3671-895X",
+              "path" : "0000-0002-3671-895X",
+              "host" : "orcid.org"
+            },
+            "source-client-id" : null,
+            "source-name" : {
+              "value" : "Irina Balaur"
+            },
+            "assertion-origin-orcid" : null,
+            "assertion-origin-client-id" : null,
+            "assertion-origin-name" : null
+          },
+          "title" : {
+            "title" : {
+              "value" : "AsthmaMap: An interactive knowledge repository for mechanisms of asthma."
+            },
+            "subtitle" : null,
+            "translated-title" : null
+          },
+          "external-ids" : {
+            "external-id" : [ {
+              "external-id-type" : "pmid",
+              "external-id-value" : "33309742",
+              "external-id-normalized" : {
+                "value" : "33309742",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://pubmed.ncbi.nlm.nih.gov/33309742"
+              },
+              "external-id-relationship" : "self"
+            }, {
+              "external-id-type" : "doi",
+              "external-id-value" : "10.1016/j.jaci.2020.11.032",
+              "external-id-normalized" : {
+                "value" : "10.1016/j.jaci.2020.11.032",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://doi.org/10.1016/j.jaci.2020.11.032"
+              },
+              "external-id-relationship" : "self"
+            } ]
+          },
+          "url" : {
+            "value" : "https://doi.org/10.1016/j.jaci.2020.11.032"
+          },
+          "type" : "journal-article",
+          "publication-date" : {
+            "year" : {
+              "value" : "2020"
+            },
+            "month" : {
+              "value" : "12"
+            },
+            "day" : {
+              "value" : "09"
+            }
+          },
+          "journal-title" : {
+            "value" : "The Journal of allergy and clinical immunology"
+          },
+          "visibility" : "public",
+          "path" : "/0000-0002-3671-895X/work/120616989",
+          "display-index" : "1"
+        } ]
+      }, {
+        "last-modified-date" : {
+          "value" : 1653924677712
+        },
+        "external-ids" : {
+          "external-id" : [ {
+            "external-id-type" : "doi",
+            "external-id-value" : "10.1038/s41585-020-0355-3",
+            "external-id-normalized" : {
+              "value" : "10.1038/s41585-020-0355-3",
+              "transient" : true
+            },
+            "external-id-normalized-error" : null,
+            "external-id-url" : {
+              "value" : "https://doi.org/10.1038/s41585-020-0355-3"
+            },
+            "external-id-relationship" : "self"
+          } ]
+        },
+        "work-summary" : [ {
+          "put-code" : 76237859,
+          "created-date" : {
+            "value" : 1593081708244
+          },
+          "last-modified-date" : {
+            "value" : 1653924677712
+          },
+          "source" : {
+            "source-orcid" : null,
+            "source-client-id" : {
+              "uri" : "https://orcid.org/client/0000-0001-9884-1913",
+              "path" : "0000-0001-9884-1913",
+              "host" : "orcid.org"
+            },
+            "source-name" : {
+              "value" : "Crossref"
+            },
+            "assertion-origin-orcid" : null,
+            "assertion-origin-client-id" : null,
+            "assertion-origin-name" : null
+          },
+          "title" : {
+            "title" : {
+              "value" : "Author Correction: Introducing PIONEER: a project to harness big data in prostate cancer research"
+            },
+            "subtitle" : null,
+            "translated-title" : null
+          },
+          "external-ids" : {
+            "external-id" : [ {
+              "external-id-type" : "doi",
+              "external-id-value" : "10.1038/s41585-020-0355-3",
+              "external-id-normalized" : {
+                "value" : "10.1038/s41585-020-0355-3",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://doi.org/10.1038/s41585-020-0355-3"
+              },
+              "external-id-relationship" : "self"
+            } ]
+          },
+          "url" : {
+            "value" : "https://doi.org/10.1038/s41585-020-0355-3"
+          },
+          "type" : "journal-article",
+          "publication-date" : {
+            "year" : {
+              "value" : "2020"
+            },
+            "month" : {
+              "value" : "08"
+            },
+            "day" : {
+              "value" : "25"
+            }
+          },
+          "journal-title" : {
+            "value" : "Nature Reviews Urology"
+          },
+          "visibility" : "public",
+          "path" : "/0000-0002-3671-895X/work/76237859",
+          "display-index" : "0"
+        } ]
+      }, {
+        "last-modified-date" : {
+          "value" : 1653915661410
+        },
+        "external-ids" : {
+          "external-id" : [ {
+            "external-id-type" : "doi",
+            "external-id-value" : "10.1038/s41585-020-0324-x",
+            "external-id-normalized" : {
+              "value" : "10.1038/s41585-020-0324-x",
+              "transient" : true
+            },
+            "external-id-normalized-error" : null,
+            "external-id-url" : {
+              "value" : "https://doi.org/10.1038/s41585-020-0324-x"
+            },
+            "external-id-relationship" : "self"
+          } ]
+        },
+        "work-summary" : [ {
+          "put-code" : 74669867,
+          "created-date" : {
+            "value" : 1590570639260
+          },
+          "last-modified-date" : {
+            "value" : 1653915661410
+          },
+          "source" : {
+            "source-orcid" : null,
+            "source-client-id" : {
+              "uri" : "https://orcid.org/client/0000-0001-9884-1913",
+              "path" : "0000-0001-9884-1913",
+              "host" : "orcid.org"
+            },
+            "source-name" : {
+              "value" : "Crossref"
+            },
+            "assertion-origin-orcid" : null,
+            "assertion-origin-client-id" : null,
+            "assertion-origin-name" : null
+          },
+          "title" : {
+            "title" : {
+              "value" : "Introducing PIONEER: a project to harness big data in prostate cancer research"
+            },
+            "subtitle" : null,
+            "translated-title" : null
+          },
+          "external-ids" : {
+            "external-id" : [ {
+              "external-id-type" : "doi",
+              "external-id-value" : "10.1038/s41585-020-0324-x",
+              "external-id-normalized" : {
+                "value" : "10.1038/s41585-020-0324-x",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://doi.org/10.1038/s41585-020-0324-x"
+              },
+              "external-id-relationship" : "self"
+            } ]
+          },
+          "url" : {
+            "value" : "https://doi.org/10.1038/s41585-020-0324-x"
+          },
+          "type" : "journal-article",
+          "publication-date" : {
+            "year" : {
+              "value" : "2020"
+            },
+            "month" : {
+              "value" : "06"
+            },
+            "day" : {
+              "value" : "15"
+            }
+          },
+          "journal-title" : {
+            "value" : "Nature Reviews Urology"
+          },
+          "visibility" : "public",
+          "path" : "/0000-0002-3671-895X/work/74669867",
+          "display-index" : "0"
+        } ]
+      }, {
+        "last-modified-date" : {
+          "value" : 1675197969409
+        },
+        "external-ids" : {
+          "external-id" : [ {
+            "external-id-type" : "doi",
+            "external-id-value" : "10.1093/bioinformatics/btz969",
+            "external-id-normalized" : {
+              "value" : "10.1093/bioinformatics/btz969",
+              "transient" : true
+            },
+            "external-id-normalized-error" : null,
+            "external-id-url" : {
+              "value" : "https://doi.org/10.1093/bioinformatics/btz969"
+            },
+            "external-id-relationship" : "self"
+          } ]
+        },
+        "work-summary" : [ {
+          "put-code" : 67694753,
+          "created-date" : {
+            "value" : 1579702358257
+          },
+          "last-modified-date" : {
+            "value" : 1675197969409
+          },
+          "source" : {
+            "source-orcid" : null,
+            "source-client-id" : {
+              "uri" : "https://orcid.org/client/0000-0001-9884-1913",
+              "path" : "0000-0001-9884-1913",
+              "host" : "orcid.org"
+            },
+            "source-name" : {
+              "value" : "Crossref"
+            },
+            "assertion-origin-orcid" : null,
+            "assertion-origin-client-id" : null,
+            "assertion-origin-name" : null
+          },
+          "title" : {
+            "title" : {
+              "value" : "cd2sbgnml: bidirectional conversion between CellDesigner and SBGN formats"
+            },
+            "subtitle" : null,
+            "translated-title" : null
+          },
+          "external-ids" : {
+            "external-id" : [ {
+              "external-id-type" : "doi",
+              "external-id-value" : "10.1093/bioinformatics/btz969",
+              "external-id-normalized" : {
+                "value" : "10.1093/bioinformatics/btz969",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://doi.org/10.1093/bioinformatics/btz969"
+              },
+              "external-id-relationship" : "self"
+            } ]
+          },
+          "url" : {
+            "value" : "https://doi.org/10.1093/bioinformatics/btz969"
+          },
+          "type" : "journal-article",
+          "publication-date" : {
+            "year" : {
+              "value" : "2020"
+            },
+            "month" : {
+              "value" : "04"
+            },
+            "day" : {
+              "value" : "15"
+            }
+          },
+          "journal-title" : {
+            "value" : "Bioinformatics"
+          },
+          "visibility" : "public",
+          "path" : "/0000-0002-3671-895X/work/67694753",
+          "display-index" : "0"
+        } ]
+      }, {
+        "last-modified-date" : {
+          "value" : 1653768512745
+        },
+        "external-ids" : {
+          "external-id" : [ {
+            "external-id-type" : "doi",
+            "external-id-value" : "10.1515/jib-2019-0022",
+            "external-id-normalized" : {
+              "value" : "10.1515/jib-2019-0022",
+              "transient" : true
+            },
+            "external-id-normalized-error" : null,
+            "external-id-url" : {
+              "value" : "https://doi.org/10.1515/jib-2019-0022"
+            },
+            "external-id-relationship" : "self"
+          } ]
+        },
+        "work-summary" : [ {
+          "put-code" : 58486980,
+          "created-date" : {
+            "value" : 1560503854438
+          },
+          "last-modified-date" : {
+            "value" : 1653768512745
+          },
+          "source" : {
+            "source-orcid" : null,
+            "source-client-id" : {
+              "uri" : "https://orcid.org/client/0000-0001-9884-1913",
+              "path" : "0000-0001-9884-1913",
+              "host" : "orcid.org"
+            },
+            "source-name" : {
+              "value" : "Crossref"
+            },
+            "assertion-origin-orcid" : null,
+            "assertion-origin-client-id" : null,
+            "assertion-origin-name" : null
+          },
+          "title" : {
+            "title" : {
+              "value" : "Systems Biology Graphical Notation: Process Description language Level 1 Version 2.0"
+            },
+            "subtitle" : null,
+            "translated-title" : null
+          },
+          "external-ids" : {
+            "external-id" : [ {
+              "external-id-type" : "doi",
+              "external-id-value" : "10.1515/jib-2019-0022",
+              "external-id-normalized" : {
+                "value" : "10.1515/jib-2019-0022",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://doi.org/10.1515/jib-2019-0022"
+              },
+              "external-id-relationship" : "self"
+            } ]
+          },
+          "url" : {
+            "value" : "https://doi.org/10.1515/jib-2019-0022"
+          },
+          "type" : "journal-article",
+          "publication-date" : {
+            "year" : {
+              "value" : "2019"
+            },
+            "month" : {
+              "value" : "06"
+            },
+            "day" : {
+              "value" : "26"
+            }
+          },
+          "journal-title" : {
+            "value" : "Journal of Integrative Bioinformatics"
+          },
+          "visibility" : "public",
+          "path" : "/0000-0002-3671-895X/work/58486980",
+          "display-index" : "0"
+        } ]
+      }, {
+        "last-modified-date" : {
+          "value" : 1665573040284
+        },
+        "external-ids" : {
+          "external-id" : [ {
+            "external-id-type" : "doi",
+            "external-id-value" : "10.1093/bib/bby099",
+            "external-id-normalized" : {
+              "value" : "10.1093/bib/bby099",
+              "transient" : true
+            },
+            "external-id-normalized-error" : null,
+            "external-id-url" : {
+              "value" : "https://doi.org/10.1093/bib/bby099"
+            },
+            "external-id-relationship" : "self"
+          }, {
+            "external-id-type" : "pmid",
+            "external-id-value" : "30289443",
+            "external-id-normalized" : {
+              "value" : "30289443",
+              "transient" : true
+            },
+            "external-id-normalized-error" : null,
+            "external-id-url" : {
+              "value" : "https://pubmed.ncbi.nlm.nih.gov/30289443"
+            },
+            "external-id-relationship" : "self"
+          } ]
+        },
+        "work-summary" : [ {
+          "put-code" : 120616882,
+          "created-date" : {
+            "value" : 1665573040284
+          },
+          "last-modified-date" : {
+            "value" : 1665573040284
+          },
+          "source" : {
+            "source-orcid" : {
+              "uri" : "https://orcid.org/0000-0002-3671-895X",
+              "path" : "0000-0002-3671-895X",
+              "host" : "orcid.org"
+            },
+            "source-client-id" : null,
+            "source-name" : {
+              "value" : "Irina Balaur"
+            },
+            "assertion-origin-orcid" : null,
+            "assertion-origin-client-id" : null,
+            "assertion-origin-name" : null
+          },
+          "title" : {
+            "title" : {
+              "value" : "Human-like layout algorithms for signalling hypergraphs: outlining requirements. "
+            },
+            "subtitle" : null,
+            "translated-title" : null
+          },
+          "external-ids" : {
+            "external-id" : [ {
+              "external-id-type" : "pmid",
+              "external-id-value" : "30289443",
+              "external-id-normalized" : {
+                "value" : "30289443",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://pubmed.ncbi.nlm.nih.gov/30289443"
+              },
+              "external-id-relationship" : "self"
+            }, {
+              "external-id-type" : "doi",
+              "external-id-value" : "10.1093/bib/bby099",
+              "external-id-normalized" : {
+                "value" : "10.1093/bib/bby099",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://doi.org/10.1093/bib/bby099"
+              },
+              "external-id-relationship" : "self"
+            } ]
+          },
+          "url" : {
+            "value" : "https://doi.org/10.1093/bib/bby099"
+          },
+          "type" : "journal-article",
+          "publication-date" : {
+            "year" : {
+              "value" : "2018"
+            },
+            "month" : {
+              "value" : "10"
+            },
+            "day" : {
+              "value" : "05"
+            }
+          },
+          "journal-title" : {
+            "value" : "Briefings in bioinformatics"
+          },
+          "visibility" : "public",
+          "path" : "/0000-0002-3671-895X/work/120616882",
+          "display-index" : "1"
+        } ]
+      }, {
+        "last-modified-date" : {
+          "value" : 1671581743828
+        },
+        "external-ids" : {
+          "external-id" : [ {
+            "external-id-type" : "doi",
+            "external-id-value" : "10.1038/s41540-018-0059-y",
+            "external-id-normalized" : {
+              "value" : "10.1038/s41540-018-0059-y",
+              "transient" : true
+            },
+            "external-id-normalized-error" : null,
+            "external-id-url" : {
+              "value" : "https://doi.org/10.1038/s41540-018-0059-y"
+            },
+            "external-id-relationship" : "self"
+          } ]
+        },
+        "work-summary" : [ {
+          "put-code" : 45261966,
+          "created-date" : {
+            "value" : 1527683797814
+          },
+          "last-modified-date" : {
+            "value" : 1671581743828
+          },
+          "source" : {
+            "source-orcid" : null,
+            "source-client-id" : {
+              "uri" : "https://orcid.org/client/0000-0001-9884-1913",
+              "path" : "0000-0001-9884-1913",
+              "host" : "orcid.org"
+            },
+            "source-name" : {
+              "value" : "Crossref"
+            },
+            "assertion-origin-orcid" : null,
+            "assertion-origin-client-id" : null,
+            "assertion-origin-name" : null
+          },
+          "title" : {
+            "title" : {
+              "value" : "Systems medicine disease maps: community-driven comprehensive representation of disease mechanisms"
+            },
+            "subtitle" : null,
+            "translated-title" : null
+          },
+          "external-ids" : {
+            "external-id" : [ {
+              "external-id-type" : "doi",
+              "external-id-value" : "10.1038/s41540-018-0059-y",
+              "external-id-normalized" : {
+                "value" : "10.1038/s41540-018-0059-y",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://doi.org/10.1038/s41540-018-0059-y"
+              },
+              "external-id-relationship" : "self"
+            } ]
+          },
+          "url" : {
+            "value" : "https://doi.org/10.1038/s41540-018-0059-y"
+          },
+          "type" : "journal-article",
+          "publication-date" : {
+            "year" : {
+              "value" : "2018"
+            },
+            "month" : {
+              "value" : "06"
+            },
+            "day" : {
+              "value" : "02"
+            }
+          },
+          "journal-title" : {
+            "value" : "npj Systems Biology and Applications"
+          },
+          "visibility" : "public",
+          "path" : "/0000-0002-3671-895X/work/45261966",
+          "display-index" : "0"
+        } ]
+      }, {
+        "last-modified-date" : {
+          "value" : 1665572995641
+        },
+        "external-ids" : {
+          "external-id" : [ {
+            "external-id-type" : "pmid",
+            "external-id-value" : "29843806",
+            "external-id-normalized" : {
+              "value" : "29843806",
+              "transient" : true
+            },
+            "external-id-normalized-error" : null,
+            "external-id-url" : {
+              "value" : "https://pubmed.ncbi.nlm.nih.gov/29843806"
+            },
+            "external-id-relationship" : "self"
+          }, {
+            "external-id-type" : "pmc",
+            "external-id-value" : "PMC5975674",
+            "external-id-normalized" : {
+              "value" : "5975674",
+              "transient" : true
+            },
+            "external-id-normalized-error" : null,
+            "external-id-url" : {
+              "value" : "https://europepmc.org/article/pmc/5975674"
+            },
+            "external-id-relationship" : "self"
+          }, {
+            "external-id-type" : "doi",
+            "external-id-value" : "10.1186/s12918-018-0556-z",
+            "external-id-normalized" : {
+              "value" : "10.1186/s12918-018-0556-z",
+              "transient" : true
+            },
+            "external-id-normalized-error" : null,
+            "external-id-url" : {
+              "value" : "https://doi.org/10.1186/s12918-018-0556-z"
+            },
+            "external-id-relationship" : "self"
+          } ]
+        },
+        "work-summary" : [ {
+          "put-code" : 120616858,
+          "created-date" : {
+            "value" : 1665572995641
+          },
+          "last-modified-date" : {
+            "value" : 1665572995641
+          },
+          "source" : {
+            "source-orcid" : {
+              "uri" : "https://orcid.org/0000-0002-3671-895X",
+              "path" : "0000-0002-3671-895X",
+              "host" : "orcid.org"
+            },
+            "source-client-id" : null,
+            "source-name" : {
+              "value" : "Irina Balaur"
+            },
+            "assertion-origin-orcid" : null,
+            "assertion-origin-client-id" : null,
+            "assertion-origin-name" : null
+          },
+          "title" : {
+            "title" : {
+              "value" : "A computational framework for complex disease stratification from multiple large-scale datasets."
+            },
+            "subtitle" : null,
+            "translated-title" : null
+          },
+          "external-ids" : {
+            "external-id" : [ {
+              "external-id-type" : "pmid",
+              "external-id-value" : "29843806",
+              "external-id-normalized" : {
+                "value" : "29843806",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://pubmed.ncbi.nlm.nih.gov/29843806"
+              },
+              "external-id-relationship" : "self"
+            }, {
+              "external-id-type" : "pmc",
+              "external-id-value" : "PMC5975674",
+              "external-id-normalized" : {
+                "value" : "5975674",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://europepmc.org/article/pmc/5975674"
+              },
+              "external-id-relationship" : "self"
+            }, {
+              "external-id-type" : "doi",
+              "external-id-value" : "10.1186/s12918-018-0556-z",
+              "external-id-normalized" : {
+                "value" : "10.1186/s12918-018-0556-z",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://doi.org/10.1186/s12918-018-0556-z"
+              },
+              "external-id-relationship" : "self"
+            } ]
+          },
+          "url" : {
+            "value" : "https://europepmc.org/articles/PMC5975674"
+          },
+          "type" : "journal-article",
+          "publication-date" : {
+            "year" : {
+              "value" : "2018"
+            },
+            "month" : {
+              "value" : "05"
+            },
+            "day" : {
+              "value" : "29"
+            }
+          },
+          "journal-title" : {
+            "value" : "BMC systems biology"
+          },
+          "visibility" : "public",
+          "path" : "/0000-0002-3671-895X/work/120616858",
+          "display-index" : "1"
+        } ]
+      }, {
+        "last-modified-date" : {
+          "value" : 1665572731720
+        },
+        "external-ids" : {
+          "external-id" : [ {
+            "external-id-type" : "pmid",
+            "external-id-value" : "27993779",
+            "external-id-normalized" : {
+              "value" : "27993779",
+              "transient" : true
+            },
+            "external-id-normalized-error" : null,
+            "external-id-url" : {
+              "value" : "https://pubmed.ncbi.nlm.nih.gov/27993779"
+            },
+            "external-id-relationship" : "self"
+          }, {
+            "external-id-type" : "pmc",
+            "external-id-value" : "PMC5408918",
+            "external-id-normalized" : {
+              "value" : "5408918",
+              "transient" : true
+            },
+            "external-id-normalized-error" : null,
+            "external-id-url" : {
+              "value" : "https://europepmc.org/article/pmc/5408918"
+            },
+            "external-id-relationship" : "self"
+          }, {
+            "external-id-type" : "doi",
+            "external-id-value" : "10.1093/bioinformatics/btw731",
+            "external-id-normalized" : {
+              "value" : "10.1093/bioinformatics/btw731",
+              "transient" : true
+            },
+            "external-id-normalized-error" : null,
+            "external-id-url" : {
+              "value" : "https://doi.org/10.1093/bioinformatics/btw731"
+            },
+            "external-id-relationship" : "self"
+          } ]
+        },
+        "work-summary" : [ {
+          "put-code" : 120616672,
+          "created-date" : {
+            "value" : 1665572731720
+          },
+          "last-modified-date" : {
+            "value" : 1665572731720
+          },
+          "source" : {
+            "source-orcid" : {
+              "uri" : "https://orcid.org/0000-0002-3671-895X",
+              "path" : "0000-0002-3671-895X",
+              "host" : "orcid.org"
+            },
+            "source-client-id" : null,
+            "source-name" : {
+              "value" : "Irina Balaur"
+            },
+            "assertion-origin-orcid" : null,
+            "assertion-origin-client-id" : null,
+            "assertion-origin-name" : null
+          },
+          "title" : {
+            "title" : {
+              "value" : "Recon2Neo4j: applying graph database technologies for managing comprehensive genome-scale networks."
+            },
+            "subtitle" : null,
+            "translated-title" : null
+          },
+          "external-ids" : {
+            "external-id" : [ {
+              "external-id-type" : "pmid",
+              "external-id-value" : "27993779",
+              "external-id-normalized" : {
+                "value" : "27993779",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://pubmed.ncbi.nlm.nih.gov/27993779"
+              },
+              "external-id-relationship" : "self"
+            }, {
+              "external-id-type" : "pmc",
+              "external-id-value" : "PMC5408918",
+              "external-id-normalized" : {
+                "value" : "5408918",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://europepmc.org/article/pmc/5408918"
+              },
+              "external-id-relationship" : "self"
+            }, {
+              "external-id-type" : "doi",
+              "external-id-value" : "10.1093/bioinformatics/btw731",
+              "external-id-normalized" : {
+                "value" : "10.1093/bioinformatics/btw731",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://doi.org/10.1093/bioinformatics/btw731"
+              },
+              "external-id-relationship" : "self"
+            } ]
+          },
+          "url" : {
+            "value" : "https://europepmc.org/articles/PMC5408918"
+          },
+          "type" : "journal-article",
+          "publication-date" : {
+            "year" : {
+              "value" : "2017"
+            },
+            "month" : {
+              "value" : "04"
+            },
+            "day" : {
+              "value" : "01"
+            }
+          },
+          "journal-title" : {
+            "value" : "Bioinformatics (Oxford, England)"
+          },
+          "visibility" : "public",
+          "path" : "/0000-0002-3671-895X/work/120616672",
+          "display-index" : "1"
+        } ]
+      }, {
+        "last-modified-date" : {
+          "value" : 1665573013130
+        },
+        "external-ids" : {
+          "external-id" : [ {
+            "external-id-type" : "doi",
+            "external-id-value" : "10.1186/s12859-016-1394-x",
+            "external-id-normalized" : {
+              "value" : "10.1186/s12859-016-1394-x",
+              "transient" : true
+            },
+            "external-id-normalized-error" : null,
+            "external-id-url" : {
+              "value" : "https://doi.org/10.1186/s12859-016-1394-x"
+            },
+            "external-id-relationship" : "self"
+          }, {
+            "external-id-type" : "pmc",
+            "external-id-value" : "PMC5139139",
+            "external-id-normalized" : {
+              "value" : "5139139",
+              "transient" : true
+            },
+            "external-id-normalized-error" : null,
+            "external-id-url" : {
+              "value" : "https://europepmc.org/article/pmc/5139139"
+            },
+            "external-id-relationship" : "self"
+          }, {
+            "external-id-type" : "pmid",
+            "external-id-value" : "27919219",
+            "external-id-normalized" : {
+              "value" : "27919219",
+              "transient" : true
+            },
+            "external-id-normalized-error" : null,
+            "external-id-url" : {
+              "value" : "https://pubmed.ncbi.nlm.nih.gov/27919219"
+            },
+            "external-id-relationship" : "self"
+          } ]
+        },
+        "work-summary" : [ {
+          "put-code" : 120616867,
+          "created-date" : {
+            "value" : 1665573013130
+          },
+          "last-modified-date" : {
+            "value" : 1665573013130
+          },
+          "source" : {
+            "source-orcid" : {
+              "uri" : "https://orcid.org/0000-0002-3671-895X",
+              "path" : "0000-0002-3671-895X",
+              "host" : "orcid.org"
+            },
+            "source-client-id" : null,
+            "source-name" : {
+              "value" : "Irina Balaur"
+            },
+            "assertion-origin-orcid" : null,
+            "assertion-origin-client-id" : null,
+            "assertion-origin-name" : null
+          },
+          "title" : {
+            "title" : {
+              "value" : "STON: exploring biological pathways using the SBGN standard and graph databases."
+            },
+            "subtitle" : null,
+            "translated-title" : null
+          },
+          "external-ids" : {
+            "external-id" : [ {
+              "external-id-type" : "pmid",
+              "external-id-value" : "27919219",
+              "external-id-normalized" : {
+                "value" : "27919219",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://pubmed.ncbi.nlm.nih.gov/27919219"
+              },
+              "external-id-relationship" : "self"
+            }, {
+              "external-id-type" : "pmc",
+              "external-id-value" : "PMC5139139",
+              "external-id-normalized" : {
+                "value" : "5139139",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://europepmc.org/article/pmc/5139139"
+              },
+              "external-id-relationship" : "self"
+            }, {
+              "external-id-type" : "doi",
+              "external-id-value" : "10.1186/s12859-016-1394-x",
+              "external-id-normalized" : {
+                "value" : "10.1186/s12859-016-1394-x",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://doi.org/10.1186/s12859-016-1394-x"
+              },
+              "external-id-relationship" : "self"
+            } ]
+          },
+          "url" : {
+            "value" : "https://europepmc.org/articles/PMC5139139"
+          },
+          "type" : "journal-article",
+          "publication-date" : {
+            "year" : {
+              "value" : "2016"
+            },
+            "month" : {
+              "value" : "12"
+            },
+            "day" : {
+              "value" : "05"
+            }
+          },
+          "journal-title" : {
+            "value" : "BMC bioinformatics"
+          },
+          "visibility" : "public",
+          "path" : "/0000-0002-3671-895X/work/120616867",
+          "display-index" : "1"
+        } ]
+      }, {
+        "last-modified-date" : {
+          "value" : 1665572659129
+        },
+        "external-ids" : {
+          "external-id" : [ {
+            "external-id-type" : "doi",
+            "external-id-value" : "10.1089/cmb.2016.0095",
+            "external-id-normalized" : {
+              "value" : "10.1089/cmb.2016.0095",
+              "transient" : true
+            },
+            "external-id-normalized-error" : null,
+            "external-id-url" : {
+              "value" : "https://doi.org/10.1089/cmb.2016.0095"
+            },
+            "external-id-relationship" : "self"
+          }, {
+            "external-id-type" : "pmid",
+            "external-id-value" : "27627442",
+            "external-id-normalized" : {
+              "value" : "27627442",
+              "transient" : true
+            },
+            "external-id-normalized-error" : null,
+            "external-id-url" : {
+              "value" : "https://pubmed.ncbi.nlm.nih.gov/27627442"
+            },
+            "external-id-relationship" : "self"
+          } ]
+        },
+        "work-summary" : [ {
+          "put-code" : 120616624,
+          "created-date" : {
+            "value" : 1665572659129
+          },
+          "last-modified-date" : {
+            "value" : 1665572659129
+          },
+          "source" : {
+            "source-orcid" : {
+              "uri" : "https://orcid.org/0000-0002-3671-895X",
+              "path" : "0000-0002-3671-895X",
+              "host" : "orcid.org"
+            },
+            "source-client-id" : null,
+            "source-name" : {
+              "value" : "Irina Balaur"
+            },
+            "assertion-origin-orcid" : null,
+            "assertion-origin-client-id" : null,
+            "assertion-origin-name" : null
+          },
+          "title" : {
+            "title" : {
+              "value" : "EpiGeNet: A Graph Database of Interdependencies Between Genetic and Epigenetic Events in Colorectal Cancer."
+            },
+            "subtitle" : null,
+            "translated-title" : null
+          },
+          "external-ids" : {
+            "external-id" : [ {
+              "external-id-type" : "pmid",
+              "external-id-value" : "27627442",
+              "external-id-normalized" : {
+                "value" : "27627442",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://pubmed.ncbi.nlm.nih.gov/27627442"
+              },
+              "external-id-relationship" : "self"
+            }, {
+              "external-id-type" : "doi",
+              "external-id-value" : "10.1089/cmb.2016.0095",
+              "external-id-normalized" : {
+                "value" : "10.1089/cmb.2016.0095",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://doi.org/10.1089/cmb.2016.0095"
+              },
+              "external-id-relationship" : "self"
+            } ]
+          },
+          "url" : {
+            "value" : "https://doi.org/10.1089/cmb.2016.0095"
+          },
+          "type" : "journal-article",
+          "publication-date" : {
+            "year" : {
+              "value" : "2016"
+            },
+            "month" : {
+              "value" : "09"
+            },
+            "day" : {
+              "value" : "14"
+            }
+          },
+          "journal-title" : {
+            "value" : "Journal of computational biology : a journal of computational molecular cell biology"
+          },
+          "visibility" : "public",
+          "path" : "/0000-0002-3671-895X/work/120616624",
+          "display-index" : "1"
+        } ]
+      }, {
+        "last-modified-date" : {
+          "value" : 1665572889396
+        },
+        "external-ids" : {
+          "external-id" : [ {
+            "external-id-type" : "pmid",
+            "external-id-value" : "27462371",
+            "external-id-normalized" : {
+              "value" : "27462371",
+              "transient" : true
+            },
+            "external-id-normalized-error" : null,
+            "external-id-url" : {
+              "value" : "https://pubmed.ncbi.nlm.nih.gov/27462371"
+            },
+            "external-id-relationship" : "self"
+          }, {
+            "external-id-type" : "pmc",
+            "external-id-value" : "PMC4960687",
+            "external-id-normalized" : {
+              "value" : "4960687",
+              "transient" : true
+            },
+            "external-id-normalized-error" : null,
+            "external-id-url" : {
+              "value" : "https://europepmc.org/article/pmc/4960687"
+            },
+            "external-id-relationship" : "self"
+          }, {
+            "external-id-type" : "doi",
+            "external-id-value" : "10.1186/s13040-016-0102-8",
+            "external-id-normalized" : {
+              "value" : "10.1186/s13040-016-0102-8",
+              "transient" : true
+            },
+            "external-id-normalized-error" : null,
+            "external-id-url" : {
+              "value" : "https://doi.org/10.1186/s13040-016-0102-8"
+            },
+            "external-id-relationship" : "self"
+          } ]
+        },
+        "work-summary" : [ {
+          "put-code" : 120616811,
+          "created-date" : {
+            "value" : 1665572889396
+          },
+          "last-modified-date" : {
+            "value" : 1665572889396
+          },
+          "source" : {
+            "source-orcid" : {
+              "uri" : "https://orcid.org/0000-0002-3671-895X",
+              "path" : "0000-0002-3671-895X",
+              "host" : "orcid.org"
+            },
+            "source-client-id" : null,
+            "source-name" : {
+              "value" : "Irina Balaur"
+            },
+            "assertion-origin-orcid" : null,
+            "assertion-origin-client-id" : null,
+            "assertion-origin-name" : null
+          },
+          "title" : {
+            "title" : {
+              "value" : "Representing and querying disease networks using graph databases."
+            },
+            "subtitle" : null,
+            "translated-title" : null
+          },
+          "external-ids" : {
+            "external-id" : [ {
+              "external-id-type" : "pmid",
+              "external-id-value" : "27462371",
+              "external-id-normalized" : {
+                "value" : "27462371",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://pubmed.ncbi.nlm.nih.gov/27462371"
+              },
+              "external-id-relationship" : "self"
+            }, {
+              "external-id-type" : "pmc",
+              "external-id-value" : "PMC4960687",
+              "external-id-normalized" : {
+                "value" : "4960687",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://europepmc.org/article/pmc/4960687"
+              },
+              "external-id-relationship" : "self"
+            }, {
+              "external-id-type" : "doi",
+              "external-id-value" : "10.1186/s13040-016-0102-8",
+              "external-id-normalized" : {
+                "value" : "10.1186/s13040-016-0102-8",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://doi.org/10.1186/s13040-016-0102-8"
+              },
+              "external-id-relationship" : "self"
+            } ]
+          },
+          "url" : {
+            "value" : "https://europepmc.org/articles/PMC4960687"
+          },
+          "type" : "journal-article",
+          "publication-date" : {
+            "year" : {
+              "value" : "2016"
+            },
+            "month" : {
+              "value" : "07"
+            },
+            "day" : {
+              "value" : "25"
+            }
+          },
+          "journal-title" : {
+            "value" : "BioData mining"
+          },
+          "visibility" : "public",
+          "path" : "/0000-0002-3671-895X/work/120616811",
+          "display-index" : "1"
+        } ]
+      }, {
+        "last-modified-date" : {
+          "value" : 1665573379077
+        },
+        "external-ids" : {
+          "external-id" : [ {
+            "external-id-type" : "doi",
+            "external-id-value" : "10.1007/978-1-4939-3283-2_3",
+            "external-id-normalized" : {
+              "value" : "10.1007/978-1-4939-3283-2_3",
+              "transient" : true
+            },
+            "external-id-normalized-error" : null,
+            "external-id-url" : {
+              "value" : "https://doi.org/10.1007/978-1-4939-3283-2_3"
+            },
+            "external-id-relationship" : "self"
+          }, {
+            "external-id-type" : "pmid",
+            "external-id-value" : "26677178",
+            "external-id-normalized" : {
+              "value" : "26677178",
+              "transient" : true
+            },
+            "external-id-normalized-error" : null,
+            "external-id-url" : {
+              "value" : "https://pubmed.ncbi.nlm.nih.gov/26677178"
+            },
+            "external-id-relationship" : "self"
+          } ]
+        },
+        "work-summary" : [ {
+          "put-code" : 120616829,
+          "created-date" : {
+            "value" : 1665572916659
+          },
+          "last-modified-date" : {
+            "value" : 1665573379077
+          },
+          "source" : {
+            "source-orcid" : {
+              "uri" : "https://orcid.org/0000-0002-3671-895X",
+              "path" : "0000-0002-3671-895X",
+              "host" : "orcid.org"
+            },
+            "source-client-id" : null,
+            "source-name" : {
+              "value" : "Irina Balaur"
+            },
+            "assertion-origin-orcid" : null,
+            "assertion-origin-client-id" : null,
+            "assertion-origin-name" : null
+          },
+          "title" : {
+            "title" : {
+              "value" : "Systems Medicine: The Future of Medical Genomics, Healthcare, and Wellness."
+            },
+            "subtitle" : null,
+            "translated-title" : null
+          },
+          "external-ids" : {
+            "external-id" : [ {
+              "external-id-type" : "pmid",
+              "external-id-value" : "26677178",
+              "external-id-normalized" : {
+                "value" : "26677178",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://pubmed.ncbi.nlm.nih.gov/26677178"
+              },
+              "external-id-relationship" : "self"
+            }, {
+              "external-id-type" : "doi",
+              "external-id-value" : "10.1007/978-1-4939-3283-2_3",
+              "external-id-normalized" : {
+                "value" : "10.1007/978-1-4939-3283-2_3",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://doi.org/10.1007/978-1-4939-3283-2_3"
+              },
+              "external-id-relationship" : "self"
+            } ]
+          },
+          "url" : {
+            "value" : "https://doi.org/10.1007/978-1-4939-3283-2_3"
+          },
+          "type" : "book-chapter",
+          "publication-date" : {
+            "year" : {
+              "value" : "2016"
+            },
+            "month" : {
+              "value" : "01"
+            },
+            "day" : {
+              "value" : "01"
+            }
+          },
+          "journal-title" : {
+            "value" : "Methods in molecular biology (Clifton, N.J.)"
+          },
+          "visibility" : "public",
+          "path" : "/0000-0002-3671-895X/work/120616829",
+          "display-index" : "1"
+        } ]
+      }, {
+        "last-modified-date" : {
+          "value" : 1665573359531
+        },
+        "external-ids" : {
+          "external-id" : [ {
+            "external-id-type" : "pmid",
+            "external-id-value" : "26577155",
+            "external-id-normalized" : {
+              "value" : "26577155",
+              "transient" : true
+            },
+            "external-id-normalized-error" : null,
+            "external-id-url" : {
+              "value" : "https://pubmed.ncbi.nlm.nih.gov/26577155"
+            },
+            "external-id-relationship" : "self"
+          }, {
+            "external-id-type" : "doi",
+            "external-id-value" : "10.1049/iet-syb.2015.0078",
+            "external-id-normalized" : {
+              "value" : "10.1049/iet-syb.2015.0078",
+              "transient" : true
+            },
+            "external-id-normalized-error" : null,
+            "external-id-url" : {
+              "value" : "https://doi.org/10.1049/iet-syb.2015.0078"
+            },
+            "external-id-relationship" : "self"
+          }, {
+            "external-id-type" : "pmc",
+            "external-id-value" : "PMC8687174",
+            "external-id-normalized" : {
+              "value" : "8687174",
+              "transient" : true
+            },
+            "external-id-normalized-error" : null,
+            "external-id-url" : {
+              "value" : "https://europepmc.org/article/pmc/8687174"
+            },
+            "external-id-relationship" : "self"
+          } ]
+        },
+        "work-summary" : [ {
+          "put-code" : 120617425,
+          "created-date" : {
+            "value" : 1665573359531
+          },
+          "last-modified-date" : {
+            "value" : 1665573359531
+          },
+          "source" : {
+            "source-orcid" : {
+              "uri" : "https://orcid.org/0000-0002-3671-895X",
+              "path" : "0000-0002-3671-895X",
+              "host" : "orcid.org"
+            },
+            "source-client-id" : null,
+            "source-name" : {
+              "value" : "Irina Balaur"
+            },
+            "assertion-origin-orcid" : null,
+            "assertion-origin-client-id" : null,
+            "assertion-origin-name" : null
+          },
+          "title" : {
+            "title" : {
+              "value" : "Computational Models & Methods in Systems Biology & Medicine."
+            },
+            "subtitle" : null,
+            "translated-title" : null
+          },
+          "external-ids" : {
+            "external-id" : [ {
+              "external-id-type" : "pmid",
+              "external-id-value" : "26577155",
+              "external-id-normalized" : {
+                "value" : "26577155",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://pubmed.ncbi.nlm.nih.gov/26577155"
+              },
+              "external-id-relationship" : "self"
+            }, {
+              "external-id-type" : "pmc",
+              "external-id-value" : "PMC8687174",
+              "external-id-normalized" : {
+                "value" : "8687174",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://europepmc.org/article/pmc/8687174"
+              },
+              "external-id-relationship" : "self"
+            }, {
+              "external-id-type" : "doi",
+              "external-id-value" : "10.1049/iet-syb.2015.0078",
+              "external-id-normalized" : {
+                "value" : "10.1049/iet-syb.2015.0078",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://doi.org/10.1049/iet-syb.2015.0078"
+              },
+              "external-id-relationship" : "self"
+            } ]
+          },
+          "url" : {
+            "value" : "https://europepmc.org/articles/PMC8687174"
+          },
+          "type" : "journal-issue",
+          "publication-date" : {
+            "year" : {
+              "value" : "2015"
+            },
+            "month" : {
+              "value" : "12"
+            },
+            "day" : {
+              "value" : "01"
+            }
+          },
+          "journal-title" : {
+            "value" : "IET systems biology"
+          },
+          "visibility" : "public",
+          "path" : "/0000-0002-3671-895X/work/120617425",
+          "display-index" : "1"
+        } ]
+      }, {
+        "last-modified-date" : {
+          "value" : 1665573227827
+        },
+        "external-ids" : {
+          "external-id" : [ {
+            "external-id-type" : "pmc",
+            "external-id-value" : "PMC8687420",
+            "external-id-normalized" : {
+              "value" : "8687420",
+              "transient" : true
+            },
+            "external-id-normalized-error" : null,
+            "external-id-url" : {
+              "value" : "https://europepmc.org/article/pmc/8687420"
+            },
+            "external-id-relationship" : "self"
+          }, {
+            "external-id-type" : "doi",
+            "external-id-value" : "10.1049/iet-syb.2015.0048",
+            "external-id-normalized" : {
+              "value" : "10.1049/iet-syb.2015.0048",
+              "transient" : true
+            },
+            "external-id-normalized-error" : null,
+            "external-id-url" : {
+              "value" : "https://doi.org/10.1049/iet-syb.2015.0048"
+            },
+            "external-id-relationship" : "self"
+          }, {
+            "external-id-type" : "pmid",
+            "external-id-value" : "26577160",
+            "external-id-normalized" : {
+              "value" : "26577160",
+              "transient" : true
+            },
+            "external-id-normalized-error" : null,
+            "external-id-url" : {
+              "value" : "https://pubmed.ncbi.nlm.nih.gov/26577160"
+            },
+            "external-id-relationship" : "self"
+          } ]
+        },
+        "work-summary" : [ {
+          "put-code" : 120617017,
+          "created-date" : {
+            "value" : 1665573227827
+          },
+          "last-modified-date" : {
+            "value" : 1665573227827
+          },
+          "source" : {
+            "source-orcid" : {
+              "uri" : "https://orcid.org/0000-0002-3671-895X",
+              "path" : "0000-0002-3671-895X",
+              "host" : "orcid.org"
+            },
+            "source-client-id" : null,
+            "source-name" : {
+              "value" : "Irina Balaur"
+            },
+            "assertion-origin-orcid" : null,
+            "assertion-origin-client-id" : null,
+            "assertion-origin-name" : null
+          },
+          "title" : {
+            "title" : {
+              "value" : "Theoretical cross-comparative analysis on dynamics of small intestine and colon crypts during cancer initiation."
+            },
+            "subtitle" : null,
+            "translated-title" : null
+          },
+          "external-ids" : {
+            "external-id" : [ {
+              "external-id-type" : "pmid",
+              "external-id-value" : "26577160",
+              "external-id-normalized" : {
+                "value" : "26577160",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://pubmed.ncbi.nlm.nih.gov/26577160"
+              },
+              "external-id-relationship" : "self"
+            }, {
+              "external-id-type" : "pmc",
+              "external-id-value" : "PMC8687420",
+              "external-id-normalized" : {
+                "value" : "8687420",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://europepmc.org/article/pmc/8687420"
+              },
+              "external-id-relationship" : "self"
+            }, {
+              "external-id-type" : "doi",
+              "external-id-value" : "10.1049/iet-syb.2015.0048",
+              "external-id-normalized" : {
+                "value" : "10.1049/iet-syb.2015.0048",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://doi.org/10.1049/iet-syb.2015.0048"
+              },
+              "external-id-relationship" : "self"
+            } ]
+          },
+          "url" : {
+            "value" : "https://europepmc.org/articles/PMC8687420"
+          },
+          "type" : "journal-article",
+          "publication-date" : {
+            "year" : {
+              "value" : "2015"
+            },
+            "month" : {
+              "value" : "12"
+            },
+            "day" : {
+              "value" : "01"
+            }
+          },
+          "journal-title" : {
+            "value" : "IET systems biology"
+          },
+          "visibility" : "public",
+          "path" : "/0000-0002-3671-895X/work/120617017",
+          "display-index" : "1"
+        } ]
+      }, {
+        "last-modified-date" : {
+          "value" : 1665573966549
+        },
+        "external-ids" : {
+          "external-id" : [ ]
+        },
+        "work-summary" : [ {
+          "put-code" : 47893200,
+          "created-date" : {
+            "value" : 1535712302275
+          },
+          "last-modified-date" : {
+            "value" : 1665573966549
+          },
+          "source" : {
+            "source-orcid" : {
+              "uri" : "https://orcid.org/0000-0002-3671-895X",
+              "path" : "0000-0002-3671-895X",
+              "host" : "orcid.org"
+            },
+            "source-client-id" : null,
+            "source-name" : {
+              "value" : "Irina Balaur"
+            },
+            "assertion-origin-orcid" : null,
+            "assertion-origin-client-id" : null,
+            "assertion-origin-name" : null
+          },
+          "title" : {
+            "title" : {
+              "value" : "A computational model for colon cancer dynamics"
+            },
+            "subtitle" : null,
+            "translated-title" : null
+          },
+          "external-ids" : {
+            "external-id" : [ ]
+          },
+          "url" : {
+            "value" : "https://doras.dcu.ie/20212/"
+          },
+          "type" : "dissertation-thesis",
+          "publication-date" : {
+            "year" : {
+              "value" : "2014"
+            },
+            "month" : {
+              "value" : "12"
+            },
+            "day" : {
+              "value" : "04"
+            }
+          },
+          "journal-title" : null,
+          "visibility" : "public",
+          "path" : "/0000-0002-3671-895X/work/47893200",
+          "display-index" : "1"
+        } ]
+      }, {
+        "last-modified-date" : {
+          "value" : 1665573690571
+        },
+        "external-ids" : {
+          "external-id" : [ {
+            "external-id-type" : "doi",
+            "external-id-value" : "10.1109/bibm.2014.6999255",
+            "external-id-normalized" : {
+              "value" : "10.1109/bibm.2014.6999255",
+              "transient" : true
+            },
+            "external-id-normalized-error" : null,
+            "external-id-url" : {
+              "value" : "https://doi.org/10.1109/bibm.2014.6999255"
+            },
+            "external-id-relationship" : "self"
+          } ]
+        },
+        "work-summary" : [ {
+          "put-code" : 120617756,
+          "created-date" : {
+            "value" : 1665573690571
+          },
+          "last-modified-date" : {
+            "value" : 1665573690571
+          },
+          "source" : {
+            "source-orcid" : {
+              "uri" : "https://orcid.org/0000-0002-3671-895X",
+              "path" : "0000-0002-3671-895X",
+              "host" : "orcid.org"
+            },
+            "source-client-id" : null,
+            "source-name" : {
+              "value" : "Irina Balaur"
+            },
+            "assertion-origin-orcid" : null,
+            "assertion-origin-client-id" : null,
+            "assertion-origin-name" : null
+          },
+          "title" : {
+            "title" : {
+              "value" : "A computational analysis on methylation inhibition during intestinal cancer initiation"
+            },
+            "subtitle" : null,
+            "translated-title" : null
+          },
+          "external-ids" : {
+            "external-id" : [ {
+              "external-id-type" : "doi",
+              "external-id-value" : "10.1109/bibm.2014.6999255",
+              "external-id-normalized" : {
+                "value" : "10.1109/bibm.2014.6999255",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://doi.org/10.1109/bibm.2014.6999255"
+              },
+              "external-id-relationship" : "self"
+            } ]
+          },
+          "url" : {
+            "value" : "http://dx.doi.org/10.1109/bibm.2014.6999255"
+          },
+          "type" : "conference-paper",
+          "publication-date" : {
+            "year" : {
+              "value" : "2014"
+            },
+            "month" : {
+              "value" : "11"
+            },
+            "day" : null
+          },
+          "journal-title" : {
+            "value" : "2014 IEEE International Conference on Bioinformatics and Biomedicine (BIBM)"
+          },
+          "visibility" : "public",
+          "path" : "/0000-0002-3671-895X/work/120617756",
+          "display-index" : "1"
+        } ]
+      }, {
+        "last-modified-date" : {
+          "value" : 1665573465944
+        },
+        "external-ids" : {
+          "external-id" : [ {
+            "external-id-type" : "doi",
+            "external-id-value" : "10.1109/bibm.2014.6999256",
+            "external-id-normalized" : {
+              "value" : "10.1109/bibm.2014.6999256",
+              "transient" : true
+            },
+            "external-id-normalized-error" : null,
+            "external-id-url" : {
+              "value" : "https://doi.org/10.1109/bibm.2014.6999256"
+            },
+            "external-id-relationship" : "self"
+          } ]
+        },
+        "work-summary" : [ {
+          "put-code" : 120617555,
+          "created-date" : {
+            "value" : 1665573465944
+          },
+          "last-modified-date" : {
+            "value" : 1665573465944
+          },
+          "source" : {
+            "source-orcid" : {
+              "uri" : "https://orcid.org/0000-0002-3671-895X",
+              "path" : "0000-0002-3671-895X",
+              "host" : "orcid.org"
+            },
+            "source-client-id" : null,
+            "source-name" : {
+              "value" : "Irina Balaur"
+            },
+            "assertion-origin-orcid" : null,
+            "assertion-origin-client-id" : null,
+            "assertion-origin-name" : null
+          },
+          "title" : {
+            "title" : {
+              "value" : "Building cross-scale models of epigenetic mechanisms"
+            },
+            "subtitle" : null,
+            "translated-title" : null
+          },
+          "external-ids" : {
+            "external-id" : [ {
+              "external-id-type" : "doi",
+              "external-id-value" : "10.1109/bibm.2014.6999256",
+              "external-id-normalized" : {
+                "value" : "10.1109/bibm.2014.6999256",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://doi.org/10.1109/bibm.2014.6999256"
+              },
+              "external-id-relationship" : "self"
+            } ]
+          },
+          "url" : {
+            "value" : "http://dx.doi.org/10.1109/bibm.2014.6999256"
+          },
+          "type" : "conference-paper",
+          "publication-date" : {
+            "year" : {
+              "value" : "2014"
+            },
+            "month" : {
+              "value" : "11"
+            },
+            "day" : null
+          },
+          "journal-title" : {
+            "value" : "2014 IEEE International Conference on Bioinformatics and Biomedicine (BIBM)"
+          },
+          "visibility" : "public",
+          "path" : "/0000-0002-3671-895X/work/120617555",
+          "display-index" : "1"
+        } ]
+      }, {
+        "last-modified-date" : {
+          "value" : 1665573549205
+        },
+        "external-ids" : {
+          "external-id" : [ {
+            "external-id-type" : "doi",
+            "external-id-value" : "10.1109/bibm.2014.6999254",
+            "external-id-normalized" : {
+              "value" : "10.1109/bibm.2014.6999254",
+              "transient" : true
+            },
+            "external-id-normalized-error" : null,
+            "external-id-url" : {
+              "value" : "https://doi.org/10.1109/bibm.2014.6999254"
+            },
+            "external-id-relationship" : "self"
+          } ]
+        },
+        "work-summary" : [ {
+          "put-code" : 120617648,
+          "created-date" : {
+            "value" : 1665573549205
+          },
+          "last-modified-date" : {
+            "value" : 1665573549205
+          },
+          "source" : {
+            "source-orcid" : {
+              "uri" : "https://orcid.org/0000-0002-3671-895X",
+              "path" : "0000-0002-3671-895X",
+              "host" : "orcid.org"
+            },
+            "source-client-id" : null,
+            "source-name" : {
+              "value" : "Irina Balaur"
+            },
+            "assertion-origin-orcid" : null,
+            "assertion-origin-client-id" : null,
+            "assertion-origin-name" : null
+          },
+          "title" : {
+            "title" : {
+              "value" : "LogisticCrypt &amp;#x2014; A logistic model of intestinal crypt structure"
+            },
+            "subtitle" : null,
+            "translated-title" : null
+          },
+          "external-ids" : {
+            "external-id" : [ {
+              "external-id-type" : "doi",
+              "external-id-value" : "10.1109/bibm.2014.6999254",
+              "external-id-normalized" : {
+                "value" : "10.1109/bibm.2014.6999254",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://doi.org/10.1109/bibm.2014.6999254"
+              },
+              "external-id-relationship" : "self"
+            } ]
+          },
+          "url" : {
+            "value" : "http://dx.doi.org/10.1109/bibm.2014.6999254"
+          },
+          "type" : "conference-paper",
+          "publication-date" : {
+            "year" : {
+              "value" : "2014"
+            },
+            "month" : {
+              "value" : "11"
+            },
+            "day" : null
+          },
+          "journal-title" : {
+            "value" : "2014 IEEE International Conference on Bioinformatics and Biomedicine (BIBM)"
+          },
+          "visibility" : "public",
+          "path" : "/0000-0002-3671-895X/work/120617648",
+          "display-index" : "1"
+        } ]
+      }, {
+        "last-modified-date" : {
+          "value" : 1665573607132
+        },
+        "external-ids" : {
+          "external-id" : [ {
+            "external-id-type" : "doi",
+            "external-id-value" : "10.1109/ems.2013.27",
+            "external-id-normalized" : {
+              "value" : "10.1109/ems.2013.27",
+              "transient" : true
+            },
+            "external-id-normalized-error" : null,
+            "external-id-url" : {
+              "value" : "https://doi.org/10.1109/ems.2013.27"
+            },
+            "external-id-relationship" : "self"
+          } ]
+        },
+        "work-summary" : [ {
+          "put-code" : 120617688,
+          "created-date" : {
+            "value" : 1665573607132
+          },
+          "last-modified-date" : {
+            "value" : 1665573607132
+          },
+          "source" : {
+            "source-orcid" : {
+              "uri" : "https://orcid.org/0000-0002-3671-895X",
+              "path" : "0000-0002-3671-895X",
+              "host" : "orcid.org"
+            },
+            "source-client-id" : null,
+            "source-name" : {
+              "value" : "Irina Balaur"
+            },
+            "assertion-origin-orcid" : null,
+            "assertion-origin-client-id" : null,
+            "assertion-origin-name" : null
+          },
+          "title" : {
+            "title" : {
+              "value" : "Methylation Inhibitors and Carcinogens in an Agent-Based Model for Colon Crypt Dynamics during Cancer Development"
+            },
+            "subtitle" : null,
+            "translated-title" : null
+          },
+          "external-ids" : {
+            "external-id" : [ {
+              "external-id-type" : "doi",
+              "external-id-value" : "10.1109/ems.2013.27",
+              "external-id-normalized" : {
+                "value" : "10.1109/ems.2013.27",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://doi.org/10.1109/ems.2013.27"
+              },
+              "external-id-relationship" : "self"
+            } ]
+          },
+          "url" : {
+            "value" : "http://dx.doi.org/10.1109/ems.2013.27"
+          },
+          "type" : "conference-paper",
+          "publication-date" : {
+            "year" : {
+              "value" : "2013"
+            },
+            "month" : {
+              "value" : "11"
+            },
+            "day" : null
+          },
+          "journal-title" : {
+            "value" : "2013 European Modelling Symposium"
+          },
+          "visibility" : "public",
+          "path" : "/0000-0002-3671-895X/work/120617688",
+          "display-index" : "1"
+        } ]
+      }, {
+        "last-modified-date" : {
+          "value" : 1665573079348
+        },
+        "external-ids" : {
+          "external-id" : [ {
+            "external-id-type" : "pmid",
+            "external-id-value" : "24307409",
+            "external-id-normalized" : {
+              "value" : "24307409",
+              "transient" : true
+            },
+            "external-id-normalized-error" : null,
+            "external-id-url" : {
+              "value" : "https://pubmed.ncbi.nlm.nih.gov/24307409"
+            },
+            "external-id-relationship" : "self"
+          }, {
+            "external-id-type" : "doi",
+            "external-id-value" : "10.1007/s12539-013-0172-y",
+            "external-id-normalized" : {
+              "value" : "10.1007/s12539-013-0172-y",
+              "transient" : true
+            },
+            "external-id-normalized-error" : null,
+            "external-id-url" : {
+              "value" : "https://doi.org/10.1007/s12539-013-0172-y"
+            },
+            "external-id-relationship" : "self"
+          } ]
+        },
+        "work-summary" : [ {
+          "put-code" : 120616924,
+          "created-date" : {
+            "value" : 1665573079348
+          },
+          "last-modified-date" : {
+            "value" : 1665573079348
+          },
+          "source" : {
+            "source-orcid" : {
+              "uri" : "https://orcid.org/0000-0002-3671-895X",
+              "path" : "0000-0002-3671-895X",
+              "host" : "orcid.org"
+            },
+            "source-client-id" : null,
+            "source-name" : {
+              "value" : "Irina Balaur"
+            },
+            "assertion-origin-orcid" : null,
+            "assertion-origin-client-id" : null,
+            "assertion-origin-name" : null
+          },
+          "title" : {
+            "title" : {
+              "value" : "A computational model for genetic and epigenetic signals in colon cancer."
+            },
+            "subtitle" : null,
+            "translated-title" : null
+          },
+          "external-ids" : {
+            "external-id" : [ {
+              "external-id-type" : "pmid",
+              "external-id-value" : "24307409",
+              "external-id-normalized" : {
+                "value" : "24307409",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://pubmed.ncbi.nlm.nih.gov/24307409"
+              },
+              "external-id-relationship" : "self"
+            }, {
+              "external-id-type" : "doi",
+              "external-id-value" : "10.1007/s12539-013-0172-y",
+              "external-id-normalized" : {
+                "value" : "10.1007/s12539-013-0172-y",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://doi.org/10.1007/s12539-013-0172-y"
+              },
+              "external-id-relationship" : "self"
+            } ]
+          },
+          "url" : {
+            "value" : "https://doi.org/10.1007/s12539-013-0172-y"
+          },
+          "type" : "journal-article",
+          "publication-date" : {
+            "year" : {
+              "value" : "2013"
+            },
+            "month" : {
+              "value" : "09"
+            },
+            "day" : {
+              "value" : "01"
+            }
+          },
+          "journal-title" : {
+            "value" : "Interdisciplinary sciences, computational life sciences"
+          },
+          "visibility" : "public",
+          "path" : "/0000-0002-3671-895X/work/120616924",
+          "display-index" : "1"
+        } ]
+      }, {
+        "last-modified-date" : {
+          "value" : 1665573824002
+        },
+        "external-ids" : {
+          "external-id" : [ {
+            "external-id-type" : "doi",
+            "external-id-value" : "10.1007/978-3-319-00395-5_126",
+            "external-id-normalized" : {
+              "value" : "10.1007/978-3-319-00395-5_126",
+              "transient" : true
+            },
+            "external-id-normalized-error" : null,
+            "external-id-url" : {
+              "value" : "https://doi.org/10.1007/978-3-319-00395-5_126"
+            },
+            "external-id-relationship" : "self"
+          } ]
+        },
+        "work-summary" : [ {
+          "put-code" : 120617927,
+          "created-date" : {
+            "value" : 1665573824002
+          },
+          "last-modified-date" : {
+            "value" : 1665573824002
+          },
+          "source" : {
+            "source-orcid" : {
+              "uri" : "https://orcid.org/0000-0002-3671-895X",
+              "path" : "0000-0002-3671-895X",
+              "host" : "orcid.org"
+            },
+            "source-client-id" : null,
+            "source-name" : {
+              "value" : "Irina Balaur"
+            },
+            "assertion-origin-orcid" : null,
+            "assertion-origin-client-id" : null,
+            "assertion-origin-name" : null
+          },
+          "title" : {
+            "title" : {
+              "value" : "Modelling the Genetic and Epigenetic Signals in Colon Cancer Using a Bayesian Network"
+            },
+            "subtitle" : null,
+            "translated-title" : null
+          },
+          "external-ids" : {
+            "external-id" : [ {
+              "external-id-type" : "doi",
+              "external-id-value" : "10.1007/978-3-319-00395-5_126",
+              "external-id-normalized" : {
+                "value" : "10.1007/978-3-319-00395-5_126",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://doi.org/10.1007/978-3-319-00395-5_126"
+              },
+              "external-id-relationship" : "self"
+            }, {
+              "external-id-type" : "isbn",
+              "external-id-value" : "9783319003948",
+              "external-id-normalized" : {
+                "value" : "9783319003948",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : null,
+              "external-id-relationship" : "part-of"
+            }, {
+              "external-id-type" : "isbn",
+              "external-id-value" : "9783319003955",
+              "external-id-normalized" : {
+                "value" : "9783319003955",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : null,
+              "external-id-relationship" : "part-of"
+            }, {
+              "external-id-type" : "issn",
+              "external-id-value" : "2213-8684",
+              "external-id-normalized" : {
+                "value" : "2213-8684",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://portal.issn.org/resource/ISSN/2213-8684"
+              },
+              "external-id-relationship" : "part-of"
+            }, {
+              "external-id-type" : "issn",
+              "external-id-value" : "2213-8692",
+              "external-id-normalized" : {
+                "value" : "2213-8692",
+                "transient" : true
+              },
+              "external-id-normalized-error" : null,
+              "external-id-url" : {
+                "value" : "https://portal.issn.org/resource/ISSN/2213-8692"
+              },
+              "external-id-relationship" : "part-of"
+            } ]
+          },
+          "url" : {
+            "value" : "http://dx.doi.org/10.1007/978-3-319-00395-5_126"
+          },
+          "type" : "conference-paper",
+          "publication-date" : {
+            "year" : {
+              "value" : "2013"
+            },
+            "month" : null,
+            "day" : null
+          },
+          "journal-title" : {
+            "value" : "Proceedings of the European Conference on Complex Systems 2012"
+          },
+          "visibility" : "public",
+          "path" : "/0000-0002-3671-895X/work/120617927",
+          "display-index" : "1"
+        } ]
+      } ],
+      "path" : "/0000-0002-3671-895X/works"
+    },
+    "path" : "/0000-0002-3671-895X/activities"
+  },
+  "path" : "/0000-0002-3671-895X"
+}

@@ -99,6 +99,15 @@
   "@reverse" : {
     "creator" : [ {
       "@type" : "CreativeWork",
+      "@id" : "https://doi.org/10.1101/2024.05.27.24307991",
+      "name" : "Guidelines and Standard Frameworks for Artificial Intelligence in Medicine: A Systematic Review",
+      "identifier" : {
+        "@type" : "PropertyValue",
+        "propertyID" : "doi",
+        "value" : "10.1101/2024.05.27.24307991"
+      }
+    }, {
+      "@type" : "CreativeWork",
       "@id" : "https://doi.org/10.52825/cordi.v1i.415",
       "name" : "Experiences From FAIRifying Community Data and FAIR Infrastructure in Biomedical Research Domains",
       "identifier" : [ {
