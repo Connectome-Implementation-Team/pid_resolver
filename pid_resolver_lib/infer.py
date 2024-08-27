@@ -12,6 +12,7 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 #
+from pathlib import Path
 from typing import NamedTuple, List, Dict
 import json
 from .pid_analyzer import parse_resolved_dois_from_json, PublicationInfo, AuthorInfo
@@ -39,7 +40,7 @@ def search_author(given_name: str, family_name: str, with_ctx: List[ContextInfo]
 
 
 def main():
-    results: Dict[str, PublicationInfo] = parse_resolved_dois_from_json('results.json')
+    results: Dict[str, PublicationInfo] = parse_resolved_dois_from_json(Path('results.json'))
 
     pubs: List[PublicationInfo] = list(results.values())
 
