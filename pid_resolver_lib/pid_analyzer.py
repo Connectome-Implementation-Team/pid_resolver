@@ -533,5 +533,5 @@ def group_orcids_per_doi(dois_per_orcid: List[Dict]) -> Dict[str, List[OrcidProf
     return orcids_by_doi
 
 
-__all__ = ['PublicationInfo', 'analyze_dois', 'analyze_doi_record_crossref', 'analyze_doi_record_datacite', 'analyze_doi_record_medra', 'get_orcids_from_resolved_dois',
-           'get_dois_per_orcid', 'group_orcids_per_doi', 'names_match']
+__all__ = ['PublicationInfo', 'AuthorInfo', 'analyze_dois', 'analyze_doi_record_crossref', 'analyze_doi_record_datacite', 'analyze_doi_record_medra', 'get_orcids_from_resolved_dois',
+           'get_dois_per_orcid', 'group_orcids_per_doi', 'names_match', 'parse_resolved_dois_from_json']
