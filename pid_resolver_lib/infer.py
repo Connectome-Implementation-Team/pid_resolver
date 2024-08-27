@@ -12,10 +12,20 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 #
+import logging
 from pathlib import Path
 from typing import NamedTuple, List, Dict
 import json
 from .pid_analyzer import parse_resolved_dois_from_json, PublicationInfo, AuthorInfo
+
+logging.basicConfig(filename='pid_infer.log',
+                    filemode='a',
+                    format='%(module)s %(levelname)s: %(asctime)s %(message)s',
+                    datefmt='%H:%M:%S',
+                    encoding='utf-8',
+                    level=logging.DEBUG)
+
+logger = logging.getLogger(__name__)
 
 class ContextInfo(NamedTuple):
     author: AuthorInfo
@@ -63,12 +73,22 @@ def main():
                 co_author_orcid = set(map(lambda co_author: co_author.orcid, auth_ctx.co_authors)) - {None}
 
                 common_co_authors = co_author_orcid.intersection(
-                    set(map(lambda co_author: co_author.orcid, match[0].co_authors)))
+                    set(map(lambda co_author: co_author.orcid, match[0].co_authors)) - {None})
                 # print(common_co_authors)
 
                 if len(common_co_authors) > 0:
                     # infer author's ORCID
-                    print(
+
+                    # inferred ORCID must stem from a different publication: this assertion should always be met
+                    assert auth_ctx.doi != match[0].doi
+
+                    if {match[0].author.orcid}.issubset(common_co_authors):
+                        # author cannot be her or hos co-author: these mistakes stem from wrong ORCID assignments from the publisher:
+                        # An ORCID was assigned to the wrong person, then the ORCID was assigned to the correct person from the information in the ORCID profile itself -> two distinct persons have the same ORCID
+                        logging.error(f'{set(match[0].author.orcid).issubset(common_co_authors)}, {match[0].author.orcid}, {common_co_authors}, {auth_ctx}, {match[0]}')
+                        continue
+
+                    logging.debug(
                         f'{auth_ctx.author.given_name}, {auth_ctx.author.family_name}, {auth_ctx.author.orcid}, {auth_ctx.doi}, {auth_ctx.idx}, {match[0].author.orcid}, {match[0].author.given_name}, {match[0].author.family_name}, {match[0].doi}, {common_co_authors}')
                     # add missing ORCID
                     results[auth_ctx.doi] = PublicationInfo(
