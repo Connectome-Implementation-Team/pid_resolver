@@ -3,8 +3,8 @@
 ### Scope
 
 This library facilitates the retrieval of structured metadata based on a collection of given DOIs.
-It resolves DOIs to structured metadata using content negotiation taking into account different standards used by registration agencies.
-It provides method to analyse this metadata and extract ORCIDs from it which can then also be resolved.
+It resolves DOIs using [content negotiation](https://citation.crosscite.org/docs.html#sec-4) taking into account different standards used by registration agencies.
+It provides methods to analyse this metadata and extract ORCIDs which can then be resolved, too.
 
 ### Use Cases
 
@@ -26,7 +26,8 @@ The library consists of three modules:
 
 ### Caching
 
-All resolved DOIs and ORCIDs are cached. For each registration agency (RA), a separate cache is used.
+All resolved DOIs and ORCIDs are cached. For each registration agency (RA), a separate cache directory is used.
+Cache directories are created in the root of the project this lib is used in.
 
 ### Licensing
 
@@ -36,14 +37,24 @@ Software dependencies are explicitly mentioned in the [dependencies document](DE
 
 ### Usage
 
-The library offers a [CLI version](pid_resolver_lib/cli.py) that can be used as follows:
+The library offers two CLI scripts that can be used as follows:
 - Create a virtual environment, see https://docs.python.org/3/tutorial/venv.html#creating-virtual-environments
 - Install the library `pip install -e <path/to/local/repo>` (from locally checked out repo).
+
+#### Resolve DOIS
 - Create a JSON file containing one or several DOIs, e.g., a file `dois.json` with the contents `["10.1007/978-3-031-47243-5_6"]`. Note that DOIs are **without** base path `https://doi.org/`.
-- Use the script as follows: `pid_resolver -i 2 -d dois.json`
-- Run `pid_resolver` for usage instructions.
+- Use the script as follows: `pid_resolver_resolve -i 2 -d dois.json` (resolve DOIs from JSON file and perform two iterations).
+- Run `pid_resolver_resolve` for usage instructions.
 
 The process will start with the given DOIs and perform as many iterations as configured.
-The results of the analysis will be written to `results.json` (working directory). 
+An iteration consists of resolving the given DOIs as well as resolving the linked ORCID profiles.
+The results of the analysis will be written to `results.json` (working directory).
 The cache directories will be created in the working directory.  
+The DOIs extracted from the ORCID profiles will be resolved in the *next* iteration.
+
+#### Infer missing ORCIDs
+- Run the resolving process as described above with a set of DOIs.
+- The structure in `results.json` may still contain authors without ORCIDs as the information may not be present in the DOI metadata or corresponding ORCID profile does not mention the publication.
+  Still, ORCIDs may be *infererd* for an author from a different publication if several publications share common co-authors identified by an ORCID.
+- Run `pid_resolver_infer` to infer missing ORCIDs. The results will be written to `updated.json`.
 

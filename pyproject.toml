@@ -20,7 +20,8 @@ classifiers = [
 ]
 
 [project.scripts]
-pid_resolver = "pid_resolver_lib.cli:main"
+pid_resolver_resolve = "pid_resolver_lib.cli:main"
+pid_resolver_infer = "pid_resolver_lib.infer:main"
 
 [project.urls]
 Homepage = "https://github.com/Connectome-Implementation-Team/pid_resolver"
