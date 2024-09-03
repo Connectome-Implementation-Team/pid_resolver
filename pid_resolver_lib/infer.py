@@ -83,7 +83,7 @@ def main():
                     assert auth_ctx.doi != match[0].doi
 
                     if {match[0].author.orcid}.issubset(common_co_authors):
-                        # author cannot be her or hos co-author: these mistakes stem from wrong ORCID assignments from the publisher:
+                        # author cannot be her or his own co-author: these mistakes stem from wrong ORCID assignments from the publisher:
                         # An ORCID was assigned to the wrong person, then the ORCID was assigned to the correct person from the information in the ORCID profile itself -> two distinct persons have the same ORCID
                         logging.error(f'{set(match[0].author.orcid).issubset(common_co_authors)}, {match[0].author.orcid}, {common_co_authors}, {auth_ctx}, {match[0]}')
                         continue
