@@ -26,3 +26,9 @@ pid_resolver_infer = "pid_resolver_lib.infer:main"
 [project.urls]
 Homepage = "https://github.com/Connectome-Implementation-Team/pid_resolver"
 Issues = "https://github.com/Connectome-Implementation-Team/pid_resolver/issues"
+
+[tool.mypy]
+warn_return_any = false
+namespace_packages = true # https://mypy.readthedocs.io/en/stable/running_mypy.html#mapping-file-paths-to-modules
+explicit_package_bases = true
+check_untyped_defs = true
