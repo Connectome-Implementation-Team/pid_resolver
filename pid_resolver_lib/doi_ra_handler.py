@@ -24,7 +24,7 @@ import logging
 RAs: Dict[str, Dict[str, Union[str, int]]] = {
     'DataCite': {'mime': 'application/ld+json', 'sleep': 120},
     'Crossref': {'mime': 'application/rdf+xml', 'sleep': 0},
-    'mEDRA': {'mime': 'application/rdf+xml', 'sleep': 0}
+    'mEDRA': {'mime': 'application/vnd.medra.onixdoi+xml', 'sleep': 0}
 }
 
 REGISTRATION_AGENCY = 'RA:'
