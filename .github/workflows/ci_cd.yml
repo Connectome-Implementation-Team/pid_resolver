@@ -17,8 +17,8 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install mypy aioresponses packaging jq aiohttp lxml diskcache
+          pip install mypy aioresponses packaging jq aiohttp lxml diskcache pytest
       - name: Test with pytest
         run: |
-          mypy --namespace-packages --explicit-package-bases --check-untyped-defs pid_resolver_lib/*.py # https://mypy.readthedocs.io/en/stable/running_mypy.html#mapping-file-paths-to-modules
-          python3 -m unittest discover -s tests -t tests
+          mypy pid_resolver_lib/*.py
+          pytest
