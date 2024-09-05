@@ -1,6 +1,7 @@
 .idea
 app/utils/__pycache__/*
 env/*
-pid_resolver_lib.egg-info/*
+*pid_resolver_lib.egg-info/*
 build/*
 *.pyc
+dist/*
