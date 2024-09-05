@@ -144,7 +144,7 @@ class TestPidAnalyzer(unittest.IsolatedAsyncioTestCase):
     def test_get_dois_per_orcid(self):
 
         def mock_read_from_cache_def(orcid: str, cache_dir: Path):
-            with open('tests/testdata/orcid_test.json') as f:
+            with open('tests/testdata/orcid_test2.json') as f:
                 return f.read()
 
         # https://medium.com/@durgaswaroop/writing-better-tests-in-python-with-pytest-mock-part-2-92b828e1453c
@@ -158,50 +158,72 @@ class TestPidAnalyzer(unittest.IsolatedAsyncioTestCase):
 
                 assert len(dois_per_orcid) > 0
                 assert dois_per_orcid[0]['id'] == 'https://orcid.org/0000-0002-3671-895X'
-                assert set(dois_per_orcid[0]['dois']) == set(['10.52825/cordi.v1i.415', '10.1515/jib-2022-0030', '10.1101/2022.12.17.520865', '10.20944/preprints202212.0209.v1', '10.1038/s41598-021-01618-3', '10.1016/j.jaci.2020.11.032', '10.1038/s41585-020-0355-3', '10.1038/s41585-020-0324-x', '10.1093/bioinformatics/btz969', '10.1515/jib-2019-0022', '10.1093/bib/bby099', '10.1038/s41540-018-0059-y', '10.1186/s12918-018-0556-z', '10.1093/bioinformatics/btw731', '10.1186/s12859-016-1394-x', '10.1089/cmb.2016.0095', '10.1186/s13040-016-0102-8', '10.1007/978-1-4939-3283-2_3', '10.1049/iet-syb.2015.0078', '10.1049/iet-syb.2015.0048', '10.1109/bibm.2014.6999255', '10.1109/bibm.2014.6999256', '10.1109/bibm.2014.6999254', '10.1109/ems.2013.27', '10.1007/s12539-013-0172-y', '10.1007/978-3-319-00395-5_126'])
+                assert dois_per_orcid[0]['givenName'] == 'Irina'
+                assert dois_per_orcid[0]['familyName'] == 'Balaur'
+                assert dois_per_orcid[0]['dois'] == [{'doi': '10.1007/978-1-4939-3283-2_3', 'source': 'Irina Balaur', 'index': '1'}, {'doi': '10.1007/978-3-319-00395-5_126', 'source': 'Irina Balaur', 'index': '1'}, {'doi': '10.1007/s12539-013-0172-y', 'source': 'Irina Balaur', 'index': '1'}, {'doi': '10.1016/j.jaci.2020.11.032', 'source': 'Irina Balaur', 'index': '1'}, {'doi': '10.1038/s41540-018-0059-y', 'source': 'Crossref', 'index': '0'}, {'doi': '10.1038/s41585-020-0324-x', 'source': 'Crossref', 'index': '0'}, {'doi': '10.1038/s41585-020-0355-3', 'source': 'Crossref', 'index': '0'}, {'doi': '10.1038/s41598-021-01618-3', 'source': 'Irina Balaur', 'index': '1'}, {'doi': '10.1049/iet-syb.2015.0048', 'source': 'Irina Balaur', 'index': '1'}, {'doi': '10.1049/iet-syb.2015.0078', 'source': 'Irina Balaur', 'index': '1'}, {'doi': '10.1089/cmb.2016.0095', 'source': 'Irina Balaur', 'index': '1'}, {'doi': '10.1093/bib/bby099', 'source': 'Irina Balaur', 'index': '1'}, {'doi': '10.1093/bioinformatics/btw731', 'source': 'Irina Balaur', 'index': '1'}, {'doi': '10.1093/bioinformatics/btz969', 'source': 'Crossref', 'index': '0'}, {'doi': '10.1101/2022.12.17.520865', 'source': 'Irina Balaur', 'index': '1'}, {'doi': '10.1101/2024.05.27.24307991', 'source': 'Crossref', 'index': '0'}, {'doi': '10.1109/bibm.2014.6999254', 'source': 'Irina Balaur', 'index': '1'}, {'doi': '10.1109/bibm.2014.6999255', 'source': 'Irina Balaur', 'index': '1'}, {'doi': '10.1109/bibm.2014.6999256', 'source': 'Irina Balaur', 'index': '1'}, {'doi': '10.1109/ems.2013.27', 'source': 'Irina Balaur', 'index': '1'}, {'doi': '10.1186/s12859-016-1394-x', 'source': 'Irina Balaur', 'index': '1'}, {'doi': '10.1186/s12918-018-0556-z', 'source': 'Irina Balaur', 'index': '1'}, {'doi': '10.1186/s13040-016-0102-8', 'source': 'Irina Balaur', 'index': '1'}, {'doi': '10.1515/jib-2019-0022', 'source': 'Crossref', 'index': '0'}, {'doi': '10.1515/jib-2022-0030', 'source': 'Crossref', 'index': '0'}, {'doi': '10.20944/preprints202212.0209.v1', 'source': 'Irina Balaur', 'index': '1'}, {'doi': '10.52825/cordi.v1i', 'source': 'TIB Open Publishing', 'index': '0'}, {'doi': '10.52825/cordi.v1i.415', 'source': 'Crossref', 'index': '0'}]
+
+    def test_get_dois_per_orcid2(self):
+
+        def mock_read_from_cache_def(orcid: str, cache_dir: Path):
+            with open('tests/testdata/orcid_test3.json') as f:
+                return f.read()
+
+        # https://medium.com/@durgaswaroop/writing-better-tests-in-python-with-pytest-mock-part-2-92b828e1453c
+        with mock.patch('pid_resolver_lib.pid_analyzer.get_keys') as mock_get_keys:
+            mock_get_keys.return_value = ['0000-0001-5357-3601']
+
+            with mock.patch('pid_resolver_lib.pid_analyzer.read_from_cache') as mock_read_from_cache:
+                mock_read_from_cache.side_effect = mock_read_from_cache_def
+
+                dois_per_orcid: List[Dict] = pid_resolver_lib.get_dois_per_orcid(Path())
+
+                #print(len(dois_per_orcid[0]['dois']))
+
+                assert len(dois_per_orcid) > 0
+                assert len(dois_per_orcid[0]['dois']) == 377
 
     def test_group_dois_per_orcid(self):
         dois_per_orcid = [
-            {'id': 'https://orcid.org/0000-0002-3671-895X', 'givenName': 'Irina', 'familyName': 'Balaur', 'dois': ['10.52825/cordi.v1i.415', '10.1515/jib-2022-0030', '10.1101/2022.12.17.520865', '10.20944/preprints202212.0209.v1', '10.1038/s41598-021-01618-3', '10.1016/j.jaci.2020.11.032', '10.1038/s41585-020-0355-3', '10.1038/s41585-020-0324-x', '10.1093/bioinformatics/btz969', '10.1515/jib-2019-0022', '10.1093/bib/bby099', '10.1038/s41540-018-0059-y', '10.1186/s12918-018-0556-z', '10.1093/bioinformatics/btw731', '10.1186/s12859-016-1394-x', '10.1089/cmb.2016.0095', '10.1186/s13040-016-0102-8', '10.1007/978-1-4939-3283-2_3', '10.1049/iet-syb.2015.0078', '10.1049/iet-syb.2015.0048', '10.1109/bibm.2014.6999255', '10.1109/bibm.2014.6999256', '10.1109/bibm.2014.6999254', '10.1109/ems.2013.27', '10.1007/s12539-013-0172-y', '10.1007/978-3-319-00395-5_126']},
+            {'id': 'https://orcid.org/0000-0002-3671-895X', 'givenName': 'Irina', 'familyName': 'Balaur', 'dois': [{'doi': '10.1007/978-1-4939-3283-2_3', 'source': 'Irina Balaur', 'index': '1'}, {'doi': '10.1007/978-3-319-00395-5_126', 'source': 'Irina Balaur', 'index': '1'}, {'doi': '10.1007/s12539-013-0172-y', 'source': 'Irina Balaur', 'index': '1'}, {'doi': '10.1016/j.jaci.2020.11.032', 'source': 'Irina Balaur', 'index': '1'}, {'doi': '10.1038/s41540-018-0059-y', 'source': 'Crossref', 'index': '0'}, {'doi': '10.1038/s41585-020-0324-x', 'source': 'Crossref', 'index': '0'}, {'doi': '10.1038/s41585-020-0355-3', 'source': 'Crossref', 'index': '0'}, {'doi': '10.1038/s41598-021-01618-3', 'source': 'Irina Balaur', 'index': '1'}, {'doi': '10.1049/iet-syb.2015.0048', 'source': 'Irina Balaur', 'index': '1'}, {'doi': '10.1049/iet-syb.2015.0078', 'source': 'Irina Balaur', 'index': '1'}, {'doi': '10.1089/cmb.2016.0095', 'source': 'Irina Balaur', 'index': '1'}, {'doi': '10.1093/bib/bby099', 'source': 'Irina Balaur', 'index': '1'}, {'doi': '10.1093/bioinformatics/btw731', 'source': 'Irina Balaur', 'index': '1'}, {'doi': '10.1093/bioinformatics/btz969', 'source': 'Crossref', 'index': '0'}, {'doi': '10.1101/2022.12.17.520865', 'source': 'Irina Balaur', 'index': '1'}, {'doi': '10.1101/2024.05.27.24307991', 'source': 'Crossref', 'index': '0'}, {'doi': '10.1109/bibm.2014.6999254', 'source': 'Irina Balaur', 'index': '1'}, {'doi': '10.1109/bibm.2014.6999255', 'source': 'Irina Balaur', 'index': '1'}, {'doi': '10.1109/bibm.2014.6999256', 'source': 'Irina Balaur', 'index': '1'}, {'doi': '10.1109/ems.2013.27', 'source': 'Irina Balaur', 'index': '1'}, {'doi': '10.1186/s12859-016-1394-x', 'source': 'Irina Balaur', 'index': '1'}, {'doi': '10.1186/s12918-018-0556-z', 'source': 'Irina Balaur', 'index': '1'}, {'doi': '10.1186/s13040-016-0102-8', 'source': 'Irina Balaur', 'index': '1'}, {'doi': '10.1515/jib-2019-0022', 'source': 'Crossref', 'index': '0'}, {'doi': '10.1515/jib-2022-0030', 'source': 'Crossref', 'index': '0'}, {'doi': '10.20944/preprints202212.0209.v1', 'source': 'Irina Balaur', 'index': '1'}, {'doi': '10.52825/cordi.v1i', 'source': 'TIB Open Publishing', 'index': '0'}, {'doi': '10.52825/cordi.v1i.415', 'source': 'Crossref', 'index': '0'}]},
             {'id': 'https://orcid.org/0000-0000-0000-0000', 'givenName': 'Fictious', 'familyName': 'Person',
-             'dois': ['10.52825/cordi.v1i.415']}
+             'dois': [{'doi': '10.52825/cordi.v1i.415', 'source': 'self', 'index': 0}]}
         ]
 
         grouped = pid_resolver_lib.group_orcids_per_doi(dois_per_orcid)
 
         assert len(grouped['10.52825/cordi.v1i.415']) == 2
-        assert set(grouped['10.52825/cordi.v1i.415']) == set([OrcidProfile(id='https://orcid.org/0000-0002-3671-895X', given_name='Irina', family_name='Balaur'), OrcidProfile(id='https://orcid.org/0000-0000-0000-0000', given_name='Fictious', family_name='Person')])
+        assert set(grouped['10.52825/cordi.v1i.415']) == set([OrcidProfile(id='https://orcid.org/0000-0002-3671-895X', given_name='Irina', family_name='Balaur', source='Crossref'), OrcidProfile(id='https://orcid.org/0000-0000-0000-0000', given_name='Fictious', family_name='Person', source='self')])
 
     def test_names_match1(self):
-        res = names_match('Marc',  'Veldhoen', OrcidProfile(id='https://orcid.org/0000-0002-1478-9562', given_name='Marc', family_name='Veldhoen'))
+        res = names_match('Marc',  'Veldhoen', OrcidProfile(id='https://orcid.org/0000-0002-1478-9562', given_name='Marc', family_name='Veldhoen', source='Crossref'))
 
         self.assertTrue(res)
 
     def test_names_match2(self):
-        res = names_match('Marc',  'Veldhoen', OrcidProfile(id='https://orcid.org/0000-0002-1478-9562', given_name='Marc', family_name='Veldhoe'))
+        res = names_match('Marc',  'Veldhoen', OrcidProfile(id='https://orcid.org/0000-0002-1478-9562', given_name='Marc', family_name='Veldhoe', source='Crossref'))
 
         self.assertFalse(res)
 
     def test_names_match3(self):
 
-        res = names_match('M.', 'Caldera', OrcidProfile(id='https://orcid.org/0000-0001-8728-7961', given_name='Matteo', family_name='Caldera'))
+        res = names_match('M.', 'Caldera', OrcidProfile(id='https://orcid.org/0000-0001-8728-7961', given_name='Matteo', family_name='Caldera', source='Crossref'))
 
         self.assertTrue(res)
 
     def test_names_match4(self):
 
-        res = names_match('Maria Rosaria', 'Di Nucci', OrcidProfile(id='https://orcid.org/0000-0002-0833-8247', given_name='Maria Rosaria', family_name='Di Nucci'))
+        res = names_match('Maria Rosaria', 'Di Nucci', OrcidProfile(id='https://orcid.org/0000-0002-0833-8247', given_name='Maria Rosaria', family_name='Di Nucci', source='Crossref'))
 
         self.assertTrue(res)
 
     def test_names_match5(self):
 
-        res = names_match('Maria', 'Di Nucci', OrcidProfile(id='https://orcid.org/0000-0002-0833-8247', given_name='Maria Rosaria', family_name='Di Nucci'))
+        res = names_match('Maria', 'Di Nucci', OrcidProfile(id='https://orcid.org/0000-0002-0833-8247', given_name='Maria Rosaria', family_name='Di Nucci', source='Crossref'))
 
         self.assertTrue(res)
 
     def test_names_match6(self):
 
-        res = names_match('Gianluca', 'Ruggieri', OrcidProfile(id='https://orcid.org/0000-0003-2343-8016', given_name='GIANLUCA', family_name='RUGGIERI'))
+        res = names_match('Gianluca', 'Ruggieri', OrcidProfile(id='https://orcid.org/0000-0003-2343-8016', given_name='GIANLUCA', family_name='RUGGIERI', source='Crossref'))
 
         self.assertTrue(res)
