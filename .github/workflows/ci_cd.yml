@@ -41,4 +41,4 @@ jobs:
           pip install setuptools wheel
       - name: build lib
         run: |
-          pyproject-build
+          python -m build
