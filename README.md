@@ -39,7 +39,7 @@ Software dependencies are explicitly mentioned in the [dependencies document](DE
 
 The library offers two CLI scripts that can be used as follows:
 - Create a virtual environment, see https://docs.python.org/3/tutorial/venv.html#creating-virtual-environments
-- Install the library `pip install -e <path/to/local/repo>` (from locally checked out repo).
+- Install the library `pip install -e <path/to/local/repo> --config-settings editable_mode=compat` (from locally checked out repo, since this lib has not been published yet).
 
 #### Resolve DOIS
 - Create a JSON file containing one or several DOIs, e.g., a file `dois.json` with the contents `["10.1007/978-3-031-47243-5_6"]`. Note that DOIs are **without** base path `https://doi.org/`.
