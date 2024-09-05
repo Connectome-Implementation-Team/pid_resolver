@@ -54,7 +54,7 @@ The DOIs extracted from the ORCID profiles will be resolved in the *next* iterat
 
 #### Infer missing ORCIDs
 - Run the resolving process as described above with a set of DOIs.
-- The structure in `results.json` may still contain authors without ORCIDs as the information may not be present in the DOI metadata or corresponding ORCID profile does not mention the publication.
-  Still, ORCIDs may be *infererd* for an author from a different publication if several publications share common co-authors identified by an ORCID.
+- The structure in `results.json` may still contain authors without ORCIDs as the information may not be present in the DOI metadata or the corresponding ORCID profile does not mention the publication.
+  Still, ORCIDs may be *inferred* for an author from a different publication if several publications share common co-authors identified by an ORCID.
 - Run `pid_resolver_infer` to infer missing ORCIDs. The results will be written to `updated.json`.
 
