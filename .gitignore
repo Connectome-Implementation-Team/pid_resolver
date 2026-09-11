@@ -4,3 +4,4 @@ env/*
 pid_resolver_lib.egg-info/*
 build/*
 *.pyc
+cache.db
