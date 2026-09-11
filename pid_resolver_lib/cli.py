@@ -53,8 +53,11 @@ async def fetch_dois(dois: List[str], ) -> List[str]:
         # for each RA, resolve the DOIs
         if ra in RAs:
             mime: str = str(RAs[ra]['mime'])
-            sleep: int = int(RAs[ra]['sleep'])
-            await fetch_records(org_dois[ra], Path(ra), 'https://doi.org', mime, sleep)
+            requests_per_second: float = float(RAs[ra]['requests_per_second'])
+            failed = await fetch_records(org_dois[ra], Path(ra), 'https://doi.org', mime,
+                                          requests_per_second=requests_per_second)
+            if failed:
+                logger.warning(f'{len(failed)} {ra} record(s) permanently failed to resolve: {failed}')
 
     resolved_dois_crossref = analyze_dois(Path('Crossref'),
                                                            analyze_doi_record_crossref)
@@ -73,7 +76,9 @@ async def fetch_dois(dois: List[str], ) -> List[str]:
 
     orcids = get_orcids_from_resolved_dois(resolved_dois)
 
-    await fetch_records(orcids, Path('orcid'), 'https://orcid.org', 'application/ld+json')
+    failed_orcids = await fetch_records(orcids, Path('orcid'), 'https://orcid.org', 'application/ld+json')
+    if failed_orcids:
+        logger.warning(f'{len(failed_orcids)} ORCID record(s) permanently failed to resolve: {failed_orcids}')
 
     dois_for_orcid = get_dois_per_orcid(Path('orcid'))
 

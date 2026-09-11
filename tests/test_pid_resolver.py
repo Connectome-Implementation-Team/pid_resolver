@@ -16,27 +16,89 @@
 import unittest
 from pathlib import Path
 from unittest import mock
-from unittest.mock import AsyncMock, call
+from unittest.mock import AsyncMock
 
 from aioresponses import aioresponses
 import aiohttp
 from pid_resolver_lib import pid_resolver, cache_handler
+from pid_resolver_lib.rate_limit import RetryConfig, AsyncRateLimiter
+
+
+def _fast_limiter() -> AsyncRateLimiter:
+    # a high rate so tests don't actually wait on the limiter
+    return AsyncRateLimiter(rate=1000)
+
+
+def _quick_retry_config(max_retries: int = 3) -> RetryConfig:
+    # tiny delays so retry tests run fast
+    return RetryConfig(max_retries=max_retries, base_delay=0.001, max_delay=0.01)
 
 
 class TestPidResolver(unittest.IsolatedAsyncioTestCase):
 
-    async def test__make_record_request(self):
+    async def test__make_record_request_success(self):
         with aioresponses() as mocked:
             mocked.get('http://example.com/one', status=200, body='data')
             session = aiohttp.ClientSession()
 
-            resp = await pid_resolver._make_record_request(session, 'one', 'http://example.com', 'application/ld+json')
+            resp = await pid_resolver._make_record_request(
+                session, 'one', 'http://example.com', 'application/ld+json',
+                _fast_limiter(), _quick_retry_config())
 
             await session.close()
 
+            assert resp is not None
             assert resp.rec_id == 'one'
             assert resp.content == 'data'
 
+    async def test__make_record_request_retries_then_succeeds(self):
+        with aioresponses() as mocked:
+            # first attempt is rate-limited, second attempt succeeds
+            mocked.get('http://example.com/one', status=429)
+            mocked.get('http://example.com/one', status=200, body='data')
+            session = aiohttp.ClientSession()
+
+            resp = await pid_resolver._make_record_request(
+                session, 'one', 'http://example.com', 'application/ld+json',
+                _fast_limiter(), _quick_retry_config())
+
+            await session.close()
+
+            assert resp is not None
+            assert resp.rec_id == 'one'
+            assert resp.content == 'data'
+
+    async def test__make_record_request_gives_up_after_max_retries(self):
+        retry_config = _quick_retry_config(max_retries=2)
+
+        with aioresponses() as mocked:
+            # always fails with a retryable status
+            for _ in range(retry_config.max_retries + 1):
+                mocked.get('http://example.com/one', status=503)
+            session = aiohttp.ClientSession()
+
+            resp = await pid_resolver._make_record_request(
+                session, 'one', 'http://example.com', 'application/ld+json',
+                _fast_limiter(), retry_config)
+
+            await session.close()
+
+            assert resp is None
+
+    async def test__make_record_request_does_not_retry_definitive_error(self):
+        with aioresponses() as mocked:
+            # only register the response once: if the code retried, aioresponses would raise
+            # because there is no second mock registered for this URL.
+            mocked.get('http://example.com/one', status=404)
+            session = aiohttp.ClientSession()
+
+            resp = await pid_resolver._make_record_request(
+                session, 'one', 'http://example.com', 'application/ld+json',
+                _fast_limiter(), _quick_retry_config())
+
+            await session.close()
+
+            assert resp is None
 
     def test_records_not_in_cache(self):
         with mock.patch('pid_resolver_lib.pid_resolver.get_keys') as mock_get_keys:
@@ -56,20 +118,25 @@ class TestPidResolver(unittest.IsolatedAsyncioTestCase):
         with mock.patch('pid_resolver_lib.pid_resolver.get_keys') as mock_get_keys:
             mock_get_keys.return_value = ['1']
 
-            pid_resolver._fetch_record_batch = AsyncMock(name='_fetch_record_batch')
+            pid_resolver._fetch_all = AsyncMock(name='_fetch_all', return_value=[])
             res = await pid_resolver.fetch_records(['1', '2'], Path(), 'http://example.com/one', '')
 
-            assert res is None
+            assert res == []
 
-            #print(pid_resolver._fetch_record_batch.mock_calls[0].args)
-
-            args = pid_resolver._fetch_record_batch.mock_calls[0].args
-            expected_args = (['2'], 'http://example.com/one', '')
-
-            assert len(args) == len(expected_args)
+            args = pid_resolver._fetch_all.mock_calls[0].args
 
             # rec ids are converted to a set, hence order is not preserved
-            assert set(args[0]) == set(expected_args[0])
-            assert args[1] == expected_args[1]
-            assert args[2] == expected_args[2]
+            assert set(args[0]) == {'2'}
+            assert args[1] == Path()
+            assert args[2] == 'http://example.com/one'
+            assert args[3] == ''
 
+    async def test_fetch_records_returns_empty_list_when_nothing_to_fetch(self):
+        with mock.patch('pid_resolver_lib.pid_resolver.get_keys') as mock_get_keys:
+            mock_get_keys.return_value = ['1', '2']
+
+            pid_resolver._fetch_all = AsyncMock(name='_fetch_all')
+            res = await pid_resolver.fetch_records(['1', '2'], Path(), 'http://example.com/one', '')
+
+            assert res == []
+            pid_resolver._fetch_all.assert_not_called()
