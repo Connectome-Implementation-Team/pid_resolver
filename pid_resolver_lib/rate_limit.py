@@ -14,10 +14,15 @@
 #
 
 import asyncio
+import logging
 import random
 import time
 from dataclasses import dataclass, field
-from typing import FrozenSet, Optional
+from typing import Awaitable, Callable, Dict, FrozenSet, Optional, TypeVar
+import aiohttp # type: ignore
+from aiohttp import ClientResponse, ClientSession # type: ignore
+
+T = TypeVar('T')
 
 
 @dataclass
@@ -113,4 +118,74 @@ class AsyncRateLimiter:
         return None
 
 
-__all__ = ['RetryConfig', 'AsyncRateLimiter', 'compute_backoff_delay']
+async def request_with_retry(
+        session: ClientSession,
+        url: str,
+        limiter: AsyncRateLimiter,
+        retry_config: RetryConfig,
+        parse_response: Callable[[ClientResponse], Awaitable[T]],
+        log_prefix: str,
+        log_id: str,
+        headers: Optional[Dict[str, str]] = None,
+) -> Optional[T]:
+    """
+    Performs a GET request with rate limiting and retry/backoff for transient failures
+    (retryable HTTP statuses, timeouts, connection errors). A numeric `Retry-After` header is honored.
+
+    On a successful response, `parse_response` is awaited with the response and its result returned.
+    Definitive failures (e.g. 404) and exhausted retries return None; nothing is raised for those.
+
+    @param session: The aiohttp session to be used.
+    @param url: The URL to GET.
+    @param limiter: Rate limiter shared across all requests of a batch.
+    @param retry_config: Retry/backoff behavior.
+    @param parse_response: Extracts the result from a successful response.
+    @param log_prefix: Prefix for log messages, e.g. 'RESOLVER:'.
+    @param log_id: Identifier of the thing being requested, used in log messages.
+    @param headers: Optional request headers.
+    """
+
+    for attempt in range(retry_config.max_retries + 1):
+
+        await limiter.acquire()
+
+        try:
+            async with session.get(url, headers=headers) as request:
+
+                if request.status in retry_config.retryable_statuses:
+                    if attempt == retry_config.max_retries:
+                        logging.error(
+                            f'{log_prefix} {log_id}: giving up after {attempt + 1} attempt(s), '
+                            f'last status {request.status}')
+                        return None
+
+                    delay = compute_backoff_delay(attempt, retry_config, request.headers.get('Retry-After'))
+                    logging.warning(
+                        f'{log_prefix} {log_id}: status {request.status}, retrying in {delay:.1f}s '
+                        f'(attempt {attempt + 1}/{retry_config.max_retries})')
+                    await asyncio.sleep(delay)
+                    continue
+
+                # raises for any remaining 4xx/5xx not in retryable_statuses, e.g. 404
+                request.raise_for_status()
+                return await parse_response(request)
+
+        except aiohttp.ClientResponseError as e:
+            logging.error(f'{log_prefix} {log_id}: non-retryable error {e.status} {e.message}')
+            return None
+
+        except (aiohttp.ClientError, asyncio.TimeoutError) as e:
+            if attempt == retry_config.max_retries:
+                logging.error(f'{log_prefix} {log_id}: giving up after {attempt + 1} attempt(s): {e}')
+                return None
+
+            delay = compute_backoff_delay(attempt, retry_config)
+            logging.warning(
+                f'{log_prefix} {log_id}: {e}, retrying in {delay:.1f}s '
+                f'(attempt {attempt + 1}/{retry_config.max_retries})')
+            await asyncio.sleep(delay)
+
+    return None
+
+
+__all__ = ['RetryConfig', 'AsyncRateLimiter', 'compute_backoff_delay', 'request_with_retry']

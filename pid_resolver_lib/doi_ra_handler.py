@@ -16,11 +16,10 @@ from pathlib import Path
 from typing import List, Dict, Union, cast, Any, Optional
 from functools import reduce
 import asyncio
-import aiohttp # type: ignore
-from aiohttp import ClientSession, TCPConnector, ClientTimeout # type: ignore
+from aiohttp import ClientSession, ClientResponse, TCPConnector, ClientTimeout # type: ignore
 import jq # type: ignore
 from .cache_handler import get_keys
-from .rate_limit import RetryConfig, AsyncRateLimiter, compute_backoff_delay
+from .rate_limit import RetryConfig, AsyncRateLimiter, request_with_retry
 from .pid_resolver import DEFAULT_USER_AGENT
 import logging
 
@@ -56,9 +55,8 @@ async def _make_registration_agency_prefix_request(
         retry_config: RetryConfig,
 ) -> Union[Dict[str, str], None]:
     """
-    Given a DOI prefix, fetches information about the RA. Retries transient failures (429, 5xx,
-    timeouts, connection errors) with exponential backoff + jitter, honoring a numeric `Retry-After`
-    header when present. Definitive failures (e.g. 404) are not retried.
+    Given a DOI prefix, fetches information about the RA. Rate limiting and retries of transient
+    failures are handled by `request_with_retry`.
 
     @param session: The aiohttp session to be used.
     @param doi_prefix: The DOI prefix to be fetched.
@@ -66,53 +64,16 @@ async def _make_registration_agency_prefix_request(
     @param retry_config: Retry/backoff behavior for transient failures.
     """
 
-    url = f'{DOI_RA_BASE_URL}/{doi_prefix}'
+    async def parse(request: ClientResponse) -> Optional[Dict[str, str]]:
+        res = await request.json()
+        if isinstance(res, list) and len(res) == 1:
+            return cast(Dict[str, str], res[0])
+        logging.error(f'{REGISTRATION_AGENCY} {doi_prefix}: DOI RA result is not a list: {res}')
+        return None
 
-    for attempt in range(retry_config.max_retries + 1):
-
-        await limiter.acquire()
-
-        try:
-            async with session.get(url) as request:
-
-                if request.status in retry_config.retryable_statuses:
-                    if attempt == retry_config.max_retries:
-                        logging.error(
-                            f'{REGISTRATION_AGENCY} {doi_prefix}: giving up after {attempt + 1} attempt(s), '
-                            f'last status {request.status}')
-                        return None
-
-                    delay = compute_backoff_delay(attempt, retry_config, request.headers.get('Retry-After'))
-                    logging.warning(
-                        f'{REGISTRATION_AGENCY} {doi_prefix}: status {request.status}, retrying in {delay:.1f}s '
-                        f'(attempt {attempt + 1}/{retry_config.max_retries})')
-                    await asyncio.sleep(delay)
-                    continue
-
-                request.raise_for_status()
-                res = await request.json()
-                if isinstance(res, list) and len(res) == 1:
-                    return res[0]
-                else:
-                    logging.error(f'{REGISTRATION_AGENCY} {doi_prefix}: DOI RA result is not a list: {res}')
-                    return None
-
-        except aiohttp.ClientResponseError as e:
-            logging.error(f'{REGISTRATION_AGENCY} {doi_prefix}: non-retryable error {e.status} {e.message}')
-            return None
-
-        except (aiohttp.ClientError, asyncio.TimeoutError) as e:
-            if attempt == retry_config.max_retries:
-                logging.error(f'{REGISTRATION_AGENCY} {doi_prefix}: giving up after {attempt + 1} attempt(s): {e}')
-                return None
-
-            delay = compute_backoff_delay(attempt, retry_config)
-            logging.warning(
-                f'{REGISTRATION_AGENCY} {doi_prefix}: {e}, retrying in {delay:.1f}s '
-                f'(attempt {attempt + 1}/{retry_config.max_retries})')
-            await asyncio.sleep(delay)
-
-    return None
+    return await request_with_retry(
+        session, f'{DOI_RA_BASE_URL}/{doi_prefix}', limiter, retry_config, parse,
+        REGISTRATION_AGENCY, doi_prefix)
 
 
 async def resolve_registration_agency_prefixes(

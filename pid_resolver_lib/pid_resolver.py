@@ -16,11 +16,11 @@
 from pathlib import Path
 from typing import List, NamedTuple, Optional
 import aiohttp # type: ignore
-from aiohttp import ClientSession, TCPConnector, ClientTimeout
+from aiohttp import ClientSession, ClientResponse, TCPConnector, ClientTimeout
 import asyncio
 import logging
 from .cache_handler import get_keys, write_records_to_cache
-from .rate_limit import RetryConfig, AsyncRateLimiter, compute_backoff_delay
+from .rate_limit import RetryConfig, AsyncRateLimiter, request_with_retry
 
 logger = logging.getLogger(__name__)
 
@@ -53,9 +53,8 @@ async def _make_record_request(
         retry_config: RetryConfig,
 ) -> Optional[ResolvedRecord]:
     """
-    Given a record id, resolves it using content negotiation. Retries transient failures
-    (429, 5xx, timeouts, connection errors) with exponential backoff + jitter, honoring a numeric
-    `Retry-After` header when the server sends one. Definitive failures (e.g. 404) are not retried.
+    Given a record id, resolves it using content negotiation. Rate limiting and retries of transient
+    failures are handled by `request_with_retry`.
 
     @param session: The aiohttp session to be used.
     @param record_id: The id of the record to be resolved.
@@ -65,53 +64,12 @@ async def _make_record_request(
     @param retry_config: Retry/backoff behavior for transient failures.
     """
 
-    headers = {
-        'Accept': accept_header
-    }
+    async def parse(request: ClientResponse) -> ResolvedRecord:
+        return ResolvedRecord(record_id, await request.text())
 
-    url = f'{base_url}/{record_id}'
-
-    for attempt in range(retry_config.max_retries + 1):
-
-        await limiter.acquire()
-
-        try:
-            async with session.get(url, headers=headers) as request:
-
-                if request.status in retry_config.retryable_statuses:
-                    if attempt == retry_config.max_retries:
-                        logging.error(
-                            f'{RESOLVER} {record_id}: giving up after {attempt + 1} attempt(s), last status {request.status}')
-                        return None
-
-                    delay = compute_backoff_delay(attempt, retry_config, request.headers.get('Retry-After'))
-                    logging.warning(
-                        f'{RESOLVER} {record_id}: status {request.status}, retrying in {delay:.1f}s '
-                        f'(attempt {attempt + 1}/{retry_config.max_retries})')
-                    await asyncio.sleep(delay)
-                    continue
-
-                # raises for any remaining 4xx/5xx not in retryable_statuses, e.g. 404
-                request.raise_for_status()
-                return ResolvedRecord(record_id, await request.text())
-
-        except aiohttp.ClientResponseError as e:
-            # a definitive client/server error that we've decided not to retry (see retryable_statuses)
-            logging.error(f'{RESOLVER} {record_id}: non-retryable error {e.status} {e.message}')
-            return None
-
-        except (aiohttp.ClientError, asyncio.TimeoutError) as e:
-            if attempt == retry_config.max_retries:
-                logging.error(f'{RESOLVER} {record_id}: giving up after {attempt + 1} attempt(s): {e}')
-                return None
-
-            delay = compute_backoff_delay(attempt, retry_config)
-            logging.warning(
-                f'{RESOLVER} {record_id}: {e}, retrying in {delay:.1f}s '
-                f'(attempt {attempt + 1}/{retry_config.max_retries})')
-            await asyncio.sleep(delay)
-
-    return None
+    return await request_with_retry(
+        session, f'{base_url}/{record_id}', limiter, retry_config, parse,
+        RESOLVER, record_id, headers={'Accept': accept_header})
 
 
 def records_not_in_cache(record_ids: List[str], cache_dir: Path) -> List[str]:
