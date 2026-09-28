@@ -13,21 +13,27 @@
 #  limitations under the License.
 #
 from pathlib import Path
-from typing import List, Dict, Union, cast, Any
+from typing import List, Dict, Union, cast, Any, Optional
 from functools import reduce
 import asyncio
-from aiohttp import ClientSession, TCPConnector, ClientTimeout # type: ignore
+from aiohttp import ClientSession, ClientResponse, TCPConnector, ClientTimeout # type: ignore
 import jq # type: ignore
 from .cache_handler import get_keys
+from .rate_limit import RetryConfig, AsyncRateLimiter, request_with_retry
+from .pid_resolver import DEFAULT_USER_AGENT
 import logging
 
-RAs: Dict[str, Dict[str, Union[str, int]]] = {
-    'DataCite': {'mime': 'application/ld+json', 'sleep': 120},
-    'Crossref': {'mime': 'application/rdf+xml', 'sleep': 120},
-    'mEDRA': {'mime': 'application/rdf+xml', 'sleep': 0}
+# 'requests_per_second' is the sustained rate used when fetching each RA's records via doi.org
+# content negotiation in fetch_records (see pid_resolver.py); adjust to whatever the target API
+# currently documents, e.g. https://support.datacite.org/docs/rate-limit for DataCite/Crossref.
+RAs: Dict[str, Dict[str, Union[str, float]]] = {
+    'DataCite': {'mime': 'application/ld+json', 'requests_per_second': 3.0},
+    'Crossref': {'mime': 'application/rdf+xml', 'requests_per_second': 3.0},
+    'mEDRA': {'mime': 'application/rdf+xml', 'requests_per_second': 5.0}
 }
 
 REGISTRATION_AGENCY = 'RA:'
+DOI_RA_BASE_URL = 'https://doi.org/ra'
 
 logger = logging.getLogger(__name__)
 
@@ -42,42 +48,62 @@ def get_registration_agency_prefixes(dois: List[str]) -> List[str]:
     return agencies
 
 
-async def _make_registration_agency_prefix_request(session: ClientSession, doi_prefix: str) -> Union[Dict[str, str], None]:
+async def _make_registration_agency_prefix_request(
+        session: ClientSession,
+        doi_prefix: str,
+        limiter: AsyncRateLimiter,
+        retry_config: RetryConfig,
+) -> Union[Dict[str, str], None]:
     """
-    Given a DOI prefix, fetches information about the RA.
+    Given a DOI prefix, fetches information about the RA. Rate limiting and retries of transient
+    failures are handled by `request_with_retry`.
 
     @param session: The aiohttp session to be used.
     @param doi_prefix: The DOI prefix to be fetched.
+    @param limiter: Rate limiter shared across all requests in this batch.
+    @param retry_config: Retry/backoff behavior for transient failures.
     """
 
-    base_url = 'https://doi.org/ra'
-
-    try:
-        async with session.get(f'{base_url}/{doi_prefix}') as request:
-            res = await request.json()
-            if isinstance(res, list) and len(res) == 1:
-                return res[0]
-            else:
-                raise Exception(f'DOI RA result is not a list: {res}')
-
-    except Exception as e:
-        logging.error(f'{REGISTRATION_AGENCY} DOI RA Error {str(e)}')
+    async def parse(request: ClientResponse) -> Optional[Dict[str, str]]:
+        res = await request.json()
+        if isinstance(res, list) and len(res) == 1:
+            return cast(Dict[str, str], res[0])
+        logging.error(f'{REGISTRATION_AGENCY} {doi_prefix}: DOI RA result is not a list: {res}')
         return None
 
+    return await request_with_retry(
+        session, f'{DOI_RA_BASE_URL}/{doi_prefix}', limiter, retry_config, parse,
+        REGISTRATION_AGENCY, doi_prefix)
 
-async def resolve_registration_agency_prefixes(doi_prefixes: List[str]) -> List[Dict[str, str]]:
+
+async def resolve_registration_agency_prefixes(
+        doi_prefixes: List[str],
+        requests_per_second: float = 5.0,
+        max_concurrency: int = 10,
+        retry_config: Optional[RetryConfig] = None,
+        user_agent: str = DEFAULT_USER_AGENT,
+) -> List[Dict[str, str]]:
     """
     Given a list of DOI prefixes, resolves them to get the registration agencies.
 
     @param doi_prefixes: DOI prefixes to be resolved.
+    @param requests_per_second: Sustained request rate against https://doi.org/ra.
+    @param max_concurrency: Maximum number of requests in flight at once.
+    @param retry_config: Retry/backoff behavior for transient failures. Defaults to RetryConfig().
+    @param user_agent: Value of the User-Agent header sent with every request.
     """
 
-    conn = TCPConnector(limit=10)
-    # set raise_for_status
-    time_out = ClientTimeout(total=60 * 60 * 24)
-    async with ClientSession(connector=conn, raise_for_status=True, timeout=time_out) as session:
+    retry_config = retry_config or RetryConfig()
+    limiter = AsyncRateLimiter(rate=requests_per_second)
 
-        requests = [_make_registration_agency_prefix_request(session, doi_prefix) for doi_prefix in doi_prefixes]
+    conn = TCPConnector(limit=max_concurrency)
+    time_out = ClientTimeout(total=None, sock_connect=30, sock_read=60)
+    headers = {'User-Agent': user_agent}
+
+    async with ClientSession(connector=conn, timeout=time_out, headers=headers) as session:
+
+        requests = [_make_registration_agency_prefix_request(session, doi_prefix, limiter, retry_config)
+                    for doi_prefix in doi_prefixes]
 
         results = await asyncio.gather(*requests)
 

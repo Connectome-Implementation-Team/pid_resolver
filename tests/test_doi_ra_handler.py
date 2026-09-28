@@ -18,6 +18,7 @@ import pid_resolver_lib
 from aioresponses import aioresponses
 import json
 import aiohttp
+from pid_resolver_lib.rate_limit import RetryConfig, AsyncRateLimiter
 
 
 class TestDoiRaHandler(unittest.IsolatedAsyncioTestCase):
@@ -41,7 +42,8 @@ class TestDoiRaHandler(unittest.IsolatedAsyncioTestCase):
             mocked.get('https://doi.org/ra/10.1108', status=200, body=json.dumps(mocked_resp))
             session = aiohttp.ClientSession()
 
-            response = await pid_resolver_lib.doi_ra_handler._make_registration_agency_prefix_request(session, '10.1108')
+            response = await pid_resolver_lib.doi_ra_handler._make_registration_agency_prefix_request(
+                session, '10.1108', AsyncRateLimiter(rate=1000), RetryConfig(max_retries=2, base_delay=0.001, max_delay=0.01))
 
             await session.close()
 
